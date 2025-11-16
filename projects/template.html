@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project | Kimasill</title>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/portfolio.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div id="mobile-menu-close"><span>Close</span> <i class="fa fa-times" aria-hidden="true"></i></div>
+    <div class="header-controls">
+      <a href="../index.html#work" class="btn-link" style="padding:10px 0 0 0"><i class="fa fa-arrow-left"></i> Back</a>
+      <button id="lang-toggle" aria-label="Language Toggle" title="KR/EN">KR</button>
+      <button id="theme-toggle" aria-label="Theme Toggle" title="Light/Dark"><i class="fa fa-moon-o" aria-hidden="true"></i></button>
+    </div>
+    <ul id="menu" class="shadow">
+      <li><a href="../index.html#lead" data-i18n="nav.home">Home</a></li>
+      <li><a href="../index.html#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="../index.html#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </header>
+
+  <main class="project-page">
+    <section class="project-hero background-alt" style="padding:50px 15px;text-align:center">
+      <h1 id="proj-title">Project Title</h1>
+      <p id="proj-sub">Subtitle / Short pitch</p>
+      <div class="container" style="max-width:900px;margin-top:20px">
+        <video id="proj-video" controls preload="metadata" style="width:100%;border-radius:8px;background:#000"></video>
+      </div>
+    </section>
+
+    <section class="container" style="max-width:900px;padding:30px 15px">
+      <h2 class="heading">Overview</h2>
+      <p id="proj-overview">High-level overview of the project.</p>
+
+      <h2 class="heading">Contributions</h2>
+      <ul id="proj-contrib">
+        <li>Gameplay systems and feel</li>
+        <li>Tools/Editor automation</li>
+        <li>Performance & profiling</li>
+      </ul>
+
+      <h2 class="heading">Tech Stack</h2>
+      <ul id="proj-tech">
+        <li>Engine</li>
+        <li>Language</li>
+        <li>Key packages</li>
+      </ul>
+
+      <h2 class="heading">Challenges</h2>
+      <p id="proj-challenges">Interesting problems and solutions.</p>
+
+      <div class="work-actions" style="margin-top:16px">
+        <a id="proj-link1" class="btn-link" target="_blank">GitHub</a>
+        <a id="proj-link2" class="btn-link" target="_blank">Play/Trailer</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5 copyright">
+          <p>Copyright &copy; <span id="current-year">2025</span> KIMASILL</p>
+        </div>
+        <div class="col-sm-2 top"><span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        <div class="col-sm-5 social">
+          <ul>
+            <li><a href="https://github.com/kimasill" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="https://itch.io/" target="_blank"><i class="fa fa-gamepad" aria-hidden="true"></i></a></li>
+            <li><a href="https://youtube.com/" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:your@email.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/scripts.min.js"></script>
+  <script src="../js/portfolio.js"></script>
+  <script>
+    // Simple per-page data injection
+    (function(){
+      var data = window.PROJ_DATA || {};
+      if(data.title) document.getElementById('proj-title').textContent = data.title;
+      if(data.subtitle) document.getElementById('proj-sub').textContent = data.subtitle;
+      if(data.video){ var v=document.getElementById('proj-video'); v.src=data.video; if(data.poster) v.poster=data.poster; }
+      if(data.overview) document.getElementById('proj-overview').textContent = data.overview;
+      if(Array.isArray(data.contributions)){
+        var ul=document.getElementById('proj-contrib'); ul.innerHTML='';
+        data.contributions.forEach(function(i){ var li=document.createElement('li'); li.textContent=i; ul.appendChild(li); });
+      }
+      if(Array.isArray(data.tech)){
+        var ul2=document.getElementById('proj-tech'); ul2.innerHTML='';
+        data.tech.forEach(function(i){ var li=document.createElement('li'); li.textContent=i; ul2.appendChild(li); });
+      }
+      if(data.challenges) document.getElementById('proj-challenges').textContent = data.challenges;
+      if(data.link1){ var a=document.getElementById('proj-link1'); a.href=data.link1; a.style.display='inline-block'; } else { document.getElementById('proj-link1').style.display='none'; }
+      if(data.link2){ var b=document.getElementById('proj-link2'); b.href=data.link2; b.style.display='inline-block'; } else { document.getElementById('proj-link2').style.display='none'; }
+    })();
+  </script>
+</body>
+</html>

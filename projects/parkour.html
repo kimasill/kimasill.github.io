@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First-Person Parkour | Kimasill</title>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/portfolio.css" rel="stylesheet">
+</head>
+<body>
+  <script>window.PROJ_DATA={
+    title:'First-Person Parkour',
+    subtitle:'C++ movement component (wall run, vault, slide) + replays',
+    video:'../videos/parkour.mp4',
+    poster:'../images/parkour.jpg',
+    overview:'언리얼 C++로 커스텀 이동 컴포넌트와 리플레이 시스템을 제작했습니다.',
+    contributions:['Movement component architecture','Camera feel & physics tuning','Replay/ghost system'],
+    tech:['Unreal Engine','C++','Enhanced Input','Niagara'],
+    challenges:'충돌/마찰 모델과 아트 파이프라인의 타협, 리플레이 정확도.',
+    link1:'https://github.com/',
+    link2:'https://youtu.be/'
+  };</script>
+  <div id="inject"></div>
+  <script>
+    (function(){
+      fetch('template.html').then(r=>r.text()).then(html=>{document.open();document.write(html);document.close();});
+    })();
+  </script>
+</body>
+</html>

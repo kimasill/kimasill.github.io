@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Co-op Netcode | Kimasill</title>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/portfolio.css" rel="stylesheet">
+</head>
+<body>
+  <script>window.PROJ_DATA={
+    title:'Co-op Netcode',
+    subtitle:'Dedicated server + NGO sync/interp/rollback experiments',
+    video:'../videos/netcode.mp4',
+    poster:'../images/netcode.jpg',
+    overview:'Dedicated 서버 기반으로 동기화/보간/롤백을 실험하고 유저 경험을 검증했습니다.',
+    contributions:['Replication strategy','Lag compensation','Snapshot/Interpolation'],
+    tech:['Unity','Netcode for GameObjects','SteamSockets'],
+    challenges:'지연/패킷 유실 환경에서의 플레이 안정성.',
+    link1:'https://github.com/',
+    link2:''
+  };</script>
+  <div id="inject"></div>
+  <script>
+    (function(){fetch('template.html').then(r=>r.text()).then(html=>{document.open();document.write(html);document.close();});})();
+  </script>
+</body>
+</html>
