@@ -3,34 +3,37 @@
 :root{
 	--bg:#ffffff;
 	--surface:#ffffff;
-	--text:#374054;
-	--muted:#74808a;
-	--primary:#3498db;
-	--alt:#f2f2f5;
+	--text:#2d2f2a;        /* deep olive-charcoal */
+	--muted:#6a6e63;       /* muted olive gray */
+	--primary:#9aa06a;     /* khaki accent */
+	--primary-600:#8b915f;
+	--alt:#f3f4f0;         /* soft off-white with green tint */
 }
 body[data-theme="dark"]{
-	--bg:#0b0f17;
-	--surface:#0f1420;
-	--text:#e6ebf2;
-	--muted:#a9b2bd;
-	--primary:#61b3f0;
-	--alt:#121725;
+	--bg:#0e1110;          /* near-black with green tint */
+	--surface:#141814;     /* deep olive */
+	--text:#e7eadf;
+	--muted:#a6ad9a;
+	--primary:#a3b07a;     /* khaki brighter for dark */
+	--primary-600:#94a36f;
+	--alt:#0f1410;
 }
 
 /* Base overrides */
 body{background:var(--bg);color:var(--text)}
 header a{color:var(--primary) !important}
-header a:hover{color:#217dbb !important}
+header a:hover{color:var(--primary-600) !important}
 .background-alt{background:var(--alt) !important}
 #about h2,#experience h2,#education h2,#projects h2,#skills h2,#contact h2,.heading{color:var(--text) !important}
 #about p,.vtimeline-content p,.education-block p,.project-info p,.optional-section-block p{color:var(--muted) !important}
 #contact{background:var(--primary) !important}
+#lead-overlay{background:rgba(0,0,0,0.35) !important}
 
 .theme-dark#lead{background:radial-gradient(1200px 800px at 20% 20%, #1a1f2b 0%, #0f1420 40%, #0b0f17 100%) !important}
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 25px 0}
 .filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
-.filter-bar .filter-btn:hover{border-color:#3498db;color:#3498db}
-.filter-bar .filter-btn.active{background:#3498db;border-color:#3498db;color:#fff}
+.filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
+.filter-bar .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 .work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
 .work-card{position:relative;background:#0f1420;border-radius:10px;overflow:hidden;grid-column:span 6;transition:transform .2s, box-shadow .2s}
 .work-card:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,0.25)}
@@ -39,8 +42,12 @@ header a:hover{color:#217dbb !important}
 .work-card .work-meta h3{margin:0 0 6px 0;color:#e6ebf2;font-weight:700}
 .work-card .work-meta p{margin:0 0 10px 0;color:#a9b2bd}
 .work-actions{display:flex;gap:12px}
-.btn-link{color:#3498db}
-.btn-link:hover{color:#217dbb;text-decoration:none}
+.btn-link{color:var(--primary)}
+.btn-link:hover{color:var(--primary-600);text-decoration:none}
+
+/* Solid button for About resume CTA */
+.btn-solid{display:inline-block;background:var(--primary);color:#fff;border-radius:8px;padding:10px 14px;font-weight:700}
+.btn-solid:hover{color:#fff;background:var(--primary-600);text-decoration:none}
 
 /* Header controls */
 .header-controls{position:absolute;left:15px;top:10px;display:flex;gap:8px}
@@ -48,7 +55,7 @@ header a:hover{color:#217dbb !important}
 #theme-toggle{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:6px;padding:4px 8px}
 
 /* Reveal animation */
-.reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease, transform .5s ease}
+.reveal{opacity:0;transform:translateY(8px);transition:opacity .45s ease, transform .45s ease}
 .reveal.in-view{opacity:1;transform:none}
 
 /* Work media (video) */
