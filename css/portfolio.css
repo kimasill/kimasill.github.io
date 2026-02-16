@@ -29,7 +29,12 @@ header a:hover{color:var(--primary-600) !important}
 #contact{background:var(--primary) !important}
 #lead-overlay{background:rgba(0,0,0,0.35) !important}
 
-.theme-dark#lead{background:radial-gradient(1200px 800px at 20% 20%, #1a1f2b 0%, #0f1420 40%, #0b0f17 100%) !important}
+.theme-dark#lead{background:#0f1420}
+.theme-dark#lead .lead-video-wrap{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none}
+.theme-dark#lead .lead-video-wrap iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none}
+.theme-dark#lead #lead-content{position:relative;z-index:2}
+.theme-dark#lead #lead-overlay{position:absolute;z-index:1}
+.theme-dark#lead #lead-down{position:absolute;z-index:2}
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 25px 0}
 .filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
 .filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
@@ -64,3 +69,8 @@ header a:hover{color:var(--primary-600) !important}
 
 /* Responsive layout for work grid */
 @media only screen and (max-width: 992px){.work-card{grid-column:span 12}}
+
+/* Project page: YouTube / video embed */
+.proj-media{width:100%}
+.video-responsive{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000}
+.video-responsive iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
