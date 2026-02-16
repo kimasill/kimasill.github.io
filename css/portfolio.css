@@ -39,14 +39,19 @@ header a:hover{color:var(--primary-600) !important}
 .filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
 .filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-bar .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.work-card{position:relative;background:#0f1420;border-radius:10px;overflow:hidden;grid-column:span 6;transition:transform .2s, box-shadow .2s}
-.work-card:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,0.25)}
-.work-card .work-cover{display:block;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18));}
-.work-card .work-meta{padding:14px 16px}
-.work-card .work-meta h3{margin:0 0 6px 0;color:#e6ebf2;font-weight:700}
-.work-card .work-meta p{margin:0 0 10px 0;color:#a9b2bd}
-.work-actions{display:flex;gap:12px}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 32px}
+.work-card{position:relative;background:var(--surface);border:1px solid rgba(0,0,0,.08);overflow:hidden;grid-column:span 6;transition:transform .2s, box-shadow .2s;border-radius:0;padding-top:20px}
+body[data-theme="dark"] .work-card{background:var(--surface);border-color:rgba(255,255,255,.06)}
+.work-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.work-card .work-cover{display:block;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18))}
+.work-card-title{margin:0 20px 12px;font-size:1.35em;font-weight:700}
+.work-card-title a{color:var(--text);text-decoration:none}
+.work-card-title a:hover{color:var(--primary)}
+.work-details{padding:20px 20px 24px}
+.work-contrib{margin:0 0 14px 0;font-size:.95em;line-height:1.6;color:var(--muted)}
+.work-meta-line{margin:0 0 6px 0;font-size:.9em;color:var(--muted)}
+.work-meta-line:last-of-type{margin-bottom:16px}
+.work-actions{display:flex;gap:12px;margin-top:0}
 .btn-link{color:var(--primary)}
 .btn-link:hover{color:var(--primary-600);text-decoration:none}
 
