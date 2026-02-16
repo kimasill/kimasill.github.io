@@ -1,7 +1,7 @@
 (function($){
   $(function(){
     // Lead 배경 유튜브 영상 (autoplay, mute, loop - 클릭 없이 자동 재생)
-    var leadVideoId = $('#lead').data('lead-video');
+    var leadVideoId = $('#lead').attr('data-lead-video');
     if(leadVideoId){
       var src = 'https://www.youtube.com/embed/' + leadVideoId + '?autoplay=1&mute=1&loop=1&playlist=' + leadVideoId + '&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';
       $('#lead-video-wrap').html('<iframe src="' + src + '" allow="autoplay" allowfullscreen></iframe>');
