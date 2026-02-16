@@ -29,8 +29,8 @@ header a:hover{color:var(--primary-600) !important}
 #contact{background:var(--primary) !important}
 #lead-overlay{background:rgba(0,0,0,0.35) !important}
 
-.theme-dark#lead{background:#0f1420}
-.theme-dark#lead .lead-video-wrap{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none}
+.theme-dark#lead{background:#0f1420;position:relative}
+.theme-dark#lead .lead-video-wrap{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none;min-height:100%}
 .theme-dark#lead .lead-video-wrap iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none}
 .theme-dark#lead #lead-content{position:relative;z-index:2}
 .theme-dark#lead #lead-overlay{position:absolute;z-index:1}

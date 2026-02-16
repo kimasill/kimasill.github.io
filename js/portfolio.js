@@ -1,10 +1,10 @@
 (function($){
   $(function(){
     // Lead 배경 유튜브 영상 (autoplay, mute, loop - 클릭 없이 자동 재생)
-    var leadVideoId = $('#lead').attr('data-lead-video');
+    var leadVideoId = ($('#lead').attr('data-lead-video') || '').trim();
     if(leadVideoId){
       var src = 'https://www.youtube.com/embed/' + leadVideoId + '?autoplay=1&mute=1&loop=1&playlist=' + leadVideoId + '&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';
-      $('#lead-video-wrap').html('<iframe src="' + src + '" allow="autoplay" allowfullscreen></iframe>');
+      $('#lead-video-wrap').html('<iframe src="' + src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0"></iframe>');
     }
 
     // Theme toggle
@@ -24,7 +24,7 @@
         'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'자세히',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'About',
-        'about.p1':'저는 25년 이상 게임을 만들어온 레벨/시스템 디자이너이자 아티스트, 협업자, 라이터이자 스토리텔러입니다.',
+        'about.p1':'저는 다년간 게임을 만들어온 레벨/시스템 디자이너이자 아티스트, 협업자, 프로그래머이자 스토리텔러입니다.',
         'about.p2':'우리 문화에 영향을 주는 세계와 경험을 만드는 것이 제 열정입니다.',
         'about.p3':'Half-Life: Alyx에서 플레이어가 시티 17의 거리를 직접 걷게 했고, BioShock 시리즈에서 랩처를 생생하게 만들었습니다. Dance Central에서는 디자인 리드를 맡아 모두를 춤추게 했고, 2인 인디 팀으로 Captain Forever Remix에서 어린 시절 상상력의 즐거움을 불러일으켰습니다.',
         'about.p4':'PC, 콘솔, iOS(터치), Xbox Kinect, VR 등 다양한 장르/플랫폼에서 인터페이스에 맞춘 핸즈온 디자인 경험을 쌓았습니다.',
