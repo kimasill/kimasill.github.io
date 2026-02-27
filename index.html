@@ -47,9 +47,10 @@
     </header>
     <!-- End header -->
 
-    <!-- Lead 배경 영상: data-lead-video에 유튜브 비디오 ID 입력 (비어있으면 배경 영상 없음) -->
-    <div id="lead" class="theme-dark" data-lead-video="MOg5-jT_0Vg">
-        <div id="lead-video-wrap" class="lead-video-wrap" aria-hidden="true"></div>
+    <div id="lead" class="theme-dark">
+        <div class="hero-video-wrapper">
+            <div class="hero-video" data-video-src="https://www.youtube-nocookie.com/embed/MOg5-jT_0Vg?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&playlist=MOg5-jT_0Vg&modestbranding=1&playsinline=1"></div>
+        </div>
         <div id="lead-content">
             <h1 data-i18n="hero.title">KIMASILL</h1>
             <h2 data-i18n="hero.subtitle">Game Developer / Programmer</h2>
@@ -73,101 +74,159 @@
             <div class="filter-bar">
                 <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
                 <button class="filter-btn" data-filter="unity">Unity</button>
-               <button class="filter-btn" data-filter="unreal">Unreal</button>
+                <button class="filter-btn" data-filter="unreal">Unreal</button>
                 <button class="filter-btn" data-filter="godot">Godot</button>
                 <button class="filter-btn" data-filter="tools" data-i18n="filter.tools">Tools</button>
             </div>
             <div class="work-grid">
-                <article class="work-card shadow-large reveal" data-tags="unity csharp pc">
-                    <h3 class="work-card-title"><a href="projects/dawn-star.html" data-i18n="proj.dawn-star.title">던스타</a></h3>
-                    <a href="projects/dawn-star.html" class="work-media" aria-label="Dawn Star">
-                        <video class="work-video" preload="none" muted loop playsinline poster="images/dawn-star.jpg" data-src="videos/dawn-star.mp4"></video>
+                <!-- NEW PROJECTS -->
+                <article class="work-card reveal" data-tags="mmorpg 2d server unity">
+                    <a href="projects/dawnstar.html" class="work-media" aria-label="Dawnstar 2D MMORPG">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/dawnstar/cover.jpg" data-src="videos/dawnstar.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> 서버 .</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> PC</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Unity, C#</p>
+                    <div class="work-meta">
+                        <h3>Dawnstar (2D MMORPG)</h3>
+                        <p>Server · Client · DB · Quest · Combat</p>
                         <div class="work-actions">
-                            <a href="projects/dawn-star.html" class="btn-link" data-i18n="common.details">자세히</a>
-                            <a href="https://github.com/" target="_blank" class="btn-link">GitHub</a>
+                            <a href="projects/dawnstar.html" class="btn-link" data-i18n="common.details">자세히</a>
+                            <a href="projects/dawnstar-process.html" class="btn-link process-link" data-i18n="common.process">Process</a>
                         </div>
                     </div>
                 </article>
-                <article class="work-card shadow-large reveal" data-tags="unreal cpp pc">
-                    <h3 class="work-card-title"><a href="projects/parkour.html">First-Person Parkour</a></h3>
+                <article class="work-card reveal" data-tags="unreal plugin tools pcg">
+                    <a href="projects/pcg-dungeon.html" class="work-media" aria-label="PCG Dungeon Generator">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/PCGdungeon/cover.jpg" data-src="videos/pcg.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>PCG Dungeon Generator</h3>
+                        <p>UE5 Plugin · Multi-Floor · Recursive Objects</p>
+                        <div class="work-actions">
+                            <a href="projects/pcg-dungeon.html" class="btn-link" data-i18n="common.details">자세히</a>
+                            <a href="projects/pcg-dungeon-process.html" class="btn-link process-link" data-i18n="common.process">Process</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal" data-tags="unreal multiplayer coop">
+                    <a href="projects/pickpacker.html" class="work-media" aria-label="Pickpacker Coop Game">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/Pickpacker/cover.jpg" data-src="videos/pickpacker.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>Pickpacker</h3>
+                        <p>Unreal · Multiplayer Coop · Logistics</p>
+                        <div class="work-actions">
+                            <a href="projects/pickpacker.html" class="btn-link" data-i18n="common.details">자세히</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal" data-tags="ai ml classification">
+                    <a href="projects/car-classification.html" class="work-media" aria-label="kCars Classification Module">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/PCGdungeon/cover-ml.jpg" data-src="videos/ai-cars.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>kCars Classification</h3>
+                        <p>Custom Dataset · 3-Month Model Build</p>
+                        <div class="work-actions">
+                            <a href="projects/car-classification.html" class="btn-link" data-i18n="common.details">자세히</a>
+                            <a href="https://github.com/kimasill/kCarsClassificationModule" target="_blank" class="btn-link">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal" data-tags="startup leadership">
+                    <a href="projects/startup.html" class="work-media" aria-label="Startup Project">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/DevComTycoon/GDGTitle.png" data-src="videos/startup.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>기상천외라이더 창업</h3>
+                        <p>2021 기상기후산업 청년창업 지원사업</p>
+                        <div class="work-actions">
+                            <a href="projects/startup.html" class="btn-link" data-i18n="common.details">자세히</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal" data-tags="java university project">
+                    <a href="projects/devcomtycoon.html" class="work-media" aria-label="DevCom Tycoon">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/DevComTycoon/GDGLogo.png" data-src="videos/devcomtycoon.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>DevCom Tycoon</h3>
+                        <p>Java Swing · Team Project · GUI/Systems</p>
+                        <div class="work-actions">
+                            <a href="projects/devcomtycoon.html" class="btn-link" data-i18n="common.details">자세히</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card reveal" data-tags="design art contest">
+                    <a href="projects/lostark-design.html" class="work-media" aria-label="Lost Ark Avatar Design">
+                        <video class="work-video" preload="none" muted loop playsinline poster="images/dawnstar/avatar.jpg" data-src="videos/lostark-design.mp4"></video>
+                    </a>
+                    <div class="work-meta">
+                        <h3>Lost Ark Avatar Design</h3>
+                        <p>Design Experience · Contest Entry</p>
+                        <div class="work-actions">
+                            <a href="projects/lostark-design.html" class="btn-link" data-i18n="common.details">자세히</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- OLD SAMPLE PROJECTS (OPTIONAL) -->
+                <article class="work-card reveal" data-tags="unreal cpp pc">
                     <a href="projects/parkour.html" class="work-media" aria-label="First-Person Parkour">
                         <video class="work-video" preload="none" muted loop playsinline poster="images/parkour.jpg" data-src="videos/parkour.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> FPS 이동 시스템과 리플레이 기능 설계 및 구현.</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> PC</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Unreal Engine, C++</p>
+                    <div class="work-meta">
+                        <h3>First-Person Parkour</h3>
+                        <p>Unreal · C++ · Movement System · Replays</p>
                         <div class="work-actions">
                             <a href="projects/parkour.html" class="btn-link" data-i18n="common.details">자세히</a>
                             <a href="https://www.youtube.com/" target="_blank" class="btn-link">Trailer</a>
                         </div>
                     </div>
                 </article>
-                <article class="work-card shadow-large reveal" data-tags="godot gdscript mobile">
-                    <h3 class="work-card-title"><a href="projects/puzzle.html">Tactile Puzzle</a></h3>
+                <article class="work-card reveal" data-tags="godot gdscript mobile">
                     <a href="projects/puzzle.html" class="work-media" aria-label="Tactile Puzzle">
                         <video class="work-video" preload="none" muted loop playsinline poster="images/puzzle.jpg" data-src="videos/puzzle.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> 모바일 터치 인터페이스와 햅틱 피드백을 활용한 퍼즐 게임 제작.</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> Mobile</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Godot, GDScript</p>
+                    <div class="work-meta">
+                        <h3>Tactile Puzzle</h3>
+                        <p>Godot · GDScript · 모바일 · Haptics</p>
                         <div class="work-actions">
                             <a href="projects/puzzle.html" class="btn-link" data-i18n="common.details">자세히</a>
                             <a href="https://itch.io/" target="_blank" class="btn-link">Itch.io</a>
                         </div>
                     </div>
                 </article>
-                <article class="work-card shadow-large reveal" data-tags="tools unity shader">
-                    <h3 class="work-card-title"><a href="projects/shader.html">Stylized Water Shader</a></h3>
+                <article class="work-card reveal" data-tags="tools unity shader">
                     <a href="projects/shader.html" class="work-media" aria-label="Stylized Water Shader">
                         <video class="work-video" preload="none" muted loop playsinline poster="images/shader.jpg" data-src="videos/shader.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> URP 기반 스타일라이즈드 워터 셰이더 개발.</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> PC</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Unity, Shader Graph, URP</p>
+                    <div class="work-meta">
+                        <h3>Stylized Water Shader</h3>
+                        <p>Unity · Shader Graph · URP</p>
                         <div class="work-actions">
                             <a href="projects/shader.html" class="btn-link" data-i18n="common.details">자세히</a>
                             <a href="https://github.com/" target="_blank" class="btn-link">GitHub</a>
                         </div>
                     </div>
                 </article>
-                <article class="work-card shadow-large reveal" data-tags="tools unreal editor">
-                    <h3 class="work-card-title"><a href="projects/editor.html">Level Design Tools</a></h3>
+                <article class="work-card reveal" data-tags="tools unreal editor">
                     <a href="projects/editor.html" class="work-media" aria-label="Level Design Tools">
                         <video class="work-video" preload="none" muted loop playsinline poster="images/editor.jpg" data-src="videos/editor.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> 레벨 디자인 효율화를 위한 에디터 유틸리티 및 프로시저럴 툴 개발.</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> PC</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Unreal Engine, Editor Utilities</p>
+                    <div class="work-meta">
+                        <h3>Level Design Tools</h3>
+                        <p>Unreal · Editor Utility · Procedural</p>
                         <div class="work-actions">
                             <a href="projects/editor.html" class="btn-link" data-i18n="common.details">자세히</a>
                             <a href="https://github.com/" target="_blank" class="btn-link">GitHub</a>
                         </div>
                     </div>
                 </article>
-                <article class="work-card shadow-large reveal" data-tags="unity netcode pc">
-                    <h3 class="work-card-title"><a href="projects/netcode.html">Co-op Netcode</a></h3>
+                <article class="work-card reveal" data-tags="unity netcode pc">
                     <a href="projects/netcode.html" class="work-media" aria-label="Co-op Netcode">
                         <video class="work-video" preload="none" muted loop playsinline poster="images/netcode.jpg" data-src="videos/netcode.mp4"></video>
                     </a>
-                    <div class="work-details">
-                        <p class="work-contrib"><em>Contributions:</em> Dedicated 서버 기반 동기화/보간/롤백 실험 및 유저 경험 검증.</p>
-                        <p class="work-meta-line"><strong>Studio:</strong> Indie</p>
-                        <p class="work-meta-line"><strong>Platforms:</strong> PC</p>
-                        <p class="work-meta-line"><strong>Engine and tools:</strong> Unity, Netcode for GameObjects, SteamSockets</p>
+                    <div class="work-meta">
+                        <h3>Co-op Netcode</h3>
+                        <p>Unity · NGO · Dedicated Server</p>
                         <div class="work-actions">
                             <a href="projects/netcode.html" class="btn-link" data-i18n="common.details">자세히</a>
                             <a href="https://github.com/" target="_blank" class="btn-link">GitHub</a>
@@ -258,7 +317,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
-    <script src="js/portfolio.js?v=2"></script>
+    <script src="js/portfolio.js"></script>
 </body>
 
 </html>

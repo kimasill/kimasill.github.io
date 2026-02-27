@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PCG Dungeon Generator | Kimasill</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<header>
+  <div class="header-controls">
+    <a href="../index.html#work" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
+    <button id="lang-toggle">KR</button>
+    <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+  </div>
+</header>
+<main style="padding:40px 15px;max-width:1000px;margin:0 auto">
+  <h1 class="heading">PCG Dungeon Generator (UE5 Plugin)</h1>
+  <p>2개월 · 1인 개발 · 언리얼 PCG/PCGEx 기반 다층 던전 생성 & 재귀적 오브젝트 배치.</p>
+  <h2 class="heading">주요 기능</h2>
+  <ul>
+    <li>다층 구조(Levels) 및 간격 제어</li>
+    <li>벽/문/창문/통로/천장/기둥 자동 배치</li>
+    <li>계단 모드(직선, ㄴ자, ㄷ자, Z자)</li>
+    <li>가중치 & Seed 기반 오브젝트 랜덤 배치</li>
+    <li>Depth 기반 재귀적 자식 오브젝트 생성</li>
+  </ul>
+  <h2 class="heading">설치</h2>
+  <ol>
+    <li>Plugins 폴더에 복사</li>
+    <li>UE 에디터에서 활성화 (PCG, PCGEx 필요 시 활성화)</li>
+  </ol>
+  <h2 class="heading">메인 설정 (BP_Dungeon)</h2>
+  <ul>
+    <li>Level / Level Spacing</li>
+    <li>Cell Size / Minimum Cell Count / Grid Scale</li>
+    <li>Seed / Door Frame Size / Corner Size</li>
+    <li>Stair Options / Object Creation Depth</li>
+  </ul>
+  <h2 class="heading">오브젝트 옵션</h2>
+  <ul>
+    <li>Placement Mode / Facing Mode</li>
+    <li>Weight / Empty / Clearance</li>
+    <li>Container / Children 재귀 생성</li>
+  </ul>
+  <p style="margin-top:20px"><a href="pcg-dungeon-process.html" class="btn-solid">제작 과정 보기</a></p>
+</main>
+<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dawnstar 제작 과정 | Kimasill</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<header>
+  <div class="header-controls">
+    <a href="dawnstar.html" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
+    <button id="lang-toggle">KR</button>
+    <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+  </div>
+</header>
+<main class="project-page" style="padding:40px 15px;max-width:1000px;margin:0 auto">
+  <h1 class="heading" style="margin-bottom:10px">Dawnstar 제작 과정</h1>
+  <p>세계관 빌딩과 시스템 설계의 흐름을 요약합니다. (이미지와 상세 노트는 추후 확장 예정)</p>
+  <h2 class="heading">타임라인</h2>
+  <ul>
+    <li>Week 1~2: 서버 스켈레톤, 인증/매칭, 기본 월드/맵 로딩</li>
+    <li>Week 3: 전투 시스템(공격/피격/스탯) 및 기본 효과</li>
+    <li>Week 4: 퀘스트 스크립트 DSL 및 상태 저장</li>
+    <li>Week 5: 채팅 채널(글로벌/파티/귓속말) & 매칭 큐</li>
+    <li>Week 6: 거래 UI/검증 로직, 강화 시스템 수치 테이블</li>
+    <li>Week 7: 밸런스 1차 패스, 경제 흐름(드랍률/소모처)</li>
+    <li>Week 8~9: UI 폴리싱, 스토리 연출, 데이터 마이그레이션</li>
+    <li>Week 10~12: QA/최적화, 이미지 에셋 AI 생성/후처리</li>
+    <li>Week 13~14: 안정화 및 문서화</li>
+  </ul>
+  <h2 class="heading">세계관 빌딩</h2>
+  <p>초기 스프레드시트로 지역/파벌/아이템 등 속성을 정의하고 경제/성장 루프를 반복 시뮬레이션했습니다. 링크: <a class="btn-link" target="_blank" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link">세계관 스프레드시트</a></p>
+  <h2 class="heading">시스템 설계 접근</h2>
+  <ul>
+    <li>전투: 컴포넌트 기반(Stats, Inventory, SkillSlots) → 서버 권한 처리</li>
+    <li>퀘스트: 스크립트 DSL (조건/보상) → 상태 머신 구조</li>
+    <li>거래: 양측 확인(handshake) 및 아이템 lock → 레이스 조건 방지</li>
+    <li>강화: 확률 테이블 + 보호 아이템 → 경제 sink 설계</li>
+    <li>채팅: Pub/Sub 채널 구조, 매칭은 큐 관리자 분리</li>
+  </ul>
+  <h2 class="heading">이미지 아트 파이프라인</h2>
+  <p>AI 생성(멀티 프롬프트) → 해상도 업스케일 → 수동 편집(색상/테두리) → 타일 세트 변환.</p>
+  <h2 class="heading">향후 확장</h2>
+  <ul>
+    <li>PvP 지역 컨트롤 메커닉</li>
+    <li>동적 이벤트(시간/날씨 트리거)</li>
+    <li>스킬 시너지/빌드 다변화</li>
+    <li>컨텐츠 파이프라인 자동화</li>
+  </ul>
+</main>
+<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>

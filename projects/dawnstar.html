@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dawnstar 2D MMORPG | Kimasill</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<header>
+  <div class="header-controls">
+    <a href="../index.html#work" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
+    <button id="lang-toggle">KR</button>
+    <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+  </div>
+  <ul id="menu" class="shadow">
+    <li><a href="../index.html#lead" data-i18n="nav.home">Home</a></li>
+    <li><a href="../index.html#work" data-i18n="nav.work">Work</a></li>
+    <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
+    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+</header>
+<main class="project-page">
+  <section class="project-hero background-alt" style="padding:50px 15px;text-align:center">
+    <h1>Dawnstar (2D MMORPG)</h1>
+    <p>4개월 · 1인 개발 · 서버/클라이언트/DB/퀘스트/전투/AI 이미지 제작</p>
+    <div class="container" style="max-width:1000px;margin-top:25px">
+      <div class="video-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/t93FnWf4m0A?mute=1" title="Combat" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DF-MYRpxh1Y?mute=1" title="Quest System" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1aOlXwb-Nu4?mute=1" title="Chat & Match" frameborder="0"></iframe></div>
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/fc6782OzC_4?mute=1" title="Trading" frameborder="0"></iframe></div>
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/mhazaXuNnzE?mute=1" title="Story" frameborder="0"></iframe></div>
+        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XLgrmiBsgZA?mute=1" title="Enhancement" frameborder="0"></iframe></div>
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <a href="dawnstar-process.html" class="btn-solid">제작 과정 보기</a>
+    </div>
+  </section>
+  <section class="container" style="max-width:1000px;padding:40px 15px">
+    <h2 class="heading">개요</h2>
+    <p>Dawnstar는 2D 타일 기반 MMORPG 프로토타입으로 핵심 시스템(전투·퀘스트·매칭·채팅·거래·강화)을 단일 개발자로 4개월 동안 구축한 프로젝트입니다.</p>
+    <h2 class="heading">역할</h2>
+    <ul>
+      <li>서버: 권한/인증/매칭/월드 상태 동기화</li>
+      <li>클라이언트: 전투/퀘스트 UI·UX, 채팅 채널, 거래 인터페이스</li>
+      <li>데이터베이스: 아이템/퀘스트/캐릭터 상태 스키마 설계</li>
+      <li>이미지 제작: AI 기반 아트 시도 및 후편집</li>
+      <li>기획: progression 곡선, 경제/거래 밸런스, 성장 루프</li>
+    </ul>
+    <h2 class="heading">링크</h2>
+    <p><a class="btn-link" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link" target="_blank">세계관 문서</a> | <a class="btn-link" href="https://docs.google.com/presentation/d/1CvfSXTOrntmMX8v9b7uqAGXkpvJCjDP_/edit?usp=drive_link" target="_blank">기본 기획서</a></p>
+    <h2 class="heading">이미지</h2>
+    <div class="image-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+      <!-- Placeholder thumbnails; actual images assumed existing in images/dawnstar/ -->
+      <img src="../images/dawnstar/1.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
+      <img src="../images/dawnstar/2.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
+      <img src="../images/dawnstar/3.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
+      <img src="../images/dawnstar/4.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container"><p style="margin:0">©2025 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>

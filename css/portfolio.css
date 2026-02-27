@@ -39,18 +39,14 @@ header a:hover{color:var(--primary-600) !important}
 .filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
 .filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-bar .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 32px}
-.work-card{position:relative;background:var(--surface);border:1px solid rgba(0,0,0,.08);overflow:hidden;grid-column:span 6;transition:transform .2s, box-shadow .2s;border-radius:0;padding-top:20px}
-body[data-theme="dark"] .work-card{background:var(--surface);border-color:rgba(255,255,255,.06)}
-.work-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+/* Dean Tate style: no boxes, clean image + description below */
+.work-grid{display:flex;flex-direction:column;gap:48px}
+.work-card{position:relative;background:transparent;border:none;overflow:visible;transition:opacity .2s}
+.work-card:hover{opacity:.95}
 .work-card .work-cover{display:block;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18))}
-.work-card-title{margin:0 20px 12px;font-size:1.35em;font-weight:700}
-.work-card-title a{color:var(--text);text-decoration:none}
-.work-card-title a:hover{color:var(--primary)}
-.work-details{padding:20px 20px 24px}
-.work-contrib{margin:0 0 14px 0;font-size:.95em;line-height:1.6;color:var(--muted)}
-.work-meta-line{margin:0 0 6px 0;font-size:.9em;color:var(--muted)}
-.work-meta-line:last-of-type{margin-bottom:16px}
+.work-card .work-meta{padding:16px 0 0;margin:0}
+.work-card .work-meta h3{margin:0 0 6px 0;font-size:1.25em;font-weight:700;color:var(--text)}
+.work-card .work-meta p{margin:0 0 10px 0;font-size:.95em;line-height:1.5;color:var(--muted)}
 .work-actions{display:flex;gap:12px;margin-top:0}
 .btn-link{color:var(--primary)}
 .btn-link:hover{color:var(--primary-600);text-decoration:none}
@@ -72,8 +68,18 @@ body[data-theme="dark"] .work-card{background:var(--surface);border-color:rgba(2
 .work-media{display:block}
 .work-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18));}
 
-/* Responsive layout for work grid */
-@media only screen and (max-width: 992px){.work-card{grid-column:span 12}}
+/* Hero video */
+.hero-video-wrapper{position:absolute;inset:0;overflow:hidden;z-index:0}
+.hero-video{position:absolute;inset:0;background:#000}
+.hero-video iframe{width:100%;height:100%;object-fit:cover;pointer-events:none}
+#lead-content{position:relative;z-index:2}
+#lead.theme-dark{background:#121714 !important}
+
+/* Process link styling */
+.process-link{font-style:italic}
+.process-link:before{content:'↗ ';}
+
+/* Responsive: work cards full width by default */
 
 /* Project page: YouTube / video embed */
 .proj-media{width:100%}

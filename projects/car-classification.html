@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>kCars Classification | Kimasill</title>
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="../css/bootstrap.min.css"><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/portfolio.css"></head>
+<body>
+<header><div class="header-controls"><a href="../index.html#work" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a><button id="lang-toggle">KR</button><button id="theme-toggle"><i class="fa fa-moon-o"></i></button></div></header>
+<main style="padding:40px 15px;max-width:900px;margin:0 auto">
+  <h1 class="heading">kCars Classification Module</h1>
+  <p>국산 차량 데이터 셋 기반 분류 모델 (3개월 개발).</p>
+  <h2 class="heading">링크</h2>
+  <p><a class="btn-link" target="_blank" href="https://github.com/kimasill/kCarsClassificationModule">GitHub Repo</a> | <a class="btn-link" target="_blank" href="https://drive.google.com/file/d/1yvAup_TsUFzezoIm_G3MFoH2Chk5qVIA/view">논문(PDF)</a></p>
+  <h2 class="heading">개요</h2>
+  <p>차종/모델/연식 등 구분을 위한 커스텀 데이터 파이프라인과 증강(Augmentation) 전략을 적용한 모델.</p>
+  <h2 class="heading">기술</h2>
+  <ul><li>Python / PyTorch</li><li>전처리: 이미지 정규화, 배경 제거</li><li>증강: Random Crop, Color Jitter, Mixup</li><li>모델: ResNet/ViT 실험 후 최종 앙상블</li></ul>
+  <h2 class="heading">성과</h2>
+  <ul><li>클래스 불균형 개선 (Weighted Sampler)</li><li>모델 정확도 상승을 위한 앙상블 적용</li></ul>
+</main>
+<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="../js/portfolio.js"></script>
+</body></html>

@@ -1,12 +1,5 @@
 (function($){
   $(function(){
-    // Lead 배경 유튜브 영상 (autoplay, mute, loop - 클릭 없이 자동 재생)
-    var leadVideoId = ($('#lead').attr('data-lead-video') || '').trim();
-    if(leadVideoId){
-      var src = 'https://www.youtube.com/embed/' + leadVideoId + '?autoplay=1&mute=1&loop=1&playlist=' + leadVideoId + '&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';
-      $('#lead-video-wrap').html('<iframe src="' + src + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0"></iframe>');
-    }
-
     // Theme toggle
     var theme = localStorage.getItem('theme') || 'dark';
     $('body').attr('data-theme', theme);
@@ -21,8 +14,8 @@
       ko: {
         'nav.home':'Home','nav.work':'Work','nav.about':'About','nav.contact':'Contact',
         'hero.title':'KIMASILL','hero.subtitle':'Game Developer / Programmer',
-        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'자세히',
-        'proj.dawn-star.title':'던스타','proj.dawn-star.meta':'Unity · C# · Procedural Level · Wave AI',
+        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'자세히','common.process':'Process',
+        'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'About',
         'about.p1':'저는 다년간 게임을 만들어온 레벨/시스템 디자이너이자 아티스트, 협업자, 프로그래머이자 스토리텔러입니다.',
         'about.p2':'우리 문화에 영향을 주는 세계와 경험을 만드는 것이 제 열정입니다.',
@@ -34,8 +27,8 @@
       en: {
         'nav.home':'Home','nav.work':'Work','nav.about':'About','nav.contact':'Contact',
         'hero.title':'KIMASILL','hero.subtitle':'Game Developer / Programmer',
-        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'Details',
-        'proj.dawn-star.title':'Dawn Star','proj.dawn-star.meta':'Unity · C# · Procedural Level · Wave AI',
+        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'Details','common.process':'Process',
+        'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'About',
         'about.p1':'I’m a level and systems designer, artist, creative collaborator, writer and storyteller with 25+ years experience making games.',
         'about.p2':'Creating worlds and experiences that impact our culture is my passion.',
@@ -91,6 +84,24 @@
       });
     }, {threshold: 0.2});
     $('.reveal').each(function(){ io.observe(this); });
+
+    // Lazy hero video iframe injection
+    var heroDiv = document.querySelector('.hero-video');
+    if(heroDiv && heroDiv.dataset.videoSrc){
+      var observer = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', heroDiv.dataset.videoSrc);
+            iframe.setAttribute('frameborder','0');
+            iframe.setAttribute('allow','autoplay; encrypted-media');
+            heroDiv.appendChild(iframe);
+            observer.disconnect();
+          }
+        });
+      }, {threshold:0.1});
+      observer.observe(heroDiv);
+    }
 
     // Hover play/pause on videos
     $(document).on('mouseenter', '.work-media', function(){
