@@ -39,15 +39,19 @@ header a:hover{color:var(--primary-600) !important}
 .filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
 .filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
 .filter-bar .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
-/* Dean Tate style: no boxes, clean image + description below */
-.work-grid{display:flex;flex-direction:column;gap:48px}
+/* Dean Tate style: title above image, description below, 2 cols */
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 32px}
 .work-card{position:relative;background:transparent;border:none;overflow:visible;transition:opacity .2s}
 .work-card:hover{opacity:.95}
-.work-card .work-cover{display:block;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18))}
-.work-card .work-meta{padding:16px 0 0;margin:0}
-.work-card .work-meta h3{margin:0 0 6px 0;font-size:1.25em;font-weight:700;color:var(--text)}
-.work-card .work-meta p{margin:0 0 10px 0;font-size:.95em;line-height:1.5;color:var(--muted)}
-.work-actions{display:flex;gap:12px;margin-top:0}
+.work-title{margin:0 0 14px 0;font-size:1.25em;font-weight:700}
+.work-title a{color:var(--text);text-decoration:none}
+.work-title a:hover{color:var(--primary)}
+.work-card .work-media{display:block;overflow:hidden;aspect-ratio:16/9;background:#1a1d21;margin-bottom:16px}
+.work-card .work-meta{padding:0;margin:0;max-width:42em}
+.work-card .work-meta p{margin:0 0 10px 0;font-size:.95em;line-height:1.75;color:var(--muted)}
+.work-card .work-meta p.work-detail{margin:0 0 8px 0;font-size:.88em;line-height:1.6;color:var(--muted)}
+.work-actions{display:flex;gap:12px;margin-top:12px}
+@media only screen and (max-width: 768px){.work-grid{grid-template-columns:1fr}}
 .btn-link{color:var(--primary)}
 .btn-link:hover{color:var(--primary-600);text-decoration:none}
 
@@ -64,9 +68,9 @@ header a:hover{color:var(--primary-600) !important}
 .reveal{opacity:0;transform:translateY(8px);transition:opacity .45s ease, transform .45s ease}
 .reveal.in-view{opacity:1;transform:none}
 
-/* Work media (video) */
+/* Work media (video) - fill container, no empty space */
 .work-media{display:block}
-.work-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, rgba(52,152,219,0.25), rgba(46,204,113,0.18));}
+.work-video{display:block;width:100%;height:100%;object-fit:cover;background:#1a1d21}
 
 /* Hero video */
 .hero-video-wrapper{position:absolute;inset:0;overflow:hidden;z-index:0}
@@ -79,7 +83,6 @@ header a:hover{color:var(--primary-600) !important}
 .process-link{font-style:italic}
 .process-link:before{content:'↗ ';}
 
-/* Responsive: work cards full width by default */
 
 /* Project page: YouTube / video embed */
 .proj-media{width:100%}
