@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Dawnstar 2D MMORPG | Kimasill</title>
+<title>던스타 Dawnstar | 2D MMORPG | Kimasill</title>
 <link rel="shortcut icon" href="../favicon.ico" />
 <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/portfolio.css">
 </head>
-<body>
+<body class="proj-detail-page">
 <header>
   <div class="header-controls">
     <a href="../index.html#work" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
@@ -18,55 +18,214 @@
     <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
   </div>
   <ul id="menu" class="shadow">
-    <li><a href="../index.html#lead" data-i18n="nav.home">Home</a></li>
-    <li><a href="../index.html#work" data-i18n="nav.work">Work</a></li>
-    <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
-    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="../index.html#lead">Home</a></li>
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
   </ul>
 </header>
-<main class="project-page">
-  <section class="project-hero background-alt" style="padding:50px 15px;text-align:center">
-    <h1>Dawnstar (2D MMORPG)</h1>
-    <p>4개월 · 1인 개발 · 서버/클라이언트/DB/퀘스트/전투/AI 이미지 제작</p>
-    <div class="container" style="max-width:1000px;margin-top:25px">
-      <div class="video-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/t93FnWf4m0A?mute=1" title="Combat" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DF-MYRpxh1Y?mute=1" title="Quest System" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1aOlXwb-Nu4?mute=1" title="Chat & Match" frameborder="0"></iframe></div>
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/fc6782OzC_4?mute=1" title="Trading" frameborder="0"></iframe></div>
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/mhazaXuNnzE?mute=1" title="Story" frameborder="0"></iframe></div>
-        <div class="ratio" style="aspect-ratio:16/9"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XLgrmiBsgZA?mute=1" title="Enhancement" frameborder="0"></iframe></div>
+
+<main class="project-page proj-dawnstar">
+  <!-- 1. Hero: 어두운 이미지 -->
+  <section class="proj-hero proj-hero-dark">
+    <div class="proj-hero-inner">
+      <h1>던스타 <span class="proj-hero-sub">(Dawnstar)</span></h1>
+      <div class="proj-hero-split">
+        <div class="proj-hero-media">
+          <img src="../images/dawnstar/Dawnstar_Title.png" alt="Dawnstar Key Art" />
+        </div>
+        <div class="proj-hero-meta">
+          <p class="proj-release">Release: 6개월 프로젝트</p>
+          <p class="proj-meta-line"><em>Studio:</em> Bluephase Games (개인 스튜디오)</p>
+          <p class="proj-meta-line"><em>Platforms:</em> PC</p>
+          <p class="proj-meta-line"><em>Engine and tools:</em> Unity · C#/.NET · EF Core + SQL Server · Protocol Buffers</p>
+          <p><a class="btn-link" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link" target="_blank">세계관 문서</a> · <a class="btn-link" href="https://docs.google.com/presentation/d/1CvfSXTOrntmMX8v9b7uqAGXkpvJCjDP_/edit?usp=drive_link" target="_blank">기획서</a></p>
+        </div>
       </div>
     </div>
-    <div style="margin-top:20px">
-      <a href="dawnstar-process.html" class="btn-solid">제작 과정 보기</a>
+  </section>
+
+  <!-- 던스타는 어떤 게임인가: 유튜브 + 요약 -->
+  <section class="proj-intro">
+  <div class="proj-container-wide">
+    <h2 class="proj-section-title">던스타는 어떤 게임인가</h2>
+    <div class="proj-intro-split">
+      <div class="proj-intro-text">
+        <p>던스타는 2D MMORPG 게임으로, 플레이어는 거대한 서사 속의 인물이 되어 세계 저편에서 넘어온 악의 근원인 '이빨'을 제거하기 위한 여정을 떠납니다. 풍부한 상상력을 기반으로 탄생한 깊이 있는 세계관의 일부를 배경으로 합니다. <br> 실시간 전투, 퀘스트, 거래, 강화, 채팅·매칭 등 핵심 MMORPG 시스템을 포함합니다.</p>
+      </div>
+      <div class="proj-intro-video">
+        <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/KyKsOT1g5-U?rel=0" allowfullscreen frameborder="0" title="Dawnstar Combat"></iframe></div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- 2. Project Overview: 배경색 구분 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">주요 책임 사항 요약</h2>
+      <div class="proj-overview-split">
+        <div class="proj-overview-list">
+          <ul>
+            <li>서버: 권한/인증/매칭, 월드 상태 동기화, 실시간 전투 판정</li>
+            <li>클라이언트: 전투·퀘스트 UI/UX, 채팅 채널, 거래·강화 인터페이스</li>
+            <li>데이터베이스: 아이템/퀘스트/캐릭터 상태 스키마 설계</li>
+            <li>이미지: AI 기반 아트 파이프라인 및 후편집</li>
+            <li>기획: progression 곡선, 경제/거래 밸런스, 성장 루프</li>
+          </ul>
+        </div>
+        <div class="proj-overview-media">
+          <div class="proj-media-grid">
+            <video autoplay muted loop playsinline class="proj-loop-video" poster="../images/dawnstar/Dawnstar_Title.png"><source src="../videos/dawnstar.mp4" type="video/mp4"></video>
+            <img src="../images/dawnstar/IMG_2225.jpg" alt="Dawnstar Screenshot" />
+            <img src="../images/dawnstar/IMG_2228.jpg" alt="Dawnstar Screenshot" />
+            <img src="../images/dawnstar/Dawnstar_Logo.png" alt="Dawnstar Logo" />
+          </div>
+        </div>
+      </div>
+      <p class="proj-cta"><a href="dawnstar-process.html" class="btn-solid">제작 과정 상세 보기 <i class="fa fa-arrow-right"></i></a></p>
     </div>
   </section>
-  <section class="container" style="max-width:1000px;padding:40px 15px">
-    <h2 class="heading">개요</h2>
-    <p>Dawnstar는 2D 타일 기반 MMORPG 프로토타입으로 핵심 시스템(전투·퀘스트·매칭·채팅·거래·강화)을 단일 개발자로 4개월 동안 구축한 프로젝트입니다.</p>
-    <h2 class="heading">역할</h2>
-    <ul>
-      <li>서버: 권한/인증/매칭/월드 상태 동기화</li>
-      <li>클라이언트: 전투/퀘스트 UI·UX, 채팅 채널, 거래 인터페이스</li>
-      <li>데이터베이스: 아이템/퀘스트/캐릭터 상태 스키마 설계</li>
-      <li>이미지 제작: AI 기반 아트 시도 및 후편집</li>
-      <li>기획: progression 곡선, 경제/거래 밸런스, 성장 루프</li>
-    </ul>
-    <h2 class="heading">링크</h2>
-    <p><a class="btn-link" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link" target="_blank">세계관 문서</a> | <a class="btn-link" href="https://docs.google.com/presentation/d/1CvfSXTOrntmMX8v9b7uqAGXkpvJCjDP_/edit?usp=drive_link" target="_blank">기본 기획서</a></p>
-    <h2 class="heading">이미지</h2>
-    <div class="image-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
-      <!-- Placeholder thumbnails; actual images assumed existing in images/dawnstar/ -->
-      <img src="../images/dawnstar/1.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
-      <img src="../images/dawnstar/2.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
-      <img src="../images/dawnstar/3.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
-      <img src="../images/dawnstar/4.jpg" alt="Dawnstar Screenshot" style="width:100%;object-fit:cover;border-radius:6px" />
+
+  <!-- 3. Gameplay Systems: 섹션 블록형 (한 줄에 하나, 좌설명/우영상) -->
+  <section class="proj-gameplay proj-section-blocks">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">Gameplay Systems</h2>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">Authoritative 서버 기반 판정</h3>
+        <p class="proj-block-summary">전투·스킬·아이템 등 모든 핵심 로직을 서버가 최종 판정.</p>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>클라이언트는 입력 전송과 시각적 피드백만 담당하여 치팅과 탈조를 방지합니다. 스킬 cooldown·마나·타겟 유효성을 서버에서 검증하고, 클라이언트 예측·보간으로 체감 지연을 최소화했습니다.</p>
+          </div>
+          <div class="proj-block-media">
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/t93FnWf4m0A?rel=0" allowfullscreen frameborder="0" title="전투"></iframe></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">상태 동기화 로직</h3>
+        <p class="proj-block-summary">월드·NPC·플레이어 위치·인벤토리를 실시간 동기화.</p>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>Protocol Buffers로 직렬화하고 이벤트 기반 메시징으로 변경분만 전송합니다. Pub/Sub 채널 구조로 채팅과 매칭을 분리했습니다.</p>
+          </div>
+          <div class="proj-block-media">
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/1aOlXwb-Nu4?rel=0" allowfullscreen frameborder="0" title="채팅·매칭"></iframe></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">퀘스트 시스템</h3>
+        <p class="proj-block-summary">조건/보상 스크립트 기반 DSL, 상태 머신으로 진행 관리.</p>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>퀘스트 진행 단계를 DB에 영구 저장하고, 스크립트 DSL로 조건·보상을 정의했습니다.</p>
+          </div>
+          <div class="proj-block-media">
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/DF-MYRpxh1Y?rel=0" allowfullscreen frameborder="0" title="퀘스트"></iframe></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">거래·강화 시스템</h3>
+        <p class="proj-block-summary">양측 확인 거래, 확률 테이블 기반 강화.</p>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>거래는 양측 확인(handshake)과 아이템 lock으로 레이스 조건을 방지합니다. 강화는 확률 테이블과 보호 아이템으로 경제 sink를 설계했습니다.</p>
+          </div>
+          <div class="proj-block-media">
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/fc6782OzC_4?rel=0" allowfullscreen frameborder="0" title="거래"></iframe></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">강화·스토리 연출</h3>
+        <p class="proj-block-summary">아이템 강화 수치 테이블, 스토리 진행 연출.</p>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>강화 시스템의 수치 테이블과 보호 메커니즘을 설계하고, 스토리 퀘스트 연출을 구현했습니다.</p>
+          </div>
+          <div class="proj-block-media">
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/XLgrmiBsgZA?rel=0" allowfullscreen frameborder="0" title="강화"></iframe></div>
+          </div>
+        </div>
+      </article>
     </div>
+  </section>
+
+  <!-- 4. Network & Server Architecture: 배경 어둡게 -->
+  <section class="proj-network proj-block-dark">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">Network & Server Architecture</h2>
+      <div class="proj-arch-media">
+        <!-- TODO: 아키텍처 다이어그램 이미지로 교체 -->
+        <img src="../images/dawnstar/Dawnstar_Logo.png" alt="아키텍처 다이어그램 (추가 예정)" />
+      </div>
+      <p class="proj-arch-desc">C# .NET 기반 전용 서버. 클라이언트–서버 TCP/TLS 연결, 세션 인증, Pub/Sub 채널 구조로 채팅·매칭 분리. EF Core + SQL Server로 캐릭터·아이템·퀘스트 상태 영속화. Protocol Buffers로 네트워크 메시지 직렬화.</p>
+    </div>
+  </section>
+
+  <!-- 5. Technical Challenges: 회색 톤 블록 -->
+  <section class="proj-challenges proj-block-gray">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">Technical Challenges</h2>
+      <ul class="proj-challenge-list">
+        <li>동기화 지연 문제 해결</li>
+        <li>데이터 구조 리팩토링</li>
+        <li>서버 부하 분산 구조 개선</li>
+        <li>퀘스트 스크립트 DSL 설계</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. Worldbuilding & Design -->
+  <section class="proj-worldbuilding">
+  <div class="proj-container-wide">
+    <h2 class="proj-section-title">Worldbuilding & Design</h2>
+    <div class="proj-worldbuilding-intro">
+      <p>플레이어는 거대한 서사 속의 인물이 되어 세계 저편에서 넘어온 악의 근원 '이빨'을 제거하기 위한 여정을 떠납니다. 풍부한 상상력 기반의 세계관, 세력 구조, 지역별 특성을 스프레드시트와 기획서로 정의하고 경제·성장 루프를 반복 시뮬레이션했습니다.</p>
+    </div>
+    <div class="proj-worldbuilding-gallery">
+      <img src="../images/dawnstar/Dawnstar_Title.png" alt="던스타 키 아트" />
+      <img src="../images/dawnstar/IMG_2225.jpg" alt="월드 컨셉" />
+      <img src="../images/dawnstar/IMG_2228.jpg" alt="지역 스크린샷" />
+      <img src="../images/dawnstar/Dawnstar_Logo.png" alt="로고" />
+    </div>
+  </div>
+  </section>
+
+  <!-- 7. 프로세스 요약 -->
+  <section class="proj-process">
+  <div class="proj-container-wide">
+    <h2 class="proj-section-title">디자인 프로세스 요약</h2>
+    <p class="proj-process-intro">대규모 환경을 가정한 2D MMORPG의 핵심 시스템을 6개월간 구축했습니다. .NET 서버와 Unity 클라이언트, EF Core·SQL 기반 데이터베이스, Protocol Buffers 네트워크 직렬화까지 전 과정을 설계·구현했습니다.</p>
+    <p><strong>던스타에 포함된 주요 시스템:</strong></p>
+    <ul>
+      <li>Authoritative 서버 기반 전투·스킬·아이템 판정</li>
+      <li>실시간 월드·NPC·플레이어 상태 동기화</li>
+      <li>퀘스트 스크립트 DSL 및 상태 머신</li>
+      <li>채팅 채널(글로벌/파티/귓속말)·매칭 큐</li>
+      <li>양측 확인 거래·강화(확률 테이블·보호 아이템)</li>
+      <li>AI 기반 아트 파이프라인 및 후편집</li>
+    </ul>
+    <p>세부 개발 과정은 <a href="dawnstar-process.html" class="btn-link">제작 과정 페이지</a>에서 확인할 수 있습니다.</p>
+  </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="dawnstar-process.html" class="btn-solid">제작 과정 상세 보기</a>
+    <a href="../index.html#work" class="btn-link">← Work 목록으로</a>
   </section>
 </main>
+
 <footer>
-  <div class="container"><p style="margin:0">©2025 KIMASILL</p></div>
+  <div class="container"><p style="margin:0">© 2025 KIMASILL</p></div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/portfolio.js"></script>

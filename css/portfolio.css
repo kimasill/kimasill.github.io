@@ -43,10 +43,10 @@ header a:hover{color:var(--primary-600) !important}
 .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 32px}
 .work-card{position:relative;background:transparent;border:none;overflow:visible;transition:opacity .2s}
 .work-card:hover{opacity:.95}
-.work-title{margin:0 0 14px 0;font-size:1.25em;font-weight:700}
+.work-title{margin:0 0 42px 0;font-size:1.25em;font-weight:700}
 .work-title a{color:var(--text);text-decoration:none}
 .work-title a:hover{color:var(--primary)}
-.work-card .work-media{display:block;overflow:hidden;aspect-ratio:16/9;background:#1a1d21;margin-bottom:16px}
+.work-card .work-media{display:block;overflow:hidden;aspect-ratio:16/9;background:#1a1d21;margin-bottom:42px}
 .work-card .work-meta{padding:0;margin:0;max-width:42em}
 .work-card .work-meta p{margin:0 0 10px 0;font-size:.95em;line-height:1.75;color:var(--muted)}
 .work-card .work-meta p.work-detail{margin:0 0 8px 0;font-size:.88em;line-height:1.6;color:var(--muted)}
@@ -84,7 +84,84 @@ header a:hover{color:var(--primary-600) !important}
 .process-link:before{content:'↗ ';}
 
 
-/* Project page: YouTube / video embed */
+/* Project page: YouTube / video embed (sharp corners) */
 .proj-media{width:100%}
-.video-responsive{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000}
+.video-responsive{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:0;background:#000}
 .video-responsive iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* === Dawnstar & Project Detail Page (화이트 기반, BioShock 스타일) === */
+.proj-detail-page{background:#fff;color:#2d2f2a;font-size:16px;line-height:1.6}
+.proj-detail-page .btn-link{color:var(--primary)}
+.proj-detail-page .btn-link:hover{color:var(--primary-600)}
+.container-narrow{max-width:960px;margin:0 auto;padding:0 24px}
+.proj-container-wide{max-width:1000px;margin:0 auto;padding:0 32px}
+.proj-section-title{font-size:1.4em;font-weight:500;margin:0 0 32px 0;padding-bottom:16px;border-bottom:1px solid #d8d8d8;color:#1a1d21}
+
+/* 1. Hero: 어두운 이미지 */
+.proj-hero-dark{background:linear-gradient(135deg, #0f1418 0%, #1a2028 100%);color:#e7eadf;padding:80px 0}
+.proj-hero-inner{max-width:1000px;margin:0 auto;padding:0 32px}
+.proj-hero-dark h1{font-size:2.2em;font-weight:500;margin:0 0 20px 0;color:#fff}
+.proj-hero-sub{font-weight:400;opacity:.9;font-size:.85em}
+.proj-hero-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
+.proj-hero-media img{width:100%;height:auto;border-radius:0}
+.proj-hero-meta p{margin:0 0 8px 0;color:#c5c9c2;line-height:1.6}
+.proj-hero-meta .btn-link{color:#a3b07a}
+.proj-release{font-weight:700;color:#fff}
+
+@media (max-width:768px){.proj-hero-split{grid-template-columns:1fr}.proj-hero-dark h1{font-size:1.8em}}
+
+/* Intro: 유튜브 + 요약 */
+.proj-intro{padding:80px 0;background:#fff}
+.proj-intro .proj-section-title{margin-bottom:40px}
+.proj-intro-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.proj-intro-text p{line-height:1.8;color:#4a4d48;margin:0;max-width:38em;font-size:.98em}
+@media (max-width:768px){.proj-intro-split{grid-template-columns:1fr}}
+
+/* 2. Project Overview: 화이트 통일 */
+.proj-block-alt{background:#fff;padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-overview-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.proj-overview-list ul{margin:0;padding:0 0 0 20px;line-height:1.9;color:#5a5d58}
+.proj-overview-list li{margin-bottom:12px}
+.proj-media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj-media-grid video,.proj-media-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:0}
+.proj-media-grid video{grid-column:span 2;aspect-ratio:16/9}
+.proj-cta{margin-top:40px}.proj-cta .btn-solid{display:inline-block}
+@media (max-width:768px){.proj-overview-split{grid-template-columns:1fr}.proj-media-grid{grid-template-columns:1fr 1fr}}
+
+/* 3. Gameplay Systems: 섹션 블록형 */
+.proj-section-blocks{background:#fff;padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-section-block{padding:56px 0;border-bottom:1px solid #e0e0e0}
+.proj-section-block:last-child{border-bottom:none}
+.proj-block-title{font-size:1.3em;font-weight:500;margin:0 0 12px 0;color:#1a1d21}
+.proj-block-summary{font-size:.95em;color:#6a6d68;margin:0 0 28px 0;line-height:1.6}
+.proj-block-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.proj-block-desc p{margin:0;line-height:1.85;color:#4a4d48;font-size:.98em;max-width:38em}
+.proj-block-media .video-responsive{border-radius:0;overflow:hidden}
+@media (max-width:768px){.proj-block-body{grid-template-columns:1fr}}
+
+/* 4. Network: 화이트 통일 */
+.proj-block-dark{background:#fff;color:#2d2f2a;padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-block-dark .proj-section-title{color:#1a1d21;border-color:#d8d8d8}
+.proj-arch-media{margin-bottom:28px;border-radius:0;overflow:hidden;background:#f5f5f5}
+.proj-arch-media img{width:100%;height:auto;display:block}
+.proj-arch-desc{line-height:1.85;color:#5a5d58;max-width:38em;font-size:.98em}
+
+/* 5. Technical Challenges: 화이트 통일 */
+.proj-block-gray{background:#fff;padding:80px 0;color:#2d2f2a;border-top:1px solid #e8e8e8}
+.proj-challenge-list{list-style:none;margin:0;padding:0}
+.proj-challenge-list li{padding:14px 0;border-bottom:1px solid #e8e8e8;font-weight:400}
+.proj-challenge-list li:last-child{border-bottom:none}
+
+/* 6. Worldbuilding */
+.proj-worldbuilding{padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-worldbuilding-intro{margin-bottom:40px}
+.proj-worldbuilding-intro p{line-height:1.85;color:#5a5d58;max-width:38em;font-size:.98em}
+.proj-worldbuilding-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.proj-worldbuilding-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0}
+
+/* 7. Process + Footer CTA */
+.proj-process{padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-process-intro{margin-bottom:28px;line-height:1.85;color:#5a5d58;max-width:38em}
+.proj-process ul{margin:20px 0;padding-left:22px;line-height:1.9}
+.proj-process p{max-width:38em;line-height:1.85}
+.proj-footer-cta{padding:64px 32px;text-align:center;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;border-top:1px solid #e8e8e8}
