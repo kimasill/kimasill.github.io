@@ -64,6 +64,11 @@ header a:hover{color:var(--primary-600) !important}
 #lang-toggle{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:6px;padding:4px 8px}
 #theme-toggle{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:6px;padding:4px 8px}
 
+/* Project detail page: clean controls (no border, no radius) */
+.proj-detail-page .header-controls .btn-link{padding:6px 0}
+.proj-detail-page #lang-toggle,.proj-detail-page #theme-toggle{border:none;background:transparent;border-radius:0;padding:6px 10px;cursor:pointer}
+.proj-detail-page .btn-solid{border-radius:0;border:none;font-weight:500}
+
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(8px);transition:opacity .45s ease, transform .45s ease}
 .reveal.in-view{opacity:1;transform:none}
@@ -94,13 +99,13 @@ header a:hover{color:var(--primary-600) !important}
 .proj-detail-page .btn-link{color:var(--primary)}
 .proj-detail-page .btn-link:hover{color:var(--primary-600)}
 .container-narrow{max-width:960px;margin:0 auto;padding:0 24px}
-.proj-container-wide{max-width:1000px;margin:0 auto;padding:0 32px}
-.proj-section-title{font-size:1.4em;font-weight:500;margin:0 0 32px 0;padding-bottom:16px;border-bottom:1px solid #d8d8d8;color:#1a1d21}
+.proj-container-wide{max-width:1280px;margin:0 auto;padding:0 40px}
+.proj-section-title{font-size:1.7em;font-weight:400;margin:0 0 36px 0;padding-bottom:0;border-bottom:none;color:#1a1d21}
 
 /* 1. Hero: 어두운 이미지 */
 .proj-hero-dark{background:linear-gradient(135deg, #0f1418 0%, #1a2028 100%);color:#e7eadf;padding:80px 0}
-.proj-hero-inner{max-width:1000px;margin:0 auto;padding:0 32px}
-.proj-hero-dark h1{font-size:2.2em;font-weight:500;margin:0 0 20px 0;color:#fff}
+.proj-hero-inner{max-width:1280px;margin:0 auto;padding:0 40px}
+.proj-hero-dark h1{font-size:2.5em;font-weight:400;margin:0 0 20px 0;color:#fff}
 .proj-hero-sub{font-weight:400;opacity:.9;font-size:.85em}
 .proj-hero-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
 .proj-hero-media img{width:100%;height:auto;border-radius:0}
@@ -110,58 +115,92 @@ header a:hover{color:var(--primary-600) !important}
 
 @media (max-width:768px){.proj-hero-split{grid-template-columns:1fr}.proj-hero-dark h1{font-size:1.8em}}
 
-/* Intro: 유튜브 + 요약 */
+/* Intro: 유튜브 + 요약 (영상 크기 확대) */
 .proj-intro{padding:80px 0;background:#fff}
 .proj-intro .proj-section-title{margin-bottom:40px}
-.proj-intro-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.proj-intro-split{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
 .proj-intro-text p{line-height:1.8;color:#4a4d48;margin:0;max-width:38em;font-size:.98em}
 @media (max-width:768px){.proj-intro-split{grid-template-columns:1fr}}
 
-/* 2. Project Overview: 화이트 통일 */
-.proj-block-alt{background:#fff;padding:80px 0;border-top:1px solid #e8e8e8}
-.proj-overview-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+/* 2. Project Overview: 화이트 통일 (이미지 크기 확대) */
+.proj-block-alt{background:#fff;padding:80px 0;border-top:1px solid #d8d8d8}
+.proj-overview-split{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start}
+.proj-overview-intro{margin:0 0 24px 0;line-height:1.85;color:#4a4d48;font-size:1em}
+.proj-overview-subtitle{font-size:1.1em;font-weight:500;margin:24px 0 10px 0;color:#1a1d21}
+.proj-overview-subtitle:first-of-type{margin-top:0}
+.proj-overview-list p:not(.proj-overview-intro){margin:0 0 8px 0;line-height:1.85;color:#5a5d58;font-size:.9em}
 .proj-overview-list ul{margin:0;padding:0 0 0 20px;line-height:1.9;color:#5a5d58}
 .proj-overview-list li{margin-bottom:12px}
-.proj-media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj-overview-media-grid{display:flex;flex-direction:column;gap:20px}
+.proj-overview-media-2x2{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:auto auto;gap:16px}
+.proj-overview-media-2x2 video,.proj-overview-media-2x2 img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0}
+.proj-overview-media-2x2 video{background:#000}
+.proj-overview-media-row{display:grid;gap:16px}
+.proj-overview-media-row-3{grid-template-columns:repeat(3,1fr)}
+.proj-overview-media-row-2{grid-template-columns:repeat(2,1fr)}
+.proj-overview-media-grid video,.proj-overview-media-grid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0}
+.proj-overview-media-grid video{background:#000}
+.proj-media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .proj-media-grid video,.proj-media-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:0}
 .proj-media-grid video{grid-column:span 2;aspect-ratio:16/9}
 .proj-cta{margin-top:40px}.proj-cta .btn-solid{display:inline-block}
-@media (max-width:768px){.proj-overview-split{grid-template-columns:1fr}.proj-media-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:768px){.proj-overview-split{grid-template-columns:1fr}.proj-overview-media-2x2{grid-template-columns:1fr}.proj-overview-media-row-3{grid-template-columns:1fr}.proj-media-grid{grid-template-columns:1fr 1fr}}
 
-/* 3. Gameplay Systems: 섹션 블록형 */
-.proj-section-blocks{background:#fff;padding:80px 0;border-top:1px solid #e8e8e8}
-.proj-section-block{padding:56px 0;border-bottom:1px solid #e0e0e0}
-.proj-section-block:last-child{border-bottom:none}
-.proj-block-title{font-size:1.3em;font-weight:500;margin:0 0 12px 0;color:#1a1d21}
-.proj-block-summary{font-size:.95em;color:#6a6d68;margin:0 0 28px 0;line-height:1.6}
-.proj-block-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.proj-block-desc p{margin:0;line-height:1.85;color:#4a4d48;font-size:.98em;max-width:38em}
+/* 3. Gameplay Systems */
+.proj-section-blocks{background:#fff;padding:80px 0;border-top:1px solid #d8d8d8}
+.proj-section-block{padding:56px 0;border-bottom:none}
+.proj-block-title{font-size:1.4em;font-weight:400;margin:0 0 20px 0;color:#1a1d21}
+.proj-section-block + .proj-section-block{padding-top:72px}
+.proj-block-body{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.proj-block-desc p{margin:0 0 12px 0;line-height:1.85;color:#4a4d48;font-size:.98em;max-width:38em}
+.proj-block-desc ul{margin:0 0 12px 0;padding-left:22px;line-height:1.8;color:#4a4d48}
+.proj-block-desc li{margin-bottom:4px}
+.proj-design-intent{margin-top:16px !important;margin-bottom:6px !important}
 .proj-block-media .video-responsive{border-radius:0;overflow:hidden}
-@media (max-width:768px){.proj-block-body{grid-template-columns:1fr}}
+.proj-block-media-row{display:grid;gap:16px}
+.proj-block-media-col{display:flex;flex-direction:column;gap:16px}
+.proj-block-media-col video{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0;background:#000}
+.proj-block-media-row-2{grid-template-columns:repeat(2,1fr)}
+.proj-block-media-row-3{grid-template-columns:repeat(3,1fr)}
+.proj-block-media-row video,.proj-block-media-row img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0}
+.proj-block-media-row video{background:#000}
+.proj-block-media-2x2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.proj-block-media-2x2 img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0}
+.proj-block-below{margin-top:32px}
+.proj-block-below .proj-block-media-row-3{margin:0}
+.proj-combat-subsection{margin-top:48px;padding-top:40px;border-top:1px solid #e8e8e8}
+.proj-combat-subtitle{font-size:1.2em;font-weight:500;margin:0 0 28px 0;color:#1a1d21}
+.proj-combat-item{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start;margin-bottom:48px}
+.proj-combat-item:last-child{margin-bottom:0}
+.proj-combat-desc h5{font-size:1.1em;font-weight:500;margin:0 0 10px 0;color:#1a1d21}
+.proj-combat-desc p{margin:0;line-height:1.85;color:#4a4d48;font-size:.98em}
+.proj-combat-media .video-responsive{border-radius:0;overflow:hidden}
+.proj-block-body-stack{grid-template-columns:1fr 1.15fr}
+.proj-block-media-stack{display:flex;flex-direction:column;gap:20px}
+@media (max-width:768px){.proj-block-body,.proj-block-body-stack{grid-template-columns:1fr}.proj-block-media-row-2,.proj-block-media-row-3,.proj-block-media-2x2{grid-template-columns:1fr}.proj-combat-item{grid-template-columns:1fr}}
 
-/* 4. Network: 화이트 통일 */
-.proj-block-dark{background:#fff;color:#2d2f2a;padding:80px 0;border-top:1px solid #e8e8e8}
-.proj-block-dark .proj-section-title{color:#1a1d21;border-color:#d8d8d8}
+/* 4. Network: 화이트 통일 (큰 맥락 구분선만) */
+.proj-block-dark{background:#fff;color:#2d2f2a;padding:80px 0;border-top:1px solid #d8d8d8}
+.proj-block-dark .proj-section-title{color:#1a1d21}
 .proj-arch-media{margin-bottom:28px;border-radius:0;overflow:hidden;background:#f5f5f5}
 .proj-arch-media img{width:100%;height:auto;display:block}
 .proj-arch-desc{line-height:1.85;color:#5a5d58;max-width:38em;font-size:.98em}
 
-/* 5. Technical Challenges: 화이트 통일 */
-.proj-block-gray{background:#fff;padding:80px 0;color:#2d2f2a;border-top:1px solid #e8e8e8}
+/* 5. Technical Challenges: 화이트 통일 (섹션 내 구분선 제거) */
+.proj-block-gray{background:#fff;padding:80px 0;color:#2d2f2a;border-top:1px solid #d8d8d8}
 .proj-challenge-list{list-style:none;margin:0;padding:0}
-.proj-challenge-list li{padding:14px 0;border-bottom:1px solid #e8e8e8;font-weight:400}
-.proj-challenge-list li:last-child{border-bottom:none}
+.proj-challenge-list li{padding:10px 0;border-bottom:none;font-weight:400}
 
-/* 6. Worldbuilding */
-.proj-worldbuilding{padding:80px 0;border-top:1px solid #e8e8e8}
+/* 6. Worldbuilding (이미지 크기 확대) */
+.proj-worldbuilding{padding:80px 0;border-top:1px solid #d8d8d8}
 .proj-worldbuilding-intro{margin-bottom:40px}
 .proj-worldbuilding-intro p{line-height:1.85;color:#5a5d58;max-width:38em;font-size:.98em}
-.proj-worldbuilding-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.proj-worldbuilding-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
 .proj-worldbuilding-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0}
 
 /* 7. Process + Footer CTA */
-.proj-process{padding:80px 0;border-top:1px solid #e8e8e8}
+.proj-process{padding:80px 0;border-top:1px solid #d8d8d8}
 .proj-process-intro{margin-bottom:28px;line-height:1.85;color:#5a5d58;max-width:38em}
 .proj-process ul{margin:20px 0;padding-left:22px;line-height:1.9}
 .proj-process p{max-width:38em;line-height:1.85}
-.proj-footer-cta{padding:64px 32px;text-align:center;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;border-top:1px solid #e8e8e8}
+.proj-footer-cta{padding:64px 40px;text-align:center;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;border-top:1px solid #d8d8d8}

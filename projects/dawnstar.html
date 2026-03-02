@@ -35,9 +35,11 @@
           <img src="../images/dawnstar/Dawnstar_Title.png" alt="Dawnstar Key Art" />
         </div>
         <div class="proj-hero-meta">
-          <p class="proj-release">Release: 6개월 프로젝트</p>
           <p class="proj-meta-line"><em>Studio:</em> Bluephase Games (개인 스튜디오)</p>
-          <p class="proj-meta-line"><em>Platforms:</em> PC</p>
+          <p class="proj-meta-line"><em>Platforms:</em> PC</p>          
+          <p class="proj-meta-line"><em>Team Size:</em> 1</p>
+          <p class="proj-release">Project Duration: 6 months</p>
+          <p class="proj-meta-line"><em>Role:</em> Gameplay Systems, Server Architecture, Worldbuilding, Design Process</p>
           <p class="proj-meta-line"><em>Engine and tools:</em> Unity · C#/.NET · EF Core + SQL Server · Protocol Buffers</p>
           <p><a class="btn-link" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link" target="_blank">세계관 문서</a> · <a class="btn-link" href="https://docs.google.com/presentation/d/1CvfSXTOrntmMX8v9b7uqAGXkpvJCjDP_/edit?usp=drive_link" target="_blank">기획서</a></p>
         </div>
@@ -48,13 +50,13 @@
   <!-- 던스타는 어떤 게임인가: 유튜브 + 요약 -->
   <section class="proj-intro">
   <div class="proj-container-wide">
-    <h2 class="proj-section-title">던스타는 어떤 게임인가</h2>
-    <div class="proj-intro-split">
-      <div class="proj-intro-text">
-        <p>던스타는 2D MMORPG 게임으로, 플레이어는 거대한 서사 속의 인물이 되어 세계 저편에서 넘어온 악의 근원인 '이빨'을 제거하기 위한 여정을 떠납니다. 풍부한 상상력을 기반으로 탄생한 깊이 있는 세계관의 일부를 배경으로 합니다. <br> 실시간 전투, 퀘스트, 거래, 강화, 채팅·매칭 등 핵심 MMORPG 시스템을 포함합니다.</p>
-      </div>
+    <h2 class="proj-section-title">던스타에 대해서</h2>
+    <div class="proj-intro-split">      
       <div class="proj-intro-video">
         <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/KyKsOT1g5-U?rel=0" allowfullscreen frameborder="0" title="Dawnstar Combat"></iframe></div>
+      </div>
+      <div class="proj-intro-text">
+        <p>던스타는 플레이어가 거대한 서사 속의 인물이 되어, 세계 저편에서 넘어온 악의 근원인 '이빨'을 제거하기 위한 여정을 떠나는 2D 다크 판타지 MMORPG입니다. 풍부한 상상력을 기반으로 탄생한 깊이 있는 세계관을 배경으로 하며, <br> 대규모 환경을 가정한 실시간 전투, 퀘스트, 거래, 강화, 채팅 및 매칭 등 정통 MMORPG의 핵심 시스템을 모두 포함하고 있습니다.</p>
       </div>
     </div>
   </div>
@@ -63,23 +65,32 @@
   <!-- 2. Project Overview: 배경색 구분 -->
   <section class="proj-overview proj-block-alt">
     <div class="proj-container-wide">
-      <h2 class="proj-section-title">주요 책임 사항 요약</h2>
+      <h2 class="proj-section-title">주요 사항 요약</h2>
       <div class="proj-overview-split">
         <div class="proj-overview-list">
-          <ul>
-            <li>서버: 권한/인증/매칭, 월드 상태 동기화, 실시간 전투 판정</li>
-            <li>클라이언트: 전투·퀘스트 UI/UX, 채팅 채널, 거래·강화 인터페이스</li>
-            <li>데이터베이스: 아이템/퀘스트/캐릭터 상태 스키마 설계</li>
-            <li>이미지: AI 기반 아트 파이프라인 및 후편집</li>
-            <li>기획: progression 곡선, 경제/거래 밸런스, 성장 루프</li>
-          </ul>
+          <p class="proj-overview-intro">던스타는 1인 개발 형태로 진행한 프로젝트로, 서버 구조 설계부터 클라이언트 구현, 데이터베이스 설계, 게임 기획 및 아트 파이프라인까지 전 과정을 직접 담당했습니다.</p>
+          <h4 class="proj-overview-subtitle">서버 구조 설계 및 구현</h4>
+          <p>게임의 인증 및 권한 처리 구조를 설계하고 세션 관리 시스템을 구현했습니다. 패킷 전송 최적화 구조를 설계했습니다.</p>
+          <h4 class="proj-overview-subtitle">클라이언트 시스템 구현</h4>
+          <p>중독성있는 전투시스템과 독특한 스킬-아이템 매칭 시스템을 구현하고, 직관적이고 명확한 인벤토리/퀘스트/거래/강화 인터페이스를 구현했습니다.</p>
+          <h4 class="proj-overview-subtitle">데이터 및 경제 설계</h4>
+          <p>캐릭터 상태, 아이템, 퀘스트 진행 구조를 직접 설계했으며 EF Core 기반 데이터 모델 설계 및 마이그레이션을 관리했습니다.</p>
+          <h4 class="proj-overview-subtitle">아트 및 파이프라인</h4>
+          <p>상용 에셋을 기반으로 리소스를 재구성하고, 지도 등 필요한 아트를 직접 제작했습니다.</p>
         </div>
         <div class="proj-overview-media">
-          <div class="proj-media-grid">
-            <video autoplay muted loop playsinline class="proj-loop-video" poster="../images/dawnstar/Dawnstar_Title.png"><source src="../videos/dawnstar.mp4" type="video/mp4"></video>
-            <img src="../images/dawnstar/IMG_2225.jpg" alt="Dawnstar Screenshot" />
-            <img src="../images/dawnstar/IMG_2228.jpg" alt="Dawnstar Screenshot" />
-            <img src="../images/dawnstar/Dawnstar_Logo.png" alt="Dawnstar Logo" />
+          <div class="proj-overview-media-grid">
+            <div class="proj-overview-media-2x2">
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/주시자.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/근원사냥.mp4" type="video/mp4"></video>
+              <img src="../images/dawnstar/새벽마을지도.jpg" alt="Dawnstar Screenshot" />
+              <img src="../images/dawnstar/파티.PNG" alt="Dawnstar Screenshot" />
+            </div>
+            <div class="proj-overview-media-row proj-overview-media-row-3">
+              <img src="../images/dawnstar/이빨중심.png" alt="Dawnstar Logo" />
+              <img src="../images/dawnstar/Snapshot_9.PNG" alt="Dawnstar Key Art" />
+              <img src="../images/dawnstar/재련.png" alt="Dawnstar Map" />
+            </div>
           </div>
         </div>
       </div>
@@ -87,72 +98,159 @@
     </div>
   </section>
 
-  <!-- 3. Gameplay Systems: 섹션 블록형 (한 줄에 하나, 좌설명/우영상) -->
+  <!-- 3. Gameplay Systems -->
   <section class="proj-gameplay proj-section-blocks">
     <div class="proj-container-wide">
       <h2 class="proj-section-title">Gameplay Systems</h2>
 
+      <!-- 1. Server-Validated World Structure -->
       <article class="proj-section-block">
-        <h3 class="proj-block-title">Authoritative 서버 기반 판정</h3>
-        <p class="proj-block-summary">전투·스킬·아이템 등 모든 핵심 로직을 서버가 최종 판정.</p>
+        <h3 class="proj-block-title">Server-Validated World Structure</h3>
         <div class="proj-block-body">
           <div class="proj-block-desc">
-            <p>클라이언트는 입력 전송과 시각적 피드백만 담당하여 치팅과 탈조를 방지합니다. 스킬 cooldown·마나·타겟 유효성을 서버에서 검증하고, 클라이언트 예측·보간으로 체감 지연을 최소화했습니다.</p>
+            <p>Dedicated Server 기반 서버 권한 아키텍처를 구현하여 모든 판정을 서버에서 처리하도록 설계했습니다.</p>
+            <ul>
+              <li>게임 참가/퇴장</li>
+              <li>스킬/타이밍 계산 및 상태처리</li>
+              <li>거래/인벤토리</li>
+              <li>성장/강화 시스템</li>
+            </ul>
+            <p>클라이언트는 패킷을 통한 입력 전달과 시각적 표현을 담당합니다.</p>
+            <p>또한 플레이어 기준 일정 범위 내 객체만 업데이트하는 <strong>영역 기반 월드 동기화 구조</strong>를 적용했습니다.</p>
+            <p class="proj-design-intent"><strong>설계 의도</strong></p>
+            <ul>
+              <li>불필요한 네트워크 트래픽 감소</li>
+              <li>다수 인원 환경에서의 성능 최적화</li>
+              <li>전투 밀집 지역 안정성 확보</li>
+            </ul>
+            <p>
+              캐릭터 상태, 인벤토리, 퀘스트 진행 등 주요 게임 데이터를
+              데이터베이스에서 관리합니다.
+              </p>
+              
+              <p>
+              골드 소모, 아이템 획득, 상태 변화 등 주요 이벤트 발생 시점에
+              데이터를 저장하도록 설계했습니다.
+              </p>
+              
+              <p>
+              복합 로직(거래, 강화 등)은 트랜잭션 단위로 처리하여
+              데이터 무결성을 유지했습니다.
+              </p>
           </div>
           <div class="proj-block-media">
-            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/t93FnWf4m0A?rel=0" allowfullscreen frameborder="0" title="전투"></iframe></div>
+            <div class="proj-block-media-col">
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/매칭장면.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/로그인-1.mp4" type="video/mp4"></video>
+            </div>
           </div>
         </div>
       </article>
 
+      <!-- 2. Equipment–Skill Mapping & Enchant System -->
       <article class="proj-section-block">
-        <h3 class="proj-block-title">상태 동기화 로직</h3>
-        <p class="proj-block-summary">월드·NPC·플레이어 위치·인벤토리를 실시간 동기화.</p>
+        <h3 class="proj-block-title">Equipment–Skill Mapping & Enchant System</h3>
         <div class="proj-block-body">
           <div class="proj-block-desc">
-            <p>Protocol Buffers로 직렬화하고 이벤트 기반 메시징으로 변경분만 전송합니다. Pub/Sub 채널 구조로 채팅과 매칭을 분리했습니다.</p>
+            <p>장비 착용 시 해당 장비에 연결된 스킬이 자동 등록되도록 설계했습니다. 적을 처치해 얻은 장비를 착용하면, 대상의 고유 스킬을 사용할 수 있게 됩니다.</p>
+            <p class="proj-design-intent"><strong>설계 의도</strong></p>
+            <ul>
+              <li>아이템 파밍의 동기 부여</li>
+              <li>보스 전투의 성취감</li>
+              <li>세계관 연결과 개연성</li>
+            </ul>
+            <p>마법부여 기능이 존재합니다. 주문서를 장비 위에 드래그 &amp; 드롭하면 확률 테이블에 따라 추가 옵션이 부여됩니다. 플레이어는 원하는 옵션으로 장비를 구성하고 싶어하므로, 자연스럽게 아이템 파밍 - 재련의 순환 구조가 만들어집니다.</p>
           </div>
           <div class="proj-block-media">
-            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/1aOlXwb-Nu4?rel=0" allowfullscreen frameborder="0" title="채팅·매칭"></iframe></div>
+            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/bRgUR4MgDwM?rel=0" allowfullscreen frameborder="0" title="주문서 드래그 → 강화 성공/실패 연출"></iframe></div>
+          </div>
+        </div>
+        <div class="proj-block-below">
+          <div class="proj-block-media-row proj-block-media-row-3">
+            <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/스킬장착.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/근원사냥.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/주시자.mp4" type="video/mp4"></video>
           </div>
         </div>
       </article>
 
+      <!-- 3. Combat & AI Design -->
       <article class="proj-section-block">
-        <h3 class="proj-block-title">퀘스트 시스템</h3>
-        <p class="proj-block-summary">조건/보상 스크립트 기반 DSL, 상태 머신으로 진행 관리.</p>
+        <h3 class="proj-block-title">Combat & AI Design</h3>
         <div class="proj-block-body">
           <div class="proj-block-desc">
-            <p>퀘스트 진행 단계를 DB에 영구 저장하고, 스크립트 DSL로 조건·보상을 정의했습니다.</p>
+            <p>보스 중심의 패턴 기반 AI를 설계했습니다. 각 보스는 고유 공격 패턴과 스킬 타이밍을 가지며, 일반 몬스터 또한 서로 다른 공격 방식과 행동 로직을 갖습니다.</p>
+            <p>각 몬스터는 고유 드롭 아이템을 보유합니다. 스킬 시스템은 이펙트마다 데미지 입력 타이밍을 다르게 가지며, 고유한 작동방식을 가지도록 했습니다.</p>
+            <p>버프·디버프 시스템을 별도로 설계하여 상태 변화가 전투 흐름에 영향을 주도록 구현했습니다.</p>
           </div>
           <div class="proj-block-media">
-            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/DF-MYRpxh1Y?rel=0" allowfullscreen frameborder="0" title="퀘스트"></iframe></div>
+            <div class="proj-block-media-2x2">
+              <img src="../images/dawnstar/IMG_2225.jpg" alt="전투 스크린샷" />
+              <img src="../images/dawnstar/IMG_2228.jpg" alt="전투 스크린샷" />
+              <img src="../images/dawnstar/Snapshot_9.PNG" alt="전투 스크린샷" />
+              <img src="../images/dawnstar/이빨중심.png" alt="전투 스크린샷" />
+            </div>
+          </div>
+        </div>
+        <div class="proj-combat-subsection">
+          <h4 class="proj-combat-subtitle">주요 전투 내용</h4>
+          <div class="proj-combat-item">
+            <div class="proj-combat-desc">
+              <h5>지하 감옥</h5>
+              <p>지하 감옥은 고대 유적지에 숨겨진 던전입니다. 이곳에서는 독특한 스켈레톤 전사들과, 주술사, 강력한 암살자 보스, 처형자를 마주하게 됩니다. 어떤 스켈레톤들은 방패를 들고있으며, 일정시간 마다 방어하게 되니 주의해야 합니다.</p>
+            </div>
+            <div class="proj-combat-media">
+              <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/t93FnWf4m0A?rel=0" allowfullscreen frameborder="0" title="지하 감옥"></iframe></div>
+            </div>
+          </div>
+          <div class="proj-combat-item">
+            <div class="proj-combat-desc">
+              <h5>근원</h5>
+              <p>근원은 월드 내에서 가장 높은 레벨대의 던전입니다. 수많은 항아리(박격포를 쏘는), 악한 기운에 의해 변화된 오크, 고블린들이 존재합니다. 강한 스킬을 사용하는 중간 보스가 존재하며, 지역 내 가장 강한 보스인 이빨숙주가 기다리고 있습니다.</p>
+            </div>
+            <div class="proj-combat-media">
+              <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/1aOlXwb-Nu4?rel=0" allowfullscreen frameborder="0" title="근원"></iframe></div>
+            </div>
+          </div>
+          <div class="proj-combat-item">
+            <div class="proj-combat-desc">
+              <h5>오크 주술사</h5>
+              <p>오크 주술사는 비교적 초반에 만나는 지역 보스이지만, 짧은 스킬 텀과 밀치기, 광역스킬을 사용하므로 위험한 존재입니다. 접근 경로 또한 난이도가 높아 자원관리가 중요합니다. 주술사를 처치하면 확정적으로 맹독성 낙뢰를 쓰는 스킬이 부여된 아이템을 얻을 수 있습니다.</p>
+            </div>
+            <div class="proj-combat-media">
+              <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/DF-MYRpxh1Y?rel=0" allowfullscreen frameborder="0" title="오크 주술사"></iframe></div>
+            </div>
           </div>
         </div>
       </article>
 
+      <!-- 4. Interaction Systems -->
       <article class="proj-section-block">
-        <h3 class="proj-block-title">거래·강화 시스템</h3>
-        <p class="proj-block-summary">양측 확인 거래, 확률 테이블 기반 강화.</p>
-        <div class="proj-block-body">
+        <h3 class="proj-block-title">Interaction Systems</h3>
+        <div class="proj-block-body proj-block-body-stack">
           <div class="proj-block-desc">
-            <p>거래는 양측 확인(handshake)과 아이템 lock으로 레이스 조건을 방지합니다. 강화는 확률 테이블과 보호 아이템으로 경제 sink를 설계했습니다.</p>
+            <h4>Shop &amp; Crafting</h4>
+            <ul>
+              <li>상점 판매 및 구매 시스템</li>
+              <li>합성/분해</li>
+            </ul>
+            <p>합성 등 재련 시스템의 경우, 특정 NPC를 통해 아이템 합성 및 분해가 가능하도록 구현했습니다.</p>
+            <h4>Inventory System</h4>
+            <ul>
+              <li>자동 정렬 기능</li>
+              <li>다중 수량 처리 지원</li>
+            </ul>
+            <p>모든 주요 거래 시스템은 서버 검증 절차를 거치도록 설계했습니다.</p>
           </div>
-          <div class="proj-block-media">
-            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/fc6782OzC_4?rel=0" allowfullscreen frameborder="0" title="거래"></iframe></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-section-block">
-        <h3 class="proj-block-title">강화·스토리 연출</h3>
-        <p class="proj-block-summary">아이템 강화 수치 테이블, 스토리 진행 연출.</p>
-        <div class="proj-block-body">
-          <div class="proj-block-desc">
-            <p>강화 시스템의 수치 테이블과 보호 메커니즘을 설계하고, 스토리 퀘스트 연출을 구현했습니다.</p>
-          </div>
-          <div class="proj-block-media">
-            <div class="video-responsive"><iframe src="https://www.youtube-nocookie.com/embed/XLgrmiBsgZA?rel=0" allowfullscreen frameborder="0" title="강화"></iframe></div>
+          <div class="proj-block-media proj-block-media-stack">
+            <div class="proj-block-media-row proj-block-media-row-2">
+              <img src="../images/dawnstar/상점.png" alt="상점 UI" />
+              <img src="../images/dawnstar/재련.png" alt="합성/분해" />
+            </div>
+            <div class="proj-block-media-row proj-block-media-row-2">
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/로그인.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/상점.mp4" type="video/mp4"></video>
+            </div>
           </div>
         </div>
       </article>
