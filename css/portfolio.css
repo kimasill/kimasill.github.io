@@ -125,6 +125,7 @@ header a:hover{color:var(--primary-600) !important}
 /* 2. Project Overview: 화이트 통일 (이미지 크기 확대) */
 .proj-block-alt{background:#fff;padding:80px 0;border-top:1px solid #d8d8d8}
 .proj-overview-split{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start}
+.proj-overview-split > div{min-width:0}
 .proj-overview-intro{margin:0 0 24px 0;line-height:1.85;color:#4a4d48;font-size:1em}
 .proj-overview-subtitle{font-size:1.1em;font-weight:500;margin:24px 0 10px 0;color:#1a1d21}
 .proj-overview-subtitle:first-of-type{margin-top:0}
@@ -152,6 +153,7 @@ header a:hover{color:var(--primary-600) !important}
 .proj-block-title{font-size:1.4em;font-weight:400;margin:0 0 20px 0;color:#1a1d21}
 .proj-section-block + .proj-section-block{padding-top:72px}
 .proj-block-body{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.proj-block-body > div{min-width:0}
 .proj-block-desc p{margin:0 0 12px 0;line-height:1.85;color:#4a4d48;font-size:.98em;max-width:38em}
 .proj-block-desc ul{margin:0 0 12px 0;padding-left:22px;line-height:1.8;color:#4a4d48}
 .proj-block-desc li{margin-bottom:4px}
