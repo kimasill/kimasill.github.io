@@ -3,58 +3,435 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Dawnstar 제작 과정 | Kimasill</title>
+<title>Dawnstar – 개발 과정 분석 | Kimasill</title>
 <link rel="shortcut icon" href="../favicon.ico" />
 <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/portfolio.css">
 </head>
-<body>
-<header>
+<body class="proj-detail-page">
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">KIMSUNGHYUN - PORTFOLIO</a>
   <div class="header-controls">
-    <a href="dawnstar.html" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
     <button id="lang-toggle">KR</button>
     <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
   </div>
+  <nav class="proj-header-nav">
+    <a href="dawnstar.html" class="active">Dawnstar</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="startup.html">Startup</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="lostark-design.html">Lost Ark</a>
+    <a href="../index.html">Home</a>
+  </nav>
 </header>
-<main class="project-page" style="padding:40px 15px;max-width:1000px;margin:0 auto">
-  <h1 class="heading" style="margin-bottom:10px">Dawnstar 제작 과정</h1>
-  <p>세계관 빌딩과 시스템 설계의 흐름을 요약합니다. (이미지와 상세 노트는 추후 확장 예정)</p>
-  <h2 class="heading">타임라인</h2>
-  <ul>
-    <li>Week 1~2: 서버 스켈레톤, 인증/매칭, 기본 월드/맵 로딩</li>
-    <li>Week 3: 전투 시스템(공격/피격/스탯) 및 기본 효과</li>
-    <li>Week 4: 퀘스트 스크립트 DSL 및 상태 저장</li>
-    <li>Week 5: 채팅 채널(글로벌/파티/귓속말) & 매칭 큐</li>
-    <li>Week 6: 거래 UI/검증 로직, 강화 시스템 수치 테이블</li>
-    <li>Week 7: 밸런스 1차 패스, 경제 흐름(드랍률/소모처)</li>
-    <li>Week 8~9: UI 폴리싱, 스토리 연출, 데이터 마이그레이션</li>
-    <li>Week 10~12: QA/최적화, 이미지 에셋 AI 생성/후처리</li>
-    <li>Week 13~14: 안정화 및 문서화</li>
-  </ul>
-  <h2 class="heading">세계관 빌딩</h2>
-  <p>초기 스프레드시트로 지역/파벌/아이템 등 속성을 정의하고 경제/성장 루프를 반복 시뮬레이션했습니다. 링크: <a class="btn-link" target="_blank" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link">세계관 스프레드시트</a></p>
-  <h2 class="heading">시스템 설계 접근</h2>
-  <ul>
-    <li>전투: 컴포넌트 기반(Stats, Inventory, SkillSlots) → 서버 권한 처리</li>
-    <li>퀘스트: 스크립트 DSL (조건/보상) → 상태 머신 구조</li>
-    <li>거래: 양측 확인(handshake) 및 아이템 lock → 레이스 조건 방지</li>
-    <li>강화: 확률 테이블 + 보호 아이템 → 경제 sink 설계</li>
-    <li>채팅: Pub/Sub 채널 구조, 매칭은 큐 관리자 분리</li>
-  </ul>
-  <h2 class="heading">이미지 아트 파이프라인</h2>
-  <p>AI 생성(멀티 프롬프트) → 해상도 업스케일 → 수동 편집(색상/테두리) → 타일 세트 변환.</p>
-  <h2 class="heading">향후 확장</h2>
-  <ul>
-    <li>PvP 지역 컨트롤 메커닉</li>
-    <li>동적 이벤트(시간/날씨 트리거)</li>
-    <li>스킬 시너지/빌드 다변화</li>
-    <li>컨텐츠 파이프라인 자동화</li>
-  </ul>
+
+<main class="project-page proj-dawnstar">
+  <!-- Hero -->
+  <section class="proj-hero proj-hero-dark">
+    <div class="proj-hero-inner">
+      <h1>Dawnstar <span class="proj-hero-sub">– 개발 과정 분석</span></h1>
+      <p class="proj-hero-meta" style="margin-top:16px;max-width:640px">프로젝트 초기 구상부터 세계관, 월드 제작, 전투 설계, 멀티플레이 구조까지, Dawnstar가 어떤 방식으로 만들어졌는지 설명합니다. 단순 기능 나열이 아니라, 겪은 문제와 게임 구조 안에서의 해결 과정에 초점을 맞춥니다.</p>
+    </div>
+  </section>
+
+  <!-- 1. 던스타를 만들게 된 이유 -->
+  <section class="proj-intro proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">던스타를 만들게 된 이유</h2>
+      <div class="proj-core-intent-content">
+        <p>저는 RPG 장르를 좋아하고, 오랫동안 다양한 게임을 플레이해 왔습니다. 좋아하는 경험은 빠른 성장이나 경쟁보다, 세계를 탐험하고 서사를 따라가며 전투와 공간의 의미를 곱씹는 방식에 가깝습니다. 그 과정에서 늘 들었던 생각이 있었습니다. 싱글 플레이 RPG가 주는 몰입과 여백을 유지하면서도, 특정 구간은 다른 플레이어와 함께 돌파할 수 있다면 더 특별한 경험이 되지 않을까 하는 점이었습니다.</p>
+        <p>Dawnstar는 바로 그 지점에서 시작된 프로젝트입니다. 혼자 탐험하는 감각과 함께 공략하는 멀티플레이 감각을 한 프로젝트 안에서 공존시키고 싶었습니다. 이 게임은 처음부터 단순한 액션 RPG가 아니라, 세계관과 전투, 월드 구조, 협동 플레이가 하나의 흐름으로 이어지는 멀티플레이 RPG를 목표로 설계되었습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 창작과정 -->
+  <section class="proj-creative-process">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">창작과정</h2>
+
+      <div class="proj-creative-subsection">
+        <h3 class="proj-block-title">세계관 설계</h3>
+        <div class="proj-core-intent-content proj-wrap-content">
+          <img src="../images/dawnstar/에렌델.jpg" alt="세계관 구축 노트 및 스케치" class="proj-wrap-img proj-img-compact" />
+          <p>저는 게임 시스템보다 먼저 세계가 왜 존재하는지부터 정의하는 편입니다. Dawnstar 역시 게임 맵이나 캐릭터보다 앞서, 우주의 역사와 세력 구도, 행성 구조, 주요 존재들의 관계를 먼저 정리했습니다. 초기 설정은 <a href="https://www.imdb.com/title/tt1160419/" target="_blank" rel="noopener" class="btn-link">영화 Dune</a>의 영향이 컸습니다. 고도로 발달한 문명과 고전적 질서가 공존하는 분위기에서 출발해, Dawnstar에서는 이를 <em>고도화된 우주 사회</em>와 <em>잊힌 판타지 행성</em>의 형태로 변형했습니다.</p>
+          <p>가장 중요했던 것은 설정을 많이 만드는 것이 아니라, 게임에 실제로 필요한 만큼만 남기는 일이었습니다. 거대한 배경 설정은 전면에 내세우기보다 플레이 경험의 뒤에서 작동하는 구조로 정리했습니다.</p>
+          <p>결과적으로 세계관은 단순한 설정집이 아니라, 맵의 분위기와 적의 배치, 스토리 전개, 전투의 긴장감까지 결정하는 기반이 되었습니다. 파괴된 지역, 근원으로 갈수록 강해지는 존재들, 초반에는 드러나지 않는 배후의 흔적은 모두 이 단계에서 만들어진 세계관 문서를 토대로 확장되었습니다.</p>
+        </div>
+      </div>
+
+      <div class="proj-creative-subsection">
+        <h3 class="proj-block-title">거대한 세계를 먼저 만드는 이유</h3>
+        <div class="proj-core-intent-content">
+          <p>실제 플레이의 시작 지점은 <code>새벽마을</code>처럼 매우 작은 공간이지만, 그 공간이 세계 전체 안에서 어떤 의미를 가지는지 먼저 알고 있어야 한다고 생각했습니다. 그래서 Dawnstar에서는 플레이 가능한 구간보다 더 넓은 우주 역사와 사건의 흐름을 먼저 정리했고, 이를 바탕으로 게임에서 드러날 정보와 숨겨둘 정보를 구분했습니다.</p>
+          <p><a class="btn-link" href="https://docs.google.com/spreadsheets/d/1tk7unkQpdBK5GzuVdG8gBD62jDaZD3lW/edit?usp=drive_link" target="_blank">세계관 문서 보기 <i class="fa fa-external-link"></i></a></p>
+          <p>이 방식의 장점은 두 가지였습니다. 첫째, 설정이 단발성 아이디어에서 끝나지 않고 서로 연결되기 시작했습니다. 둘째, 새로운 콘텐츠를 추가할 때 이미 존재하는 세계 안에서 자연스럽게 이어갈 수 있었습니다. 예를 들어 특정 몬스터의 기원, 던전의 존재 이유, 지역의 분위기는 게임을 만들면서 즉흥적으로 붙인 것이 아니라 기존 설정을 플레이 가능한 형태로 번역한 결과에 가깝습니다.</p>
+          <p>초기에는 사실상 적이 모두 기계인 설정이 있었지만, 판타지 세계관에 맞게 조정되어 기계인 '라스텐시아'가 세계 반대편에서 악마들을 만들어내는 형태로 결정되었습니다. 이러한 역사를 간략하게 보기위한 연표를 제작했습니다.</p>
+        </div>
+        <div class="proj-overview-media" style="margin-top:24px">
+          <div class="proj-map-wide">
+            <img src="../images/dawnstar/연표.png" alt="역사 연표" />
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-creative-subsection">
+        <h3 class="proj-block-title">컨셉과 비주얼 정리</h3>
+        <div class="proj-core-intent-content">
+          <p>저는 세계관과 캐릭터의 인상을 빠르게 검증하기 위해 AI 이미지 도구를 적극 활용했습니다. 이 과정은 최종 결과물을 자동으로 만드는 용도라기보다, 내가 떠올린 인물과 존재, 지역의 분위기가 실제로 어떤 인상으로 보이는지 빠르게 확인하는 과정에 가까웠습니다. 라스텐시아, 그노어, 이빨 숙주 같은 존재들은 이 과정을 통해 여러 차례 수정되었고, 결과적으로 서사적 역할과 시각적 인상이 함께 맞물리는 방향으로 정리되었습니다.</p>
+        </div>
+        <div class="proj-concept-free">
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">스케치</p>
+            <img src="../images/dawnstar/스케치.jpg" alt="몇몇 인물의 초기 스케치" />
+          </div>
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">라스텐시아</p>
+            <img src="../images/dawnstar/라스텐시아.jpg" alt="라스텐시아" />
+          </div>
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">그노어</p>
+            <img src="../images/dawnstar/그노어.png" alt="그노어" />
+          </div>
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">이빨 숙주</p>
+            <img src="../images/dawnstar/이빨숙주_에셋.png" alt="이빨 숙주 에셋" />
+          </div>
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">케일라드</p>
+            <img src="../images/dawnstar/케일라드.png" alt="케일라드" />
+          </div>
+          <div class="proj-concept-item">
+            <p class="proj-concept-caption">루시</p>
+            <img src="../images/dawnstar/루시.png" alt="루시" />
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-creative-subsection">
+        <h3 class="proj-block-title">월드 만들기</h3>
+        <div class="proj-core-intent-content">
+          <p>Dawnstar의 월드는 단순한 배경이 아니라, 플레이어가 서사를 체감하는 방식 자체를 구성하는 중요한 요소였습니다. 2D 구조 안에서도 평면적인 좌우 이동에 그치지 않고, 층과 경로, 차단된 공간과 열리는 공간이 명확하게 느껴지는 입체적인 월드를 만들고 싶었습니다. 팔레트 기반으로 지역을 설계하면서도, 각 구역이 플레이 흐름과 어떻게 연결될지 먼저 고민한 뒤 맵 제작을 진행했습니다.</p>
+          <p>플레이 가능한 월드와 별도로, 이 세계를 하나의 독특한 지도로 시각화하는 작업도 함께 진행했습니다. 플레이어가 탐험하는 세계를 바깥에서 다시 바라보게 만드는 장치로 생각했습니다. 다음은 지도 제작 과정 일부입니다:</p>
+        </div>
+        <div class="proj-overview-media" style="margin-top:24px">
+          <div class="proj-overview-media-row proj-overview-media-row-3 proj-map-row-3">
+            <img src="../images/dawnstar/새벽마을지도_배경레이어.jpg" alt="새벽마을 배경 레이어" />
+            <img src="../images/dawnstar/새벽마을지도_환경레이어.jpg" alt="새벽마을 환경 레이어" />
+            <img src="../images/dawnstar/새벽마을지도.png" alt="새벽마을 지도" />
+          </div>
+          <div class="proj-map-wide">
+            <img src="../images/dawnstar/이스트엔드.jpg" alt="미지 구역 지도" />
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-creative-subsection">
+        <h3 class="proj-block-title">축 구조 고려하기</h3>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <div class="proj-core-intent-content">
+              <p>초기 Dawnstar의 전투와 에셋 구성은 비교적 좌우 중심의 2D 액션에 가까웠습니다. 하지만 개발을 진행할수록, 단순히 옆으로만 싸우는 구조보다 2D 위에서 더 입체적으로 움직이고 판단하는 전투를 만들고 싶어졌습니다. 이 변화는 맵 구조와 타격 범위, 몬스터 패턴, 플레이어 포지셔닝 전반을 다시 생각하게 만든 결정이었습니다.</p>
+              <p>기존에 좌우 기준으로 설계된 일부 에셋과 전투 표현을 재구성하고, 4방향 전투 흐름이 어색하지 않도록 월드와 스킬 구조를 함께 조정했습니다. 결과적으로 전투의 다양성을 확장할 수 있게 되었습니다.</p>
+            </div>
+          </div>
+          <div class="proj-block-media">
+            <div class="proj-overview-media-row proj-overview-media-row-2">
+              <img src="../images/dawnstar/에셋1.png" alt="에셋 재구성 1" />
+              <img src="../images/dawnstar/지하감옥에셋.png" alt="에셋 재구성 2" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="proj-ai-disclaimer">일부 컨셉아트는 AI 이미지 도구를 활용하여 제작되었습니다.</p>
+    </div>
+  </section>
+
+  <!-- 게임 디자인 -->
+  <section class="proj-section-blocks">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">게임 디자인 및 콘텐츠 기획</h2>
+
+      <article class="proj-section-block">
+        <h4 class="proj-overview-subtitle">1. 전투 설계: 자원 관리와 포지셔닝 중심 전투</h4>
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 전투는 스킬을 순서대로 반복하는 구조보다, 제한된 자원과 위치 판단을 함께 요구하는 방향으로 설계했습니다. 강한 스킬은 <code>Up</code> 자원을 소모하고, 기본 공격은 자원을 사용하지 않는 대신 템포와 연계의 역할을 가지도록 구성했습니다.</p>
+            <p>스킬 구성 역시 단순한 단일 타격에 머물지 않도록 했습니다. 직선형, 십자형, 원형, 장판형, 투사체형 등 범위를 다르게 설계해, 몬스터 패턴에 따라 플레이어의 위치 선택이 달라지도록 했습니다. 각 스킬이 전투 공간을 어떻게 바꾸는지를 구분하는 것이 중요했습니다.</p>
+            <div style="margin-top:12px">
+              <video autoplay muted loop playsinline style="max-width:280px;border-radius:8px;display:block"><source src="../videos/dawnstar/Up.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h4 class="proj-overview-subtitle">2. 보스 AI 설계: 스펙이 아닌 공략 중심 전투</h4>
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 보스전은 단순히 공격력과 체력을 늘리는 방식이 아니라, 플레이어가 패턴을 읽고 대응 방식을 익히는 전투가 되도록 설계했습니다. 보스는 특정 조건에서 행동이 바뀌고, 위치를 강제하거나, 페이즈 전환을 통해 전투 리듬을 바꾸는 식으로 구성했습니다.</p>
+            <p>AI는 FSM 기반으로 구성했지만, 패턴이 늘어날수록 상태 전이와 공격 실행 로직이 한곳에 몰리면 유지보수가 어렵다는 점을 체감했습니다. 그래서 패턴 실행 단위를 분리하고, 상태는 흐름을 제어하고 패턴은 행동을 담당하도록 역할을 나누는 방향으로 구조를 정리했습니다. 새로운 패턴을 추가하거나 기존 보스의 행동을 조정할 때, 전체 AI를 다시 흔들지 않고도 수정할 수 있어야 했기 때문입니다.</p>
+            <table class="proj-table proj-table-light">
+              <tr><th>보스명</th><th>특징</th><th>핵심 패턴</th></tr>
+              <tr>
+                <td><strong>간수 (Prison Keeper)</strong></td>
+                <td>거리 조절형</td>
+                <td>원거리:뼈 폭풍 / 근거리:연타, 피격시 뒤로 후퇴 - 플레이어 뒤로 순간이동 후 사거리 10 암살 스킬, 2페이즈 진입 시 강력한 자가 버프</td>
+              </tr>
+              <tr>
+                <td><strong>이빨 숙주 (Tooth King)</strong></td>
+                <td>강제 이동 및 콤보형</td>
+                <td>원거리로 떨어지면 풀링 스킬 후 평타 콤보 / 2페이즈에서 집중 - 광역 마법</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h4 class="proj-overview-subtitle">3. 레벨 디자인과 월드 구조: 스토리와 플레이의 동기화</h4>
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 공간은 튜토리얼, 필드, 던전, 보스전이 각각 다른 느낌과 플레이 목적을 가지도록 구분했습니다. <code>새벽마을</code>은 퀘스트와 대화 중심의 안전지대이지만, 이후 사건을 겪으며 같은 공간이 전혀 다른 의미로 보이도록 설계했습니다. 필드 지역은 탐험과 반복 전투, 던전은 협동과 공략, 보스 공간은 독립되어 집중되는 식으로 공간의 역할을 분리했습니다.</p>
+            <p>맵을 예쁘게 만드는 것보다, 공간의 변화가 실제 플레이 경험으로 느껴지게 만드는 일이 중요했습니다. 열린 공간에서는 이동과 포지셔닝의 자유도를 주고, 폐쇄적인 던전에서는 적과 기믹을 더 밀도 있게 배치해 전투 템포를 조정했습니다. 파티 플레이가 필요한 콘텐츠는 공용 필드와 다른 흐름으로 진입하고 체류하도록 구성해, 같은 게임 안에서도 공간의 성격이 달라지게 했습니다. 인스턴스 던전은 <code>오래된 감옥</code> → <code>성당</code> → <code>감염된 연구실</code> → <code>미지 던전</code> 순으로 깊어지는 구조입니다.</p>
+            <div class="proj-overview-media-row proj-overview-media-row-4" style="margin-top:20px">
+              <img src="../images/dawnstar/고대유적.png" alt="고대 유적" />
+              <img src="../images/dawnstar/묘지기.png" alt="묘지기" />
+              <img src="../images/dawnstar/연구소.PNG" alt="연구소" />
+              <img src="../images/dawnstar/새벽마을월드.jpg" alt="새벽마을 월드" />
+            </div>
+            <p class="proj-inline-desc" style="margin-top:24px;margin-bottom:8px">지도: 이스트엔드</p>
+            <div class="proj-map-wide" style="margin-top:0">
+              <img src="../images/dawnstar/이스트엔드 지도.png" alt="이스트엔드 지도" />
+            </div>
+            <p style="margin-top:24px">이후에는 근원을 통해 세계 반대편에 갈 수 있게 되고, 맵과 보스(예: 신규 보스 '기-자')를 추가 업데이트할 예정입니다. 고정된 보스와 줌아웃된 카메라를 통한 새로운 전투 방식을 구현할 예정입니다.</p>
+            <div class="proj-map-wide" style="margin-top:20px">
+              <img src="../images/dawnstar/업데이트1.png" alt="이스트엔드 지역" />
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h4 class="proj-overview-subtitle">4. 핵심 부가 시스템: 세계를 체험하게 만드는 장치들</h4>
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 퀘스트는 단순한 사냥 반복을 줄이고, 플레이어가 세계를 이해하도록 돕는 역할을 가지도록 구성했습니다. Epic, Story, Battle, Interaction 등 여러 형태를 섞어, 맵 이동·상호작용·전투·이벤트를 연결하는 흐름으로 작동하도록 설계했습니다.</p>
+            <p>파티 시스템은 최대 4인을 기준으로, 같은 인스턴스로 진입해 협동 플레이를 경험하는 데 초점을 맞췄습니다. 인벤토리와 경제 구조는 장비 획득·강화·제작·상점 거래가 세계 탐험과 던전 플레이의 보상으로 이어지도록 설계했습니다. 상자나 보상 오브젝트는 서버 기준으로 오픈 기록을 관리해, 플레이어가 공간을 한 번 지나갔다고 해서 그 경험이 무의미해지지 않도록 했습니다.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 기술 정보 -->
+  <section class="proj-section-blocks proj-tech-section">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">기술 정보</h2>
+      <nav class="proj-tech-nav">
+        <a href="#tech-network-arch">네트워크 구조</a>
+        <a href="#tech-game-server">게임 서버 구조</a>
+        <a href="#tech-packet-pipeline">패킷 처리</a>
+        <a href="#tech-world-navigation">월드 네비게이션</a>
+        <a href="#tech-visibility">시야 동기화와 룸</a>
+        <a href="#tech-retro">개발 회고</a>
+      </nav>
+      <div class="proj-core-intent-content" style="margin-top:20px;margin-bottom:24px">
+        <p>Dawnstar의 게임플레이가 멀티플레이 환경에서 어떻게 유지되도록 설계되었는지 설명합니다. 서버 구조 자체를 소개하기보다, 전투·월드·상호작용·파티 플레이 같은 핵심 경험이 어떤 방식으로 뒷받침되는지에 초점을 맞춥니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-network-arch">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">네트워크 구조: 게임플레이를 위한 역할 분리</h2>
+      <article class="proj-section-block">
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar는 로그인과 실제 게임 플레이를 같은 흐름으로 처리하지 않고, 역할을 나누는 구조로 시작했습니다. 로그인과 계정 처리는 <code>AccountServer</code>에서, 실제 실시간 플레이는 <code>Server</code>에서 담당하며, 두 서버는 <code>CommonDB</code>를 통해 토큰과 서버 상태를 공유합니다.</p>
+            <div class="proj-arch-media" style="margin-top:24px">
+              <img src="../images/dawnstar/네트워크 아키텍처.png" alt="Dawnstar 네트워크 아키텍처" />
+            </div>
+            <p>이 구분이 유용했던 지점은, 게임플레이 흐름을 분리해서 생각할 수 있게 해주었다는 점입니다. 로그인·서버 선택·접속·캐릭터 진입은 하나의 단계이고, 그 이후의 전투와 이동·상호작용은 전혀 다른 종류의 문제였습니다. 이 구분 덕분에 멀티플레이 전투나 월드 동기화 문제를 다룰 때, 로그인 처리와 뒤엉키지 않고 실제 게임플레이 로직에 집중할 수 있었습니다.</p>
+            <p>또한 더미 클라이언트를 통한 접속 검증 도구를 두어, <code>로그인 → 서버 접속 → 입장</code> 흐름이 어느 정도까지 안정적으로 유지되는지 직접 확인했습니다.</p>
+           
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-game-server">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">게임 서버 구조: 상태를 안전하게 다루기 위한 흐름 정리</h2>
+      <article class="proj-section-block">
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 게임 서버에서 가장 중요했던 것은 <strong>게임 상태를 어디서 어떻게 바꿀 것인가</strong>를 명확히 하는 일이었습니다. 플레이어 이동, 스킬 사용, 몬스터 행동, 퀘스트 진행, 아이템 처리, 맵 전환은 모두 같은 월드 상태를 공유합니다. 이 상태 변경이 제각각 일어나기 시작하면 디버깅이 어려워지고, 멀티플레이에서는 더 쉽게 문제가 커집니다.</p>
+            <p>그래서 게임 로직을 <code>TaskQueue</code> 기반 흐름 안에서 순차적으로 처리하도록 구성했습니다. 패킷을 받으면 곧바로 상태를 바꾸는 것이 아니라, 룸의 작업 큐에 넣고 정해진 순서로 실행하도록 정리했습니다. 이 방식 덕분에 전투와 상호작용, DB 저장, 룸 이동 같은 흐름이 서로 덜 충돌하게 되었고, 어떤 입력이 어떤 순서로 상태를 바꿨는지를 추적하기 쉬워졌습니다.</p>
+            <pre class="proj-code-snippet">public void Enqueue(IJob job) {
+    lock (_lock) { _jobQueue.Enqueue(job); }
+}
+public void ExecuteAll() {
+    while (true) {
+        IJob job = Pop();
+        if (job == null) return;
+        job.Execute();  // 메인 스레드에서 순차 실행
+    }
+}</pre>
+            <p class="proj-code-caption">모든 게임 상태 변경은 TaskQueue를 통해 순차 실행되어 동시성 충돌 없이 일관성을 유지합니다.</p>
+            <div class="proj-arch-media proj-arch-media-full" style="margin-top:24px">
+              <img src="../images/dawnstar/게임서버아키텍처.png" alt="게임 서버 아키텍처" />
+            </div>
+            <p>이 구조는 처음부터 완벽하게 계획한 결과라기보다, 개발 과정에서 필요해진 방향에 가까웠습니다. 기능이 늘어날수록 단순한 예제 구조로는 게임플레이 전체를 감당하기 어렵다는 점이 분명해졌고, 프로젝트 성격에 맞도록 개조하게 되었습니다.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-packet-pipeline">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">패킷 처리: 수동 구현에서 유지보수 가능한 구조로</h2>
+      <article class="proj-section-block">
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>패킷 처리 역시 Dawnstar에서 중요한 발전 과정 중 하나였습니다. 초기에는 직접 바이트를 읽고 쓰는 수동 직렬화 방식으로 시작했지만, 프로젝트가 커지면서 반복 작업이 많고 실수 가능성이 크다는 문제가 분명해졌습니다. 패킷 종류가 늘어날수록, 구조 변경 하나가 여러 곳의 수정으로 이어지고 디버깅도 어려워졌습니다.</p>
+            <p>그래서 중간 단계에서는 <code>PacketGenerator</code>를 이용해 반복되는 등록 코드와 패킷 매니저 생성을 자동화했고, 최종적으로는 <code>Protocol.proto</code> 기반의 Protobuf 패킷 구조로 정리했습니다. 현재 Dawnstar의 패킷 처리는 헤더는 직접 관리하고, 본문은 Protobuf로 직렬화하는 하이브리드 방식에 가깝습니다. 처음부터 이상적인 구조를 새로 만드는 것보다, 기존 파이프라인을 유지하면서 실제로 가장 문제가 되는 반복 작업과 오류 가능성을 줄이는 쪽이 더 현실적이었기 때문입니다.</p>
+            <pre class="proj-code-snippet">ushort size = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
+ushort id = BitConverter.ToUInt16(buffer.Array, buffer.Offset + 2);
+// Payload만 Protobuf로 역직렬화
+pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);</pre>
+            <p class="proj-code-caption">헤더(Size, MsgId)는 직접 관리하고, 본문은 Protobuf로 역직렬화하여 유지보수와 확장성을 개선했습니다.</p>
+            <h5 class="proj-flow-step">파이프라인 발전 과정 (3-Phase)</h5>
+            <p><strong>Phase 1:</strong> XML 스키마 정의 → 패킷 클래스 수동 작성 → 클라이언트/서버 양쪽에 <code>Write/Read</code> 로직 수동 구현. 패킷 구조 변경 시 양쪽 코드를 직접 수정해야 했고, 직렬화 순서가 어긋나면 치명적인 버그가 발생했습니다.</p>
+            <p><strong>Phase 2:</strong> <code>PacketFormat</code> 템플릿 → <code>PacketGenerator</code> 실행 → Server/Client PacketManager 및 핸들러 등록 코드 자동 생성. 반복 작업을 자동화했으나 직렬화/역직렬화 자체의 효율성과 버전 관리 한계는 남아있었습니다.</p>
+            <pre class="proj-code-snippet">foreach (var msg in proto.Messages) {
+    if (msg.Name.StartsWith("S_"))
+        clientRegister += $"case MsgId.{msg.Name}: ...";
+    else if (msg.Name.StartsWith("C_"))
+        serverRegister += $"case MsgId.{msg.Name}: ...";
+}
+File.WriteAllText("ServerPacketManager.cs", serverManagerText);</pre>
+            <p class="proj-code-caption">PacketGenerator는 Protocol.proto를 기반으로 패킷 핸들러 등록 코드를 자동 생성합니다.</p>
+            <p><strong>Phase 3:</strong> <code>Protocol.proto</code> 단일 소스 정의 → <code>protoc</code> 컴파일 → <code>PacketGenerator</code>가 MsgId를 파싱하여 핸들러 매핑. 직렬화는 Protobuf에 위임하고, 기존 파이프라인은 핸들러 매핑 역할만 유지했습니다.</p>
+            <details class="proj-details-collapse">
+              <summary>플로우 차트 보기</summary>
+              <div class="mermaid" style="margin-top:16px">
+flowchart LR
+    subgraph Phase1["Phase 1: 초기"]
+        A1[XML 스키마 정의]
+        A2[패킷 클래스 수동 작성]
+        A3["Write/Read 수동 구현"]
+        A1 --> A2 --> A3
+    end
+    subgraph Phase2["Phase 2: 자동화"]
+        B1[PacketFormat 템플릿]
+        B2[PacketGenerator]
+        B3["Server/Client PacketManager 자동 생성"]
+        B1 --> B2 --> B3
+    end
+    subgraph Phase3["Phase 3: Protobuf"]
+        C1["Protocol.proto 정의"]
+        C2[protoc 컴파일]
+        C3["PacketGenerator MsgId 파싱"]
+        C1 --> C2 --> C3
+    end
+    Phase1 -->|개선| Phase2
+    Phase2 -->|전환| Phase3
+              </div>
+            </details>
+            <p class="proj-media-caption">최종 아키텍처</p>
+            <div class="proj-arch-media proj-arch-media-compact" style="margin-top:16px">
+              <img src="../images/dawnstar/패킷 아키텍처.png" alt="패킷 처리 최종 아키텍처" />
+            </div>
+            <p>이 변화는 단순히 기술 스택이 좋아졌다는 의미보다, 프로젝트가 커질수록 유지보수가 가능한 형태로 옮겨갔다는 점에서 의미가 있었습니다.
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-world-navigation">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">월드 네비게이션 구조: 맵 데이터와 게임 규칙을 하나로 묶기</h2>
+      <article class="proj-section-block">
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>Dawnstar의 월드 구조는 단순한 배경 제작이 아니라, 이동과 스폰, 상호작용을 같은 기준으로 관리하기 위한 시도에서 출발했습니다. 멀티플레이 게임에서는 맵이 예쁘게 보이는 것만으로 충분하지 않고, 어디를 갈 수 있는지, 몬스터가 어디서 생성되는지, 문과 트리거가 어떻게 상태를 바꾸는지가 전부 일관되어야 합니다. 이 기준이 따로 놀기 시작하면 플레이어 입장에서는 세계 자체가 불안정하게 느껴집니다.</p>
+            <p>그래서 셀 기반 맵 데이터를 중심으로 충돌 정보, 스폰 포인트, 상호작용 포인트를 별도로 로드하고, 이를 서버의 월드 로직과 연결했습니다. 상호작용은 단순한 연출이 아니라, 월드 규칙 자체를 바꾸는 행동으로 연결됩니다.</p>
+            <pre class="proj-code-snippet">bool CanGo(Vector2 pos) {
+    int cellX = (int)(pos.x / CELL_SIZE);
+    int cellY = (int)(pos.y / CELL_SIZE);
+    return _collision[cellY][cellX] == 0;
+}</pre>
+            <p class="proj-code-caption">맵 충돌 데이터는 셀 기반 배열로 관리하며, 이동 가능 여부와 스폰 영역이 같은 기준을 공유합니다.</p>
+            <p class="proj-inline-desc" style="margin-top:20px;margin-bottom:8px">맵 제작: 스프라이트 배치 → 0/1 변환으로 이동 가능 영역 정의</p>
+            <div class="proj-map-wide" style="margin-top:0;margin-bottom:24px">
+              <img src="../images/dawnstar/맵제작.png" alt="맵 제작" />
+            </div>
+            <p>몬스터는 맵 데이터 기반으로 배치되며, 스폰 가능한 타일을 별도 레이어로 정의해 그 영역만 스폰 후보로 사용합니다. 이동 경로 데이터와 스폰 데이터가 같은 기준을 공유해 맵이 변경되어도 정합성이 유지됩니다.</p>
+            <p class="proj-inline-desc" style="margin-top:16px;margin-bottom:8px">몬스터 스폰 매핑: 스폰 가능 영역 레이어 정의</p>
+            <div class="proj-map-wide" style="margin-top:0;margin-bottom:24px">
+              <img src="../images/dawnstar/몬스터매핑.png" alt="몬스터 스폰 매핑" />
+            </div>
+            <p>초기에 좌표를 개별적으로 다루거나, 오브젝트마다 예외 처리를 붙이는 방식은 수정이 쌓일수록 정합성이 쉽게 무너졌습니다. 반면 맵 데이터를 기준으로 이동·스폰·상호작용을 함께 묶고 나니, 월드의 시각적 표현과 실제 판정이 훨씬 잘 맞아떨어졌습니다. Dawnstar의 월드 네비게이션은 단순한 길찾기 기술이 아니라, <em>맵을 실제 게임 규칙으로 바꾸는 작업</em>에 더 가까웠습니다.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-visibility">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">시야 동기화와 룸 구조: 공간의 성격에 맞는 멀티플레이 운영</h2>
+      <article class="proj-section-block">
+        <div class="proj-block-desc">
+          <div class="proj-core-intent-content">
+            <p>멀티플레이 환경에서는 모든 객체를 모든 플레이어에게 계속 전송하는 방식이 가장 단순하지만, 실제 플레이에서는 불필요한 동기화가 금방 많아집니다. Dawnstar는 이를 줄이기 위해 <code>Zone</code>과 <code>Interest Management</code>를 이용해 플레이어 주변의 객체만 선택적으로 동기화하도록 구성했습니다. 이 방식은 기술적으로 MMO 구조를 흉내 내기 위해서가 아니라, 필드와 던전, 파티 플레이처럼 성격이 다른 공간을 실제 플레이 흐름에 맞게 운영하기 위해 필요했습니다.</p>
+            <pre class="proj-code-snippet">HashSet&lt;GameObject&gt; current = GatherObjects();
+List&lt;GameObject&gt; added = current.Except(PreviousObjects).ToList();
+List&lt;GameObject&gt; removed = PreviousObjects.Except(current).ToList();
+// added → Spawn, removed → Despawn 전송
+PreviousObjects = current;</pre>
+            <p class="proj-code-caption">플레이어 주변 객체만 Spawn/Despawn diff로 전송하여 불필요한 동기화를 줄였습니다.</p>
+            <p>특히 Dawnstar는 혼자 탐험하는 필드와 함께 공략하는 인스턴스 던전이 모두 존재하기 때문에, 공간마다 다른 체감이 필요했습니다. 공용 필드는 여러 플레이어가 함께 존재하는 세계처럼 보이되 과도한 동기화를 피해야 했고, 던전은 파티 단위의 경험이 더 또렷하게 유지되어야 했습니다. 그래서 맵에 따라 공용 룸과 별도 룸을 다르게 운용하는 구조를 선택했습니다.</p>
+            <p>플레이어 입장에서 중요한 것은 내가 있는 공간이 실제로 살아 있는 세계처럼 느껴지는지, 그리고 협동 플레이가 분명한 경험으로 구분되는지입니다. Dawnstar의 시야와 룸 구조는 바로 그 감각을 기술적으로 뒷받침하기 위해 만들어졌습니다.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="proj-section-blocks proj-tech-subsection" id="tech-retro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">개발 회고</h2>
+      <div class="proj-core-intent-content" style="margin-top:16px">
+        <p>Dawnstar를 개발하면서 가장 크게 배운 점은, 게임플레이는 기획과 구현만으로 완성되지 않는다는 사실이었습니다. 전투를 설계하면 판정 구조가 필요했고, 월드를 만들면 스폰과 상호작용 규칙이 함께 정리되어야 했으며, 협동 콘텐츠를 넣으려면 공간 운영과 동기화 방식을 다시 생각해야 했습니다. 서로 다른 시스템처럼 보였던 요소들이 결국 모두 같은 게임 상태를 공유한다는 사실을 직접 겪으면서, 구조를 이해하지 않고는 원하는 플레이 경험도 끝까지 밀어붙일 수 없다는 점을 배웠습니다.</p>
+        <p>저는 이 프로젝트를 통해 서버 기술 자체를 깊게 연구했다기보다, 게임 플레이 개발자가 멀티플레이 구조를 어떻게 이해하고 자기 프로젝트에 맞게 활용할 수 있는지를 몸으로 익혔다고 생각합니다. 처음에는 비교적 전형적인 구조에서 출발했지만, Dawnstar가 게임으로서 형태를 갖추어 갈수록 그 구조는 계속 수정되고 확장되었습니다. 전투 판정, 패킷 파이프라인, 맵 데이터, 시야 관리, 던전 구조는 모두 실제 플레이 문제를 해결하기 위해 재구성된 것입니다.</p>
+        <p>그래서 Dawnstar는 저에게 단순히 하나의 게임 프로젝트가 아니라, 게임플레이와 시스템 설계를 따로 생각할 수 없다는 사실을 확인시켜 준 프로젝트였습니다. 세계관을 만들고, 공간을 설계하고, 전투를 구성하고, 그것이 멀티플레이 환경에서도 같은 규칙으로 유지되도록 만드는 전 과정을 직접 경험했다는 점에서, Dawnstar는 앞으로의 작업 방식에도 큰 영향을 준 프로젝트로 남았습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="dawnstar.html" class="btn-solid">← Dawnstar 상세로</a>
+    <a href="../index.html#work" class="btn-link">Work 목록으로</a>
+  </section>
 </main>
-<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2025 KIMASILL</p></div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'neutral'})</script>
 <script src="../js/portfolio.js"></script>
 </body>
 </html>

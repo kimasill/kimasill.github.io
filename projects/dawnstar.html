@@ -11,25 +11,31 @@
 <link rel="stylesheet" href="../css/portfolio.css">
 </head>
 <body class="proj-detail-page">
-<header>
-  <div class="header-controls">
-    <a href="../index.html#work" class="btn-link"><i class="fa fa-arrow-left"></i> Back</a>
-    <button id="lang-toggle">KR</button>
-    <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">KIMSUNGHYUN - PORTFOLIO</a>
+    <div class="header-controls">
+      <button id="lang-toggle">KR</button>
+      <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
   </div>
-  <ul id="menu" class="shadow">
-    <li><a href="../index.html#lead">Home</a></li>
-    <li><a href="../index.html#work">Work</a></li>
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#contact">Contact</a></li>
-  </ul>
+  <nav class="proj-header-nav">
+    <a href="dawnstar.html" class="active">Dawnstar</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="startup.html">Startup</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="lostark-design.html">Lost Ark</a>
+    <a href="../index.html">Home</a>
+  </nav>
 </header>
 
 <main class="project-page proj-dawnstar">
   <!-- 1. Hero: 어두운 이미지 -->
   <section class="proj-hero proj-hero-dark">
     <div class="proj-hero-inner">
-      <h1>던스타 <span class="proj-hero-sub">(Dawnstar)</span></h1>
+      <h1>던스타 <span class="proj-hero-sub"></span></h1>
       <div class="proj-hero-split">
         <div class="proj-hero-media">
           <img src="../images/dawnstar/Dawnstar_Title.png" alt="Dawnstar Key Art" />
@@ -101,7 +107,7 @@
   <!-- 3. Gameplay Systems -->
   <section class="proj-gameplay proj-section-blocks">
     <div class="proj-container-wide">
-      <h2 class="proj-section-title">Gameplay Systems</h2>
+      <h2 class="proj-section-title">게임 시스템</h2>
 
       <!-- 1. Server-Validated World Structure -->
       <article class="proj-section-block">
@@ -165,9 +171,8 @@
         <h3 class="proj-block-title">Combat & AI Design</h3>
         <div class="proj-block-body">
           <div class="proj-block-desc">
-            <p>보스 중심의 패턴 기반 AI를 설계했습니다. 각 보스는 고유 공격 패턴과 스킬 타이밍을 가지며, 일반 몬스터 또한 서로 다른 공격 방식과 행동 로직을 갖습니다.</p>
-            <p>각 몬스터는 고유 드롭 아이템을 보유합니다. 스킬 시스템은 이펙트마다 데미지 입력 타이밍을 다르게 가지며, 고유한 작동방식을 가지도록 했습니다.</p>
-            <p>버프·디버프 시스템을 별도로 설계하여 상태 변화가 전투 흐름에 영향을 주도록 구현했습니다.</p>
+            <p>Dawnstar의 전투는 한정된 전투 자원을 어떻게 사용할 것인가에 초점을 맞췄습니다. 스킬 수를 제한함으로써, 플레이어는 적의 위치와 패턴을 관찰하고 사용타이밍을 고려해야 합니다. 이를 통해 개별 스킬의 가치를 향상시키고, 스킬 사용에 무게를 더합니다.</p>
+            <p>각 스킬은 개별적인 데미지 타이밍 테이블을 가집니다. 애니메이션 전체 길이에 종속되지 않고, 실제 타격이 발생하는 프레임에 맞춰 데미지가 적용되도록 설계했습니다.</p>
           </div>
           <div class="proj-block-media">
             <div class="proj-block-media-2x2">
@@ -213,29 +218,22 @@
       <!-- 4. Interaction Systems -->
       <article class="proj-section-block">
         <h3 class="proj-block-title">Interaction Systems</h3>
-        <div class="proj-block-body proj-block-body-stack">
+        <div class="proj-block-body">
           <div class="proj-block-desc">
-            <h4>Shop &amp; Crafting</h4>
+            <p>플레이 흐름과 월드 몰입을 강화하기 위한 편의 시스템과 퀘스트 라인을 설계했습니다.</p>
             <ul>
-              <li>상점 판매 및 구매 시스템</li>
-              <li>합성/분해</li>
+              <li>특정 NPC를 통해 접근 가능한 상점 및 제작 시스템을 구현하여 월드 내 경제 활동이 자연스럽게 이루어지도록 구성했습니다.</li>
+              <li>자원 순환 구조와 재사용을 위한 합성 및 분해 시스템.</li>
+              <li>거래와 인벤토리에서 다중 수량 처리 및 자동 정렬</li>
             </ul>
-            <p>합성 등 재련 시스템의 경우, 특정 NPC를 통해 아이템 합성 및 분해가 가능하도록 구현했습니다.</p>
-            <h4>Inventory System</h4>
-            <ul>
-              <li>자동 정렬 기능</li>
-              <li>다중 수량 처리 지원</li>
-            </ul>
-            <p>모든 주요 거래 시스템은 서버 검증 절차를 거치도록 설계했습니다.</p>
+            <p>퀘스트 시스템은 단순 목표 나열이 아니라, 세계관과 스토리 라인을 자연스럽게 경험하도록 합니다(예: 칼을 떨어트리는 컷씬 이후 칼 줍기). 직접 만든 지도가 맵 데이터와 연동되어 위치 정보를 제공합니다.</p>
           </div>
-          <div class="proj-block-media proj-block-media-stack">
-            <div class="proj-block-media-row proj-block-media-row-2">
-              <img src="../images/dawnstar/상점.png" alt="상점 UI" />
-              <img src="../images/dawnstar/재련.png" alt="합성/분해" />
-            </div>
-            <div class="proj-block-media-row proj-block-media-row-2">
-              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/로그인.mp4" type="video/mp4"></video>
-              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/상점.mp4" type="video/mp4"></video>
+          <div class="proj-block-media">
+            <div class="proj-block-media-row proj-block-media-row-4">
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/지도확대.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/퀘스트.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/컷씬.mp4" type="video/mp4"></video>
+              <video autoplay muted loop playsinline class="proj-loop-video"><source src="../videos/dawnstar/인벤.mp4" type="video/mp4"></video>
             </div>
           </div>
         </div>
@@ -243,63 +241,25 @@
     </div>
   </section>
 
-  <!-- 4. Network & Server Architecture: 배경 어둡게 -->
-  <section class="proj-network proj-block-dark">
+  <!-- 핵심 의도 -->
+  <section class="proj-core-intent proj-block-alt">
     <div class="proj-container-wide">
-      <h2 class="proj-section-title">Network & Server Architecture</h2>
-      <div class="proj-arch-media">
-        <!-- TODO: 아키텍처 다이어그램 이미지로 교체 -->
-        <img src="../images/dawnstar/Dawnstar_Logo.png" alt="아키텍처 다이어그램 (추가 예정)" />
+      <h2 class="proj-section-title">핵심 의도</h2>
+      <div class="proj-core-intent-content">
+        <p>저는 MMORPG 구조 안에서 소울라이크처럼 동작하는 경험을 만들고 싶었습니다. 결과적으로는 싱글/멀티 경험을 동시에 주면서도, 플레이어가 한 명의 주인공으로서 묵직한 전투와 성장을 경험하도록 설계했습니다.</p>
+        <p>제가 경험했던 여러 시리즈(엘든링, 다크소울 등)에서 영감을 받아, 단순한 반복 전투가 아닌 구조화된 전투 패턴, 제한된 자원, 전략적 돌파가 필요한 AI 설계를 중심에 두었습니다.</p>
+        <p>초기에는 대규모 RPG와 싱글 플레이의 완전한 혼합 구조를 설계했습니다. 두 가지 장르의 합의점을 찾아가는 과정은 흥미로웠지만, 매우 어려웠습니다. 이후 세계관과 캐릭터의 정체성을 유지하기 위해 점차 개별 플레이어의 경험에 집중하는 방향으로 조정했습니다.</p>
+        <p>모든 플레이는 서버 기반 구조 위에서 동작하도록 구현되었기 때문에, 멀티플레잉 경험을 주는 시스템을 향후에도 추가하기 좋도록 했습니다.</p>
+        <ul>
+          <li>던전에서는 기본적으로 포션 제한을 둬서, 던전 플레이의 무게감을 더 가중시켰습니다. 이것은 MMORPG 구조에도 영향을 주어, 탱커나 힐러 등 역할군의 필요성을 증가시킵니다.</li>
+          <li>퀘스트나 스토리라인에는 일러스트로 된 컷씬과 스크립트가 나오도록 만들었습니다. 저는 세계관에 대해 모두 설명하기보다, 플레이어가 진행하며 스스로 경험하게 하고 싶었습니다.</li>
+          <li>독특한 플레이 경험과 다양한 빌드를 위해 기존 RPG의 스킬 시스템에서 벗어나, 아이템 기반으로 능력과 스킬을 사용하는 구조를 만들었습니다.</li>
+          <li>월드와 던전 전반에 보상 설계를 배치하여 탐험의 동기를 강화했습니다.</li>
+          <li>개별 AI의 독특한 전투 시스템을 구현함으로써 단순 성장 대신 전략적 접근을 유도했습니다.</li>
+        </ul>
+        <p>이 모든 과정을 진행하며, 어떻게 하면 플레이 경험을 향상시킬 수 있을지 계속 고민했습니다. 이 프로젝트를 통해 저는 게임 서버 시스템과 RPG 제작에 매우 값진 경험을 얻었으며, 게임 디자인에 대해서 깊게 고민하고 결과를 만들어낸 작업이었습니다.</p>
       </div>
-      <p class="proj-arch-desc">C# .NET 기반 전용 서버. 클라이언트–서버 TCP/TLS 연결, 세션 인증, Pub/Sub 채널 구조로 채팅·매칭 분리. EF Core + SQL Server로 캐릭터·아이템·퀘스트 상태 영속화. Protocol Buffers로 네트워크 메시지 직렬화.</p>
     </div>
-  </section>
-
-  <!-- 5. Technical Challenges: 회색 톤 블록 -->
-  <section class="proj-challenges proj-block-gray">
-    <div class="proj-container-wide">
-      <h2 class="proj-section-title">Technical Challenges</h2>
-      <ul class="proj-challenge-list">
-        <li>동기화 지연 문제 해결</li>
-        <li>데이터 구조 리팩토링</li>
-        <li>서버 부하 분산 구조 개선</li>
-        <li>퀘스트 스크립트 DSL 설계</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6. Worldbuilding & Design -->
-  <section class="proj-worldbuilding">
-  <div class="proj-container-wide">
-    <h2 class="proj-section-title">Worldbuilding & Design</h2>
-    <div class="proj-worldbuilding-intro">
-      <p>플레이어는 거대한 서사 속의 인물이 되어 세계 저편에서 넘어온 악의 근원 '이빨'을 제거하기 위한 여정을 떠납니다. 풍부한 상상력 기반의 세계관, 세력 구조, 지역별 특성을 스프레드시트와 기획서로 정의하고 경제·성장 루프를 반복 시뮬레이션했습니다.</p>
-    </div>
-    <div class="proj-worldbuilding-gallery">
-      <img src="../images/dawnstar/Dawnstar_Title.png" alt="던스타 키 아트" />
-      <img src="../images/dawnstar/IMG_2225.jpg" alt="월드 컨셉" />
-      <img src="../images/dawnstar/IMG_2228.jpg" alt="지역 스크린샷" />
-      <img src="../images/dawnstar/Dawnstar_Logo.png" alt="로고" />
-    </div>
-  </div>
-  </section>
-
-  <!-- 7. 프로세스 요약 -->
-  <section class="proj-process">
-  <div class="proj-container-wide">
-    <h2 class="proj-section-title">디자인 프로세스 요약</h2>
-    <p class="proj-process-intro">대규모 환경을 가정한 2D MMORPG의 핵심 시스템을 6개월간 구축했습니다. .NET 서버와 Unity 클라이언트, EF Core·SQL 기반 데이터베이스, Protocol Buffers 네트워크 직렬화까지 전 과정을 설계·구현했습니다.</p>
-    <p><strong>던스타에 포함된 주요 시스템:</strong></p>
-    <ul>
-      <li>Authoritative 서버 기반 전투·스킬·아이템 판정</li>
-      <li>실시간 월드·NPC·플레이어 상태 동기화</li>
-      <li>퀘스트 스크립트 DSL 및 상태 머신</li>
-      <li>채팅 채널(글로벌/파티/귓속말)·매칭 큐</li>
-      <li>양측 확인 거래·강화(확률 테이블·보호 아이템)</li>
-      <li>AI 기반 아트 파이프라인 및 후편집</li>
-    </ul>
-    <p>세부 개발 과정은 <a href="dawnstar-process.html" class="btn-link">제작 과정 페이지</a>에서 확인할 수 있습니다.</p>
-  </div>
   </section>
 
   <section class="proj-footer-cta">
