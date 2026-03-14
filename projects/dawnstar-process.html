@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/portfolio.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css">
 </head>
 <body class="proj-detail-page">
 <header class="proj-header">
@@ -275,7 +276,7 @@
           <div class="proj-core-intent-content">
             <p>Dawnstar의 게임 서버에서 가장 중요했던 것은 <strong>게임 상태를 어디서 어떻게 바꿀 것인가</strong>를 명확히 하는 일이었습니다. 플레이어 이동, 스킬 사용, 몬스터 행동, 퀘스트 진행, 아이템 처리, 맵 전환은 모두 같은 월드 상태를 공유합니다. 이 상태 변경이 제각각 일어나기 시작하면 디버깅이 어려워지고, 멀티플레이에서는 더 쉽게 문제가 커집니다.</p>
             <p>그래서 게임 로직을 <code>TaskQueue</code> 기반 흐름 안에서 순차적으로 처리하도록 구성했습니다. 패킷을 받으면 곧바로 상태를 바꾸는 것이 아니라, 룸의 작업 큐에 넣고 정해진 순서로 실행하도록 정리했습니다. 이 방식 덕분에 전투와 상호작용, DB 저장, 룸 이동 같은 흐름이 서로 덜 충돌하게 되었고, 어떤 입력이 어떤 순서로 상태를 바꿨는지를 추적하기 쉬워졌습니다.</p>
-            <pre class="proj-code-snippet">public void Enqueue(IJob job) {
+            <pre class="proj-code-snippet"><code class="language-csharp">public void Enqueue(IJob job) {
     lock (_lock) { _jobQueue.Enqueue(job); }
 }
 public void ExecuteAll() {
@@ -284,7 +285,7 @@ public void ExecuteAll() {
         if (job == null) return;
         job.Execute();  // 메인 스레드에서 순차 실행
     }
-}</pre>
+}</code></pre>
             <p class="proj-code-caption">모든 게임 상태 변경은 TaskQueue를 통해 순차 실행되어 동시성 충돌 없이 일관성을 유지합니다.</p>
             <div class="proj-arch-media proj-arch-media-full" style="margin-top:24px">
               <img src="../images/dawnstar/게임서버아키텍처.png" alt="게임 서버 아키텍처" />
@@ -304,21 +305,21 @@ public void ExecuteAll() {
           <div class="proj-core-intent-content">
             <p>패킷 처리 역시 Dawnstar에서 중요한 발전 과정 중 하나였습니다. 초기에는 직접 바이트를 읽고 쓰는 수동 직렬화 방식으로 시작했지만, 프로젝트가 커지면서 반복 작업이 많고 실수 가능성이 크다는 문제가 분명해졌습니다. 패킷 종류가 늘어날수록, 구조 변경 하나가 여러 곳의 수정으로 이어지고 디버깅도 어려워졌습니다.</p>
             <p>그래서 중간 단계에서는 <code>PacketGenerator</code>를 이용해 반복되는 등록 코드와 패킷 매니저 생성을 자동화했고, 최종적으로는 <code>Protocol.proto</code> 기반의 Protobuf 패킷 구조로 정리했습니다. 현재 Dawnstar의 패킷 처리는 헤더는 직접 관리하고, 본문은 Protobuf로 직렬화하는 하이브리드 방식에 가깝습니다. 처음부터 이상적인 구조를 새로 만드는 것보다, 기존 파이프라인을 유지하면서 실제로 가장 문제가 되는 반복 작업과 오류 가능성을 줄이는 쪽이 더 현실적이었기 때문입니다.</p>
-            <pre class="proj-code-snippet">ushort size = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
+            <pre class="proj-code-snippet"><code class="language-csharp">ushort size = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
 ushort id = BitConverter.ToUInt16(buffer.Array, buffer.Offset + 2);
 // Payload만 Protobuf로 역직렬화
-pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);</pre>
+pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);</code></pre>
             <p class="proj-code-caption">헤더(Size, MsgId)는 직접 관리하고, 본문은 Protobuf로 역직렬화하여 유지보수와 확장성을 개선했습니다.</p>
             <h5 class="proj-flow-step">파이프라인 발전 과정 (3-Phase)</h5>
             <p><strong>Phase 1:</strong> XML 스키마 정의 → 패킷 클래스 수동 작성 → 클라이언트/서버 양쪽에 <code>Write/Read</code> 로직 수동 구현. 패킷 구조 변경 시 양쪽 코드를 직접 수정해야 했고, 직렬화 순서가 어긋나면 치명적인 버그가 발생했습니다.</p>
             <p><strong>Phase 2:</strong> <code>PacketFormat</code> 템플릿 → <code>PacketGenerator</code> 실행 → Server/Client PacketManager 및 핸들러 등록 코드 자동 생성. 반복 작업을 자동화했으나 직렬화/역직렬화 자체의 효율성과 버전 관리 한계는 남아있었습니다.</p>
-            <pre class="proj-code-snippet">foreach (var msg in proto.Messages) {
+            <pre class="proj-code-snippet"><code class="language-csharp">foreach (var msg in proto.Messages) {
     if (msg.Name.StartsWith("S_"))
         clientRegister += $"case MsgId.{msg.Name}: ...";
     else if (msg.Name.StartsWith("C_"))
         serverRegister += $"case MsgId.{msg.Name}: ...";
 }
-File.WriteAllText("ServerPacketManager.cs", serverManagerText);</pre>
+File.WriteAllText("ServerPacketManager.cs", serverManagerText);</code></pre>
             <p class="proj-code-caption">PacketGenerator는 Protocol.proto를 기반으로 패킷 핸들러 등록 코드를 자동 생성합니다.</p>
             <p><strong>Phase 3:</strong> <code>Protocol.proto</code> 단일 소스 정의 → <code>protoc</code> 컴파일 → <code>PacketGenerator</code>가 MsgId를 파싱하여 핸들러 매핑. 직렬화는 Protobuf에 위임하고, 기존 파이프라인은 핸들러 매핑 역할만 유지했습니다.</p>
             <details class="proj-details-collapse">
@@ -366,11 +367,11 @@ flowchart LR
           <div class="proj-core-intent-content">
             <p>Dawnstar의 월드 구조는 단순한 배경 제작이 아니라, 이동과 스폰, 상호작용을 같은 기준으로 관리하기 위한 시도에서 출발했습니다. 멀티플레이 게임에서는 맵이 예쁘게 보이는 것만으로 충분하지 않고, 어디를 갈 수 있는지, 몬스터가 어디서 생성되는지, 문과 트리거가 어떻게 상태를 바꾸는지가 전부 일관되어야 합니다. 이 기준이 따로 놀기 시작하면 플레이어 입장에서는 세계 자체가 불안정하게 느껴집니다.</p>
             <p>그래서 셀 기반 맵 데이터를 중심으로 충돌 정보, 스폰 포인트, 상호작용 포인트를 별도로 로드하고, 이를 서버의 월드 로직과 연결했습니다. 상호작용은 단순한 연출이 아니라, 월드 규칙 자체를 바꾸는 행동으로 연결됩니다.</p>
-            <pre class="proj-code-snippet">bool CanGo(Vector2 pos) {
+            <pre class="proj-code-snippet"><code class="language-csharp">bool CanGo(Vector2 pos) {
     int cellX = (int)(pos.x / CELL_SIZE);
     int cellY = (int)(pos.y / CELL_SIZE);
     return _collision[cellY][cellX] == 0;
-}</pre>
+}</code></pre>
             <p class="proj-code-caption">맵 충돌 데이터는 셀 기반 배열로 관리하며, 이동 가능 여부와 스폰 영역이 같은 기준을 공유합니다.</p>
             <p class="proj-inline-desc" style="margin-top:20px;margin-bottom:8px">맵 제작: 스프라이트 배치 → 0/1 변환으로 이동 가능 영역 정의</p>
             <div class="proj-map-wide" style="margin-top:0;margin-bottom:24px">
@@ -395,11 +396,11 @@ flowchart LR
         <div class="proj-block-desc">
           <div class="proj-core-intent-content">
             <p>멀티플레이 환경에서는 모든 객체를 모든 플레이어에게 계속 전송하는 방식이 가장 단순하지만, 실제 플레이에서는 불필요한 동기화가 금방 많아집니다. Dawnstar는 이를 줄이기 위해 <code>Zone</code>과 <code>Interest Management</code>를 이용해 플레이어 주변의 객체만 선택적으로 동기화하도록 구성했습니다. 이 방식은 기술적으로 MMO 구조를 흉내 내기 위해서가 아니라, 필드와 던전, 파티 플레이처럼 성격이 다른 공간을 실제 플레이 흐름에 맞게 운영하기 위해 필요했습니다.</p>
-            <pre class="proj-code-snippet">HashSet&lt;GameObject&gt; current = GatherObjects();
+            <pre class="proj-code-snippet"><code class="language-csharp">HashSet&lt;GameObject&gt; current = GatherObjects();
 List&lt;GameObject&gt; added = current.Except(PreviousObjects).ToList();
 List&lt;GameObject&gt; removed = PreviousObjects.Except(current).ToList();
 // added → Spawn, removed → Despawn 전송
-PreviousObjects = current;</pre>
+PreviousObjects = current;</code></pre>
             <p class="proj-code-caption">플레이어 주변 객체만 Spawn/Despawn diff로 전송하여 불필요한 동기화를 줄였습니다.</p>
             <p>특히 Dawnstar는 혼자 탐험하는 필드와 함께 공략하는 인스턴스 던전이 모두 존재하기 때문에, 공간마다 다른 체감이 필요했습니다. 공용 필드는 여러 플레이어가 함께 존재하는 세계처럼 보이되 과도한 동기화를 피해야 했고, 던전은 파티 단위의 경험이 더 또렷하게 유지되어야 했습니다. 그래서 맵에 따라 공용 룸과 별도 룸을 다르게 운용하는 구조를 선택했습니다.</p>
             <p>플레이어 입장에서 중요한 것은 내가 있는 공간이 실제로 살아 있는 세계처럼 느껴지는지, 그리고 협동 플레이가 분명한 경험으로 구분되는지입니다. Dawnstar의 시야와 룸 구조는 바로 그 감각을 기술적으로 뒷받침하기 위해 만들어졌습니다.</p>
@@ -431,7 +432,10 @@ PreviousObjects = current;</pre>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/csharp.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true,theme:'neutral'})</script>
+<script>document.querySelectorAll('.proj-code-snippet code').forEach(el=>{hljs.highlightElement(el)})</script>
 <script src="../js/portfolio.js"></script>
 </body>
 </html>

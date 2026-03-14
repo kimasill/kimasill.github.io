@@ -112,5 +112,25 @@
       var v = $(this).find('video.work-video')[0];
       if(v){ v.pause(); v.currentTime = 0; }
     });
+
+    // OVERVIEW 이미지 마우스 오버 시 호버한 이미지 옆에만 설명 툴팁 표시 (car-classification)
+    $(document).on('mouseenter', '.proj-hover-desc-item', function(){
+      var desc = $(this).data('desc') || '';
+      var tooltip = $(this).closest('.proj-overview-with-desc').find('.proj-hover-desc-tooltip');
+      if(!tooltip.length || !desc) return;
+      var r = this.getBoundingClientRect();
+      var pad = 16;
+      var ttW = 280;
+      var ttH = 80;
+      var left = r.right + pad;
+      var top = r.top + (r.height / 2) - (ttH / 2);
+      if(left + ttW > window.innerWidth) left = r.left - pad - ttW;
+      if(top < 12) top = 12;
+      if(top + ttH > window.innerHeight - 12) top = window.innerHeight - ttH - 12;
+      tooltip.css({ left: left + 'px', top: top + 'px' }).text(desc).addClass('is-visible').attr('aria-hidden', 'false');
+    });
+    $(document).on('mouseleave', '.proj-hover-desc-item', function(){
+      $(this).closest('.proj-overview-with-desc').find('.proj-hover-desc-tooltip').removeClass('is-visible').text('').attr('aria-hidden', 'true');
+    });
   });
 })(jQuery);
