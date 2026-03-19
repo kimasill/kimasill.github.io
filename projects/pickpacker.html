@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pickpacker | Kimasill</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pickpacker | 협동 멀티플레이어 웨어하우스 시뮬레이션 | Kimasill</title>
 <link rel="shortcut icon" href="../favicon.ico" />
-<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="../css/bootstrap.min.css"><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/portfolio.css"></head>
-<body>
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="proj-detail-page">
 <header class="proj-header">
   <div class="proj-header-top">
     <a href="../index.html" class="proj-header-brand">KIMSUNGHYUN - PORTFOLIO</a>
@@ -19,20 +26,97 @@
     <a href="car-classification.html">kCars</a>
     <a href="startup.html">Startup</a>
     <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="tab-game.html">Tab Game</a>
     <a href="lostark-design.html">Lost Ark</a>
     <a href="../index.html">Home</a>
   </nav>
 </header>
-<main style="padding:40px 15px;max-width:900px;margin:0 auto">
-  <h1 class="heading">Pickpacker</h1>
-  <p>Unreal5 기반 멀티플레이어 협동 물류 게임(개요 텍스트 추후 확장).</p>
-  <h2 class="heading">핵심 개념</h2>
-  <ul><li>실시간 주문 패킹 & 최적화</li><li>역할 분담(포크·패킹·검수)</li><li>세션 동기화 & 예측 보간</li></ul>
-  <h2 class="heading">기술 스택</h2>
-  <ul><li>Unreal 5</li><li>Replication / GAS (예정)</li><li>Dedicated Server</li></ul>
-  <h2 class="heading">향후</h2>
-  <ul><li>시뮬레이션 기반 난이도 스케일링</li><li>UI 접근성 향상</li></ul>
+
+<main class="project-page proj-with-section-lines">
+  <!-- Hero -->
+  <section class="proj-hero proj-hero-dark">
+    <div class="proj-hero-inner">
+      <h1>Pickpacker <span class="proj-hero-sub"></span></h1>
+      <div class="proj-hero-split">
+        <div class="proj-hero-media">
+          <div class="proj-media video-responsive">
+            <iframe src="https://www.youtube.com/embed/jSH2DfqKqWA" title="Pickpacker Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="proj-hero-meta">
+          <p class="proj-meta-line"><em>Released:</em> 개발 중</p>
+          <p class="proj-meta-line"><em>Team:</em> 소규모 팀</p>
+          <p class="proj-meta-line"><em>Role:</em> 게임플레이 프로그래밍, AI 설계, 멀티플레이 시스템</p>
+          <p class="proj-meta-line"><em>Engine:</em> Unreal Engine 5</p>
+          <p class="proj-meta-line"><em>Platform:</em> PC · Steam</p>
+          <p class="proj-meta-line"><em>Focus:</em> Multiplayer Systems, AI Surveillance, Data-driven Gameplay</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">OVERVIEW</h2>
+      <div class="proj-intro-split">
+        <div class="proj-intro-text">
+          <p>감시 AI 아래에서 택배를 분류하고 포장하며 탈출을 준비하는 협동 멀티플레이 게임입니다.</p>
+          <p>Unreal Engine 5로 개발한 시스템 중심 협동 게임입니다. 플레이어는 창고 안에서 주문 웨이브를 처리하고, 팀 크레딧과 의심도를 관리하며, 게이트와 월드 플래그 조건을 충족해 최종 탈출 또는 엔딩에 도달해야 합니다.</p>
+          <p>저는 이 프로젝트에서 게임플레이 프로그래밍, AI 설계, 멀티플레이 시스템을 맡아, 온라인 세션부터 AI 감시 구조, 포장 및 제출 로직, 탈출 흐름까지 핵심 시스템을 구현했습니다.</p>
+        </div>
+        <div class="proj-intro-media">
+          <img class="proj-intro-img-sm" src="../images/Pickpacker/HighresScreenshot00017.png" alt="Pickpacker Screenshot" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">HIGHLIGHTS</h2>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">A warehouse game built around pressure, not combat.</h3>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>이 프로젝트의 긴장감은 전투보다 감시와 운영에서 나옵니다. 플레이어는 택배를 들고 옮기고, 포장 스테이션에서 조합하고, 제출 구역에 맞는 결과물을 보내며 팀 경제를 유지해야 합니다. 잘못 제출하면 크레딧이 감소하고 의심도가 상승하며, Mother AI와 드론은 플레이어의 수상 행동을 감지해 경고와 처벌로 이어집니다.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">Cooperative play is designed into the rules of the world.</h3>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>협동은 단순한 동시 플레이가 아니라, 시스템적으로 강제됩니다. 팀 크레딧과 팀 의심도를 공유하고, 게이트는 특정 아이템이나 월드 플래그, 플레이어 수 조건을 요구하며, 탈출은 기본적으로 전원 탈출을 기준으로 설계되어 있습니다. 자연스럽게 운반, 포장, 조건 해제, 탈출 준비 같은 역할 분담이 발생합니다.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-section-block">
+        <h3 class="proj-block-title">Built as a networked systems project.</h3>
+        <div class="proj-block-body">
+          <div class="proj-block-desc">
+            <p>이 프로젝트는 세션 생성, 검색, 참가, 로비 준비 상태, 맵 이동 같은 온라인 흐름을 직접 다루고 있습니다. 또한 기존 Blaster 기반 네트워크 기술이 남아 있어 서버 시간 동기화와 서버사이드 리와인드까지 포함한 실전형 멀티플레이 구조를 보여줍니다.</p>
+          </div>
+        </div>
+      </article>
+
+      <p class="proj-cta"><a href="pickpacker-process.html" class="btn-solid">Read more about the development process <i class="fa fa-arrow-right"></i></a></p>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="../index.html#work" class="btn-link">← Work 목록으로</a>
+  </section>
 </main>
-<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="../js/portfolio.js"></script>
-</body></html>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2025 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>

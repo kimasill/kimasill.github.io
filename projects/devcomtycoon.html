@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DevCom Tycoon | Kimasill</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DevCom Tycoon | 게임개발타이쿤 | Kimasill</title>
 <link rel="shortcut icon" href="../favicon.ico" />
-<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="../css/bootstrap.min.css"><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/portfolio.css"></head>
-<body>
+<link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="proj-detail-page">
 <header class="proj-header">
   <div class="proj-header-top">
     <a href="../index.html" class="proj-header-brand">KIMSUNGHYUN - PORTFOLIO</a>
@@ -19,20 +26,169 @@
     <a href="car-classification.html">kCars</a>
     <a href="startup.html">Startup</a>
     <a href="devcomtycoon.html" class="active">DevCom Tycoon</a>
+    <a href="tab-game.html">Tab Game</a>
     <a href="lostark-design.html">Lost Ark</a>
     <a href="../index.html">Home</a>
   </nav>
 </header>
-<main style="padding:40px 15px;max-width:900px;margin:0 auto">
-  <h1 class="heading">DevCom Tycoon</h1>
-  <p>대학 팀 프로젝트 · 3개월 · Java Swing.</p>
-  <h2 class="heading">기여</h2>
-  <ul><li>GUI 구현(레이아웃/이벤트)</li><li>아이템 관리 시스템</li><li>개발 진행/시간 시뮬레이션 로직</li></ul>
-  <h2 class="heading">기술</h2>
-  <ul><li>Java Swing</li><li>MVC 패턴 단순화</li><li>상태 머신 이벤트 처리</li></ul>
-  <h2 class="heading">문서</h2>
-  <p><a class="btn-link" target="_blank" href="https://drive.google.com/file/d/1C08t0M6TUHYIxwltUuUhYMuD4V77EdKN/view">프로젝트 문서</a></p>
+
+<main class="project-page proj-with-section-lines">
+  <!-- Hero -->
+  <section class="proj-hero proj-hero-light">
+    <div class="proj-hero-inner">
+      <h2 class="proj-section-title">게임개발타이쿤</h2>
+      <div class="proj-hero-split proj-hero-split-text-wide">
+        <div class="proj-hero-media">
+          <img class="proj-hero-img-sm" src="../images/DevComTycoon/Title.png" alt="DevCom Tycoon Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="proj-hero-meta">
+          <p class="proj-meta-line"><em>Project Period:</em> 2020.11 ~ 2 months</p>
+          <p class="proj-meta-line"><em>Team:</em> 게발게발 (핵심 멤버 2인)</p>
+          <p class="proj-meta-line"><em>Role:</em> 화면 그래픽 구현, 사물 배치 알고리즘, 경제(아이템 구매/판매) 로직</p>
+          <p class="proj-meta-line"><em>Stack:</em> Java · Java Swing (Eclipse WindowBuilder)</p>
+          <p><a class="btn-link" href="https://drive.google.com/file/d/1C08t0M6TUHYIxwltUuUhYMuD4V77EdKN/view" target="_blank" rel="noopener">프로젝트 문서</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">OVERVIEW</h2>
+      <div class="proj-intro-split">
+        <div class="proj-intro-text">
+          <p>저희 팀은 게임엔진 사용없이, Java Swing만을 활용해서 완벽히 작동하는 게임 시스템을 만들고 싶었습니다. City Game Studio와 같은 게임 개발사 경영 시뮬레이션에서 영감을 받아 타이쿤 게임을 만들기로 했습니다.</p>
+          <br>
+          <p>플레이어는 제한된 초기 자본으로 회사를 설립하고 직원을 고용하며, 다양한 장르와 주제를 조합하여 게임을 개발합니다. 시장 반응을 기반으로 수익과 인지도를 확보하며 회사를 성장시키고, 파산을 피해야 합니다.</p>          
+          <p>경제 시스템, 직원 관리, 개발 진행도, 아이템 배치 등 여러 시스템이 동시에 작동하는 경영 시뮬레이션 구조가 특징입니다.</p>
+          <br>
+          <p>저는 일련의 게임 시스템 구조를 설계하고, 그래픽 렌더링 구조와, 인터랙션 시스템을 중심으로 개발을 담당했습니다. 그리고 함께 협력하여 기술에 대한 문제를 논의 하고 해결하는 과정을 겪었습니다.</p>          
+          <p>또한 모든 아트 에셋을 직접 제작했습니다.</p>    
+        </div>
+        <div class="proj-intro-media">
+          <img class="proj-intro-img-sm" src="../images/DevComTycoon/TitleImg.png" alt="DevCom Tycoon" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 디자인: 아이템 에셋 -->
+  <section class="proj-overview proj-block-alt proj-no-divider">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">게임 디자인</h2>
+      <div class="proj-intro-split" style="margin-bottom:40px">
+        <div class="proj-intro-text">
+          <p>초기에는 2.5D 형태의 사무실 표현을 목표로 했지만, Java Swing 기반 환경에서는 좌표 변환, 스프라이트 깊이 정렬, 클릭 판정과 같은 처리의 복잡도가 높아지는 문제가 있었습니다. 이에 따라 화면 구조를 보다 직관적인 2D 타이쿤 방식으로 재설계했고, 대신 아이템 배치, 직원 이동, 개발/운영 시스템의 완성도를 높이는 방향으로 프로젝트를 발전시켰습니다.</p>
+        </div>
+        <div class="proj-intro-media">
+          <p class="proj-media-caption" style="margin:0 0 10px 0;font-size:0.95em;color:var(--muted)">원래 하려했던 구조 예상도</p>
+          <img src="../images/DevComTycoon/예상도.png" alt="초기 2.5D 예상도" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="proj-core-intent-content">
+        <p>게임 내 오피스에 배치할 수 있는 가구와 소품 아이템들을 직접 제작했습니다. 64×64, 64×128 픽셀 규격의 빈 캔버스에서 책상, 소파, 냉장고, 게임기, 식물 등 다양한 에셋을 픽셀 스타일로 설계했습니다. 플레이어가 마우스로 배치할 수 있는 모든 오브젝트를 포함합니다.</p>
+      </div>
+      <div class="proj-items-grid proj-items-grid-sm">
+        <img src="../images/DevComTycoon/Items/Bililards_64,128.png" alt="당구대" />
+        <img src="../images/DevComTycoon/Items/Cola_64,128.png" alt="콜라" />
+        <img src="../images/DevComTycoon/Items/Desk_64,128.png" alt="책상" />   
+        <img src="../images/DevComTycoon/Items/Drink_64,128.png" alt="음료" />        
+        <img src="../images/DevComTycoon/Items/Aircondithioner_64,128.png" alt="에어컨" />        
+        <img src="../images/DevComTycoon/Items/GameMachine_64,128.png" alt="게임기" />
+        <img src="../images/DevComTycoon/Items/flower1_64,128.png" alt="화분1" />
+        <img src="../images/DevComTycoon/Items/flower2_64,128.png" alt="화분2" />
+        <img src="../images/DevComTycoon/Items/flower3_64,128.png" alt="화분3" />
+        <img src="../images/DevComTycoon/Items/massageChair_64,128.png" alt="안마의자" />
+        <img src="../images/DevComTycoon/Items/Refrigerater_64,128.png" alt="냉장고" />
+        <img src="../images/DevComTycoon/Items/Sofa_64,128.png" alt="소파" />
+      </div>
+      <div class="proj-items-sprite">
+        <img src="../images/DevComTycoon/Items/dev_1.png" alt="개발자 스프라이트 시트" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Java Swing을 통한 인터랙션 -->
+  <section class="proj-overview proj-block-alt proj-no-divider">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">Java Swing을 통한 인터랙션</h2>
+      <div class="proj-core-intent-content">
+        <p>Java Swing의 <code>MouseListener</code>, <code>ActionListener</code> 등을 활용하여 마우스 클릭 이벤트를 화면 좌표로 수신하고, 이를 맵 데이터로 변환하여 오브젝트 배치 가능 여부를 판별했습니다. 상점, 인벤토리, 개발 진행 팝업 등 모든 UI 상호작용은 Swing 컴포넌트와 이벤트 핸들링으로 구현했습니다. 플레이어가 팝업을 조작하는 동안에도 백그라운드 스레드가 게임 상태를 갱신하므로, 멈춤 없는 실시간 시뮬레이션 경험이 유지됩니다.</p>
+      </div>
+      <div class="proj-overview-media-2x2 proj-swing-2x2" style="margin-top:28px">
+        <img src="../images/DevComTycoon/개발화면.png" alt="게임 UI 스크린샷" onerror="this.style.display='none'" />
+        <img src="../images/DevComTycoon/dev이벤트.png" alt="게임 UI 스크린샷" onerror="this.style.display='none'" />
+        <img src="../images/DevComTycoon/dev직원고용.png" alt="게임 UI 스크린샷" onerror="this.style.display='none'" />
+        <img src="../images/DevComTycoon/dev아이템구매창.png" alt="게임 화면" onerror="this.style.display='none'" />
+      </div>   
+      <div class="proj-core-intent-content" style="margin-bottom:16px;margin-top:24px;">
+        <p>아래에서 게임 흐름을 확인하세요</p>
+      </div>
+      <div class="proj-arch-media proj-arch-media-sm" style="margin-bottom:48px">
+        <img src="../images/DevComTycoon/dev게임아키텍처.png" alt="게임 아키텍처 구조" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </section>
+  <!-- 주요 게임 시스템 및 기술적 특징 -->
+  <section class="proj-overview proj-block-alt proj-no-divider">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">멀티스레드 도입 및 독립 AI 아키텍처</h2>     
+        
+        <div class="proj-block-body proj-block-body-full">
+          <div class="proj-block-desc">
+            <p>턴제 방식이 아닌 실시간으로 돌아가는 회사를 구현하기 위해 프로젝트 진행 중 처음으로 스레드(Thread) 개념을 접하고 이를 게임 루프에 적용해 나갔습니다.</p>
+        
+            <p>하지만 여러 시스템이 동시에 작동하면서 구조가 복잡해졌기 때문에 단일 루프로는 관리하기 어려워졌습니다.</p>
+            <p>이 문제를 해결하기 위해 여러 방식을 고민했습니다. 이후 게임 상태 갱신을 담당하는 백그라운드 스레드를 별도로 두는 방식을 고안했습니다. 이방식은 시간 진행과 직원 상태 갱신을 분리하여 관리하고, 직원 객체가 Runnable 인터페이스를 구현하도록 설계하여 각 직원이 독립적인 스레드로 동작하도록 합니다다.</p>            
+          </div>
+        </div>
+      <div class="proj-arch-media" style="margin-top:32px;margin-bottom:48px">
+        <img src="../images/DevComTycoon/dev클래스다이어그램.png" alt="클래스 다이어그램" onerror="this.style.display='none'" />
+        <p class="proj-media-caption">클래스 다이어그램 (객체지향 설계)</p>
+      </div>
+    </section>
+      <section class="proj-overview proj-block-alt proj-no-divider">
+        <div class="proj-container-wide">
+        <h2 class="proj-section-title">아이템 배치 및 공간 운영</h3>
+        <div class="proj-block-body proj-block-body-full">
+          <div class="proj-block-desc">
+            <p>저는 아이템을 맵 위에 직접 배치하도록 하고싶었습니다. 상점에서 구매 → 회사 정보에서 선택 → 사무실 맵 클릭으로 배치하는 흐름으로 진행되어서, Swing 기반이면서도 게임다운 조작감을 구현했습니다.</p>
+            <p>아이템은 장식이 아니라 휴식, 효율, 유지비 같은 수치에 영향을 주므로, 플레이어의 배치 선택이 직원 상태와 회사 운영에 직접 반영됩니다. 책상 구매와 층 확장 기능으로 회사 규모를 단계적으로 키울 수 있도록 설계하여, 공간 운영이 포함된 타이쿤 구조를 경험할 수 있게 했습니다.</p>
+          </div>
+        </div>
+        <div class="proj-overview-media-2x2" style="margin-top:28px">
+          <img src="../images/DevComTycoon/dev회사인벤토리.png" alt="회사 인벤토리" onerror="this.style.display='none'" />
+          <img src="../images/DevComTycoon/dev_UI.png" alt="아이템 구매 상점" onerror="this.style.display='none'" />
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- 프로젝트 회고 -->
+  <section class="proj-overview proj-block-alt proj-no-divider">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">프로젝트 회고</h2>
+      <div class="proj-core-intent-content">
+        <p>이 프로젝트를 진행하는 동안에는 해결책이 명확히 정해져 있지 않은 개발 과정 속에서 다양한 아이디어를 빠르게 비교하고 실험하며 시스템을 발전시켰습니다.</p>
+        <p>작은 규모의 게임 엔진이 동작하는 핵심 원리를 경험할 수 있었기 때문에 매우 흥미로운 경험이었습니다.</p>
+        <p>특히 사용자가 팝업 메뉴를 조작하는 동안에도 게임 내부의 경제 시스템과 직원들의 행동 로직이 멈추지 않고 지속적으로 동작하도록 설계하여, UI와 독립적으로 작동하는 비동기 시뮬레이션 구조를 완성했습니다.</p>
+        <p>이 과정에서의 동기화 문제가 발생할 수 있음을 깨닫고 해결책에 대해 깊은 고민을 했습니다. '처리만 한군데에서 관리하면 어떨까?' 라고 생각했었고, 이런 아키텍처를 설계하는 것이 중요하다는 것을 깨달았습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="https://drive.google.com/file/d/1C08t0M6TUHYIxwltUuUhYMuD4V77EdKN/view" class="btn-solid" target="_blank" rel="noopener">프로젝트 문서 보기 <i class="fa fa-external-link"></i></a>
+    <a href="../index.html#work" class="btn-link">← Work 목록으로</a>
+  </section>
 </main>
-<footer><div class="container"><p style="margin:0">©2025 KIMASILL</p></div></footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="../js/portfolio.js"></script>
-</body></html>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2025 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'neutral'})</script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>

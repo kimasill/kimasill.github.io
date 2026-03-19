@@ -1,7 +1,7 @@
 (function($){
   $(function(){
     // Theme toggle
-    var theme = localStorage.getItem('theme') || 'dark';
+    var theme = localStorage.getItem('theme') || 'light';
     $('body').attr('data-theme', theme);
     $('#theme-toggle').on('click', function(){
       var t = $('body').attr('data-theme') === 'dark' ? 'light' : 'dark';
