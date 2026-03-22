@@ -110,7 +110,7 @@ body[data-theme="dark"] .proj-header{border-bottom-color:rgba(255,255,255,.08)}
 .proj-detail-page .btn-link:hover{color:var(--primary);text-decoration:underline}
 .container-narrow{max-width:calc(960px - 5cm);margin:0 auto;padding:0 24px}
 .proj-container-wide{max-width:calc(1280px);margin:0 auto;padding:0 24px}
-.proj-section-title{font-size:1.85em;font-weight:200;margin:0 0 36px 0;padding-bottom:0;border-bottom:none;color:#1a1d21}
+.proj-section-title{font-size:2em;font-weight:200;margin:0 0 36px 0;padding-bottom:0;border-bottom:none;color:#1a1d21}
 .proj-overview-subtitle{font-size:1.35em;font-weight:200;margin:24px 0 10px 0;color:#1a1d21}
 .proj-subtitle-hr{border:none;height:2px;background:rgba(0,0,0,.15);width:80px;margin:48px 0 14px 0;padding:0}
 .proj-hr-half{border:none;height:1px;background:rgba(0,0,0,.15);width:50%;margin:20px auto;padding:0}
@@ -151,7 +151,7 @@ body[data-theme="dark"] .proj-tech-nav{border-bottom-color:rgba(255,255,255,.1)}
 .proj-hero-light{background:#fff;color:#2d2f2a;padding:80px 0}
 .proj-hero-light h1{font-size:2em;font-weight:200;margin:0 0 20px 0;color:#1a1d21}
 .proj-hero-light .proj-hero-meta p{color:#5a5d58}
-.proj-hero-inner{max-width:calc(1400px - 3cm);margin:0 auto;padding:0 24px}
+.proj-hero-inner{max-width:1280px;margin:0 auto;padding:0 24px}
 .proj-hero-dark h1,.proj-hero-dark .proj-section-title{font-size:2em;font-weight:200;margin:0 0 20px 0;color:#fff}
 .proj-hero-sub{font-weight:300;opacity:.9;font-size:.85em}
 .proj-hero-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin-top:40px}
@@ -167,6 +167,83 @@ body[data-theme="dark"] .proj-tech-nav{border-bottom-color:rgba(255,255,255,.1)}
 .proj-release{font-weight:700;color:#fff}
 
 @media (max-width:768px){.proj-hero-split{grid-template-columns:1fr}.proj-hero-dark h1,.proj-hero-light h1,.proj-hero-dark .proj-section-title{font-size:1.5em}}
+
+/* Pickpacker: 히어로 트레일러 영역 넓게 */
+.proj-hero-pickpacker .proj-hero-split{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:768px){.proj-hero-pickpacker .proj-hero-split{grid-template-columns:1fr}}
+
+/* Pickpacker: Overview — 단일 컬럼 + 루프 영상 3열 */
+.proj-intro-pickpacker-overview .proj-intro-split{grid-template-columns:1fr}
+.pickpacker-overview-videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 32px 0}
+.pickpacker-overview-videos .pickpacker-overview-img{width:100%;height:auto;display:block;background:#0f1418;aspect-ratio:16/9;object-fit:cover;border-radius:0}
+
+/* Pickpacker process: 본문 아래 2열 루프 영상 */
+.pickpacker-process-videos-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:24px 0 28px 0}
+.pickpacker-process-videos-2 .pickpacker-loop{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;background:#0f1418;border-radius:0}
+@media (max-width:768px){.pickpacker-process-videos-2{grid-template-columns:1fr}}
+
+.pickpacker-placement-loop{margin:20px 0 28px 0;max-width:100%}
+.pickpacker-placement-loop .pickpacker-loop{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;background:#0f1418;border-radius:0}
+.pickpacker-placement-caption{margin:20px 0 14px 0;line-height:1.65;color:var(--text)}
+.pickpacker-placement-top-view{margin:0 0 8px 0}
+
+.pickpacker-section-figure{margin:18px 0 8px 0;max-width:100%}
+.pickpacker-section-figure img{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:0;border:1px solid rgba(0,0,0,.08);background:#f0f0f0}
+body[data-theme="dark"] .pickpacker-section-figure img{border-color:rgba(255,255,255,.12);background:#1a1d21}
+
+.pickpacker-ik-grip-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,720px);gap:24px 32px;align-items:start;margin-top:28px;margin-bottom:8px}
+.pickpacker-ik-grip-text{min-width:0}
+.pickpacker-ik-grip-lead{margin-top:0}
+.pickpacker-section-figure-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 24px 0;max-width:100%}
+.pickpacker-section-figure-2--stack{display:flex;flex-direction:column;gap:12px;margin:0;min-width:0}
+/* PICK AND GRAB 오른쪽 열: 두 이미지 좌우 배치 */
+.pickpacker-ik-grip-row .pickpacker-section-figure-2--inline{margin:0;min-width:0}
+.pickpacker-drone-perception-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,720px);gap:24px 28px;align-items:start;margin:20px 0 28px 0}
+.pickpacker-drone-perception-text{min-width:0}
+.pickpacker-drone-perception-figure{margin:0;min-width:0;position:sticky;top:24px;align-self:start}
+.pickpacker-drone-perception-figure img{width:100%;height:auto;display:block;border-radius:0;border:1px solid rgba(0,0,0,.08);background:#f0f0f0;object-fit:contain}
+body[data-theme="dark"] .pickpacker-drone-perception-figure img{border-color:rgba(255,255,255,.12);background:#1a1d21}
+@media (max-width:768px){.pickpacker-drone-perception-row{grid-template-columns:1fr}.pickpacker-drone-perception-figure{position:static;max-width:min(100%,400px);margin-left:auto;margin-right:auto}}
+.pickpacker-section-figure-2 img{width:100%;height:auto;display:block;border-radius:0;border:1px solid rgba(0,0,0,.08);background:#f0f0f0;object-fit:contain}
+body[data-theme="dark"] .pickpacker-section-figure-2 img{border-color:rgba(255,255,255,.12);background:#1a1d21}
+@media (max-width:768px){.pickpacker-ik-grip-row{grid-template-columns:1fr}.pickpacker-section-figure-2--stack{max-width:min(100%,520px);margin-left:auto;margin-right:auto}.pickpacker-ik-grip-row .pickpacker-section-figure-2--inline{max-width:min(100%,560px);margin-left:auto;margin-right:auto}}
+@media (max-width:640px){.pickpacker-section-figure-2:not(.pickpacker-section-figure-2--stack){grid-template-columns:1fr}}
+@media (max-width:900px){.pickpacker-overview-videos{grid-template-columns:1fr}}
+
+/* Pickpacker: HIGHLIGHTS 첫 블록 — 오른쪽 2×2 루프 영상 */
+.pickpacker-highlight-videos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+.pickpacker-highlight-videos .pickpacker-loop{width:100%;height:auto;display:block;background:#0f1418;aspect-ratio:16/9;object-fit:cover}
+@media (max-width:768px){.pickpacker-highlight-videos{grid-template-columns:repeat(2,minmax(0,1fr));max-width:480px;margin:0 auto}}
+
+/* Pickpacker: 멀티엔딩 — 글은 왼쪽 전체 폭(38em 제한 해제), 유튜브는 오른쪽 열 */
+.proj-block-body-pickpacker-ending{grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:32px;align-items:start}
+.proj-block-desc-pickpacker-ending p,.proj-block-desc-pickpacker-ending ul{max-width:none}
+.pickpacker-ending-youtube-wrap,.pickpacker-underground-video-wrap{position:sticky;top:24px;min-width:0}
+.pickpacker-ending-youtube-wrap .video-responsive{background:#000}
+.pickpacker-underground-video-wrap .pickpacker-loop{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;background:#0f1418;border-radius:0}
+@media (max-width:768px){.proj-block-body-pickpacker-ending{grid-template-columns:1fr}.pickpacker-ending-youtube-wrap,.pickpacker-underground-video-wrap{position:static}}
+
+/* Pickpacker: OVERVIEW 아래 — 개발 과정 상세 안내 */
+.proj-pickpacker-process-tease{padding:32px 0 32px 0;background:#fff;border-top:none !important}
+.proj-with-section-lines .proj-pickpacker-process-tease{border-top:none !important}
+.proj-pickpacker-process-tease .proj-divider-short:first-of-type{margin-top:0;margin-bottom:28px}
+.proj-pickpacker-process-tease .proj-divider-short:last-of-type{margin-top:28px;margin-bottom:0}
+/* tease 다음 HIGHLIGHTS: 섹션 전체 폭 구분선 제거(짧은 hr만 사용) */
+.proj-with-section-lines .proj-pickpacker-process-tease + .proj-block-alt{border-top:none !important}
+.proj-pickpacker-process-tease-title{font-size:1.85em;font-weight:300;margin:0 0 18px 0;line-height:1.25;color:#4a90d9}
+.proj-pickpacker-process-tease-title-link{color:inherit;text-decoration:none}
+.proj-pickpacker-process-tease-title-link:hover{text-decoration:underline}
+.proj-pickpacker-process-tease-lead{margin:0 0 14px 0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300}
+.proj-pickpacker-process-tease-lead a{color:#4a90d9;text-decoration:underline;font-weight:500}
+.proj-pickpacker-process-tease-lead a:hover{color:#357abd}
+.proj-pickpacker-process-tease-sub{margin:0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease{background:var(--surface)}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title{color:#6eb3f7}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title-link{color:inherit}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead{color:var(--muted)}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead a{color:#6eb3f7}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead a:hover{color:#8ec5ff}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-sub{color:var(--muted)}
 
 /* Tab Game: hero 이미지 영역 제한 */
 .proj-hero-tabgame .proj-hero-split-text-wide{grid-template-columns:minmax(0,0.6fr) 1fr}
@@ -350,7 +427,7 @@ body[data-theme="light"] .proj-hover-desc-tooltip{background:rgba(255,255,255,.9
 .proj-section-blocks.proj-tech-subsection::before{content:'';display:block;width:72px;height:2px;background:rgba(0,0,0,.2);margin:0 0 48px 0;padding:0}
 body[data-theme="dark"] .proj-section-blocks.proj-tech-subsection::before{background:rgba(255,255,255,.25)}
 .proj-section-block{padding:56px 0;border-bottom:none}
-.proj-block-title{font-size:1.4em;font-weight:200;margin:0 0 20px 0;color:#1a1d21}
+.proj-block-title{font-size:1.5em;font-weight:200;margin:0 0 20px 0;color:#1a1d21}
 .proj-section-block + .proj-section-block{padding-top:72px}
 .proj-block-body{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;align-items:start;width:100%}
 .proj-block-body-full{grid-template-columns:1fr}
@@ -414,6 +491,13 @@ body[data-theme="dark"] .proj-section-blocks.proj-tech-subsection::before{backgr
 .proj-core-intent-content ul{margin:0 0 20px 0;padding-left:24px;line-height:1.7;color:#4a4d48;font-size:1em;font-weight:300}
 .proj-core-intent-content li{margin-bottom:12px}
 .proj-blockquote{margin:20px 0;padding:16px 24px;border-left:4px solid var(--primary);background:var(--alt);color:#4a4d48;font-style:italic}
+body[data-theme="dark"] .proj-detail-page .proj-blockquote{color:var(--muted);background:rgba(255,255,255,.04)}
+
+/* Pickpacker process: Mermaid flowchart */
+.pickpacker-mermaid-wrap{margin:24px 0 32px 0;padding:20px 16px 12px 16px;overflow-x:auto;background:#f8f9fa;border:1px solid rgba(0,0,0,.08);border-radius:0;max-width:100%}
+.pickpacker-mermaid-wrap .mermaid{display:flex;justify-content:center;min-height:120px}
+.pickpacker-mermaid-wrap svg{max-width:100%;height:auto}
+body[data-theme="dark"] .pickpacker-mermaid-wrap{background:#141814;border-color:rgba(255,255,255,.12)}
 .proj-core-intent-content code,.proj-block-desc code{background:#f0f0f0;padding:2px 6px;border-radius:3px;font-size:.9em}
 
 /* 4. Network: ???????? (???? ?????) */
@@ -477,6 +561,20 @@ body[data-theme="dark"] .proj-table.proj-table-light th{background:rgba(255,255,
 .proj-inline-desc{color:#6a6e63;font-size:0.95em;font-style:italic}
 body[data-theme="dark"] .proj-inline-desc{color:#a6ad9a}
 .proj-tree{font-family:monospace;font-size:0.9em;background:#f5f5f5;padding:16px 20px;border-radius:0;overflow-x:auto;margin:16px 0;line-height:1.6;color:#4a4d48}
+
+/* Pickpacker process: 렌더링 최적화 섹션 */
+.pickpacker-render-lead{margin-bottom:8px}
+.pickpacker-render-figure{margin:18px auto 28px auto;max-width:min(100%,920px);text-align:center}
+.pickpacker-render-figure img{max-width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;border-radius:0;border:1px solid rgba(0,0,0,.08);background:#f0f0f0;object-fit:contain}
+body[data-theme="dark"] .pickpacker-render-figure img{border-color:rgba(255,255,255,.12);background:#1a1d21}
+.pickpacker-render-subtitle{font-size:1.15em;font-weight:600;margin:28px 0 12px 0;color:#1a1d21;line-height:1.35}
+.pickpacker-render-subtitle:first-of-type{margin-top:12px}
+body[data-theme="dark"] .pickpacker-render-subtitle{color:#e7eadf}
+.pickpacker-render-list{margin:12px 0 20px 0;padding-left:1.35em;line-height:1.7}
+.pickpacker-render-list li{margin:10px 0}
+.pickpacker-render-table-wrap{overflow-x:auto;margin:20px 0 12px 0;-webkit-overflow-scrolling:touch}
+.pickpacker-render-metrics-table{max-width:none;width:100%;min-width:520px;margin-top:8px}
+body[data-theme="dark"] .pickpacker-render-metrics-table td{color:#c8cfc0}
 
 /* Page width: index.html?????? ????(proj-container-wide 1280px)?? ?????? */
 /* Bootstrap .container??width:750/970/1170??? ??????width:100%????????????? */

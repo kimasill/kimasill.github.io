@@ -14,7 +14,7 @@
       ko: {
         'nav.home':'Home','nav.work':'Work','nav.about':'About','nav.contact':'Contact',
         'hero.title':'KIMASILL','hero.subtitle':'Game Developer / Programmer',
-        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'자세히','common.process':'Process',
+        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'포트폴리오 페이지','common.process':'개발 프로세스 페이지',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'About',
         'about.p1':'저는 다년간 게임을 만들어온 레벨/시스템 디자이너이자 아티스트, 협업자, 프로그래머이자 스토리텔러입니다.',
@@ -27,7 +27,7 @@
       en: {
         'nav.home':'Home','nav.work':'Work','nav.about':'About','nav.contact':'Contact',
         'hero.title':'KIMASILL','hero.subtitle':'Game Developer / Programmer',
-        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'Details','common.process':'Process',
+        'work.title':'Featured Work','filter.all':'All','filter.tools':'Tools','common.details':'Portfolio page','common.process':'Development process',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'About',
         'about.p1':'I’m a level and systems designer, artist, creative collaborator, writer and storyteller with 25+ years experience making games.',
@@ -40,8 +40,9 @@
     };
     function applyI18n(lang){
       $('[data-i18n]').each(function(){
-        var key = $(this).data('i18n');
-        if(dict[lang] && dict[lang][key]){
+        // attr: 점(.)이 들어간 키(common.process)는 jQuery .data()로 조회 시 깨질 수 있음
+        var key = $(this).attr('data-i18n');
+        if(dict[lang] && key && dict[lang][key]){
           $(this).text(dict[lang][key]);
         }
       });
