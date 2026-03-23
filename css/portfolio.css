@@ -58,6 +58,17 @@ body[data-theme="dark"] .work-card .work-meta p.work-detail{color:var(--muted)}
 .btn-link{color:var(--primary-600);text-decoration:underline}
 .btn-link:hover{color:var(--primary);text-decoration:underline}
 
+/* 프로젝트 상세: 상세·가이드 이동 파란 텍스트 링크 (Pickpacker tease #4a90d9 톤) */
+.proj-detail-page a.proj-detail-accent-link{
+	color:#4a90d9;
+	font-weight:500;
+	text-decoration:underline;
+	text-underline-offset:2px;
+}
+.proj-detail-page a.proj-detail-accent-link:hover{color:#357abd}
+body[data-theme="dark"] .proj-detail-page a.proj-detail-accent-link{color:#6eb3f7}
+body[data-theme="dark"] .proj-detail-page a.proj-detail-accent-link:hover{color:#8ec5ff}
+
 /* Solid button for About resume CTA */
 .btn-solid{display:inline-block;background:var(--primary);color:#fff;border-radius:8px;padding:10px 14px;font-weight:700}
 .btn-solid:hover{color:#fff;background:var(--primary-600);text-decoration:none}
@@ -364,7 +375,7 @@ body[data-theme="dark"] .pickpacker-section-figure-2 img{border-color:rgba(255,2
 .proj-pickpacker-process-tease-lead{margin:0 0 14px 0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300}
 .proj-pickpacker-process-tease-lead a{color:#4a90d9;text-decoration:underline;font-weight:500}
 .proj-pickpacker-process-tease-lead a:hover{color:#357abd}
-.proj-pickpacker-process-tease-sub{margin:0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300;text-align:center}
+.proj-pickpacker-process-tease-sub{margin:0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300;text-align:left}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease{background:var(--surface)}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title{color:#6eb3f7}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title-link{color:inherit}
@@ -372,6 +383,13 @@ body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead{co
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead a{color:#6eb3f7}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-lead a:hover{color:#8ec5ff}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-sub{color:var(--muted)}
+/* Pickpacker: HIGHLIGHTS 하단 — 상단 tease와 동일한 큰 파란 제목 링크 */
+.proj-pickpacker-highlights-cta{margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid rgba(0,0,0,.08)}
+.proj-pickpacker-highlights-cta .proj-pickpacker-process-tease-title{margin-bottom:0}
+body[data-theme="dark"] .proj-detail-page .proj-pickpacker-highlights-cta{border-top-color:rgba(255,255,255,.12)}
+/* 관련 문서 등 리스트 링크(Startup 등) */
+.proj-doc-links-accent{list-style:disc;padding-left:1.25em;margin:12px 0 0 0;line-height:1.8}
+.proj-doc-links-accent a.proj-detail-accent-link{font-weight:500}
 
 /* Tab Game: hero 이미지 영역 제한 */
 .proj-hero-tabgame .proj-hero-split-text-wide{grid-template-columns:minmax(0,0.6fr) 1fr}

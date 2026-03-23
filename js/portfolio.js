@@ -21,10 +21,11 @@
         'work.title':'FEATURED WORK','filter.all':'All','filter.tools':'Tools','common.details':'포트폴리오 페이지','common.process':'개발 프로세스 페이지',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'ABOUT',
-        'about.p1':'저는 단순히 스크립트를 작성하는 것뿐만 아니라 생태계 구축에 대한 깊은 열정을 가진 게임 개발자이자 시스템 아키텍트, 월드 디자이너입니다. 픽셀과 코드에 생명을 불어넣어 시뮬레이션 중심의 세계와 역동적인 AI를 만드는 것이 진정한 원동력입니다.',
-        'about.p2':'저는 PCG 던전 제너레이터에서 끝없는 절차적 미로를 생성하고, 2D MMORPG에서 원활한 네트워크 상호작용을 만들어냈으며, 멀티플레이어 협동 프로젝트에서 협업 게임플레이에 생명을 불어넣었습니다. 전통적인 게임 논리를 넘어 딥러닝 분류 모델을 개발하여 데이터와 AI의 교차점을 탐구하기도 했습니다.',
-        'about.p3':'제 작업은 Unreal Engine, Unity, 확장 가능한 백엔드 서버, 머신 러닝을 포함한 다양한 환경과 기술에 걸쳐 있으며, 다양한 시스템에서 복잡한 기술적 매듭을 풀 수 있는 직접적인 경험을 제공합니다.',
-        'about.p4':'저의 프로 여정은 이제 막 시작되었지만, 제 야망은 무궁무진합니다. 저는 끊임없이 배우고, 기술적 경계를 허물며, 게임 제작의 다음 큰 도전을 간절히 받아들이고자 하는 열망에 힘입어 성장하고 있습니다.',
+        'about.p1':'저는 게임 개발자이자 레벨 및 시스템 디자이너, 스토리텔러로서 다년간의 게임 개발 경험을 비롯한 시스템 제작 경험을 가지고 있으며, 수백 가지 이상의 게임을 즐겨 온 게이머이기도 합니다.',
+        'about.p2':'저는 사람들에게 깊게 기억되며 마음을 움직이는 경험을 주려고 노력하며, 그것을 창조해 내는 것에 소질이 있고 제 전문 분야입니다. 어릴 적 봤던 히가시노 게이고의 소설들은 내러티브를 어떻게 전달하는가에 대한 확고한 답을 줬고, SF 소설들—특히 류츠신 \'삼체\'를 접하며 상상력은 더 커지고, 단단해졌습니다.',
+        'about.p3':'저는 게임을 비롯한 레벨 생성 퀄리티를 상승시키기 위해 최신 기술 PCG를 활용해 절차적 레벨 생성 모듈을 구현해냈고, 데디케이티드 서버 구조를 가진 2D MMORPG의 매끄러운 네트워크 환경을 구축했으며, 전통적인 게임 로직에 머물지 않고, 딥러닝 분류 모델을 개발하며 데이터와 AI가 만들어낼 새로운 가능성을 탐구하기도 했습니다.',
+        'about.p4':'제 작업은 언리얼 엔진(Unreal Engine), 유니티(Unity)와 같은 상용 엔진에 한정되지 않습니다. Java, C#의 라이브러리만으로도 생동감 넘치는 게임을 만들어 낸 경험이 있으며 어떠한 환경에도 도전하고 성공해낼 자신이 있습니다.',
+        'about.p5':'다양한 사람들과 협업하고, 끊임없이 배우고 도전해 왔습니다. 앞으로도 기꺼이 변화를 받아들이고 새로운 경험을 찾아 모험을 떠날 것입니다.',
         'about.cta':'이력서 다운로드'
       },
       en: {
@@ -33,10 +34,11 @@
         'work.title':'FEATURED WORK','filter.all':'All','filter.tools':'Tools','common.details':'Portfolio page','common.process':'Development process',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'ABOUT',
-        'about.p1':'I am not someone who merely writes scripts—I am a game developer, systems architect, and world designer with a deep passion for building ecosystems. Breathing life into pixels and code to create simulation-driven worlds and dynamic AI is what truly drives me.',
-        'about.p2':'I have generated endless procedural mazes in a PCG dungeon generator, built seamless network interactions in a 2D MMORPG, and brought cooperative gameplay to life in a multiplayer co-op project. Beyond traditional game logic, I have also developed deep learning classification models to explore the intersection of data and AI.',
-        'about.p3':'My work spans Unreal Engine, Unity, scalable backend servers, machine learning, and many other environments and technologies—offering hands-on experience untangling complex technical knots across diverse systems.',
-        'about.p4':'My professional journey has only just begun, but my ambition is boundless. I am growing fueled by the drive to keep learning, to push technical boundaries, and to eagerly embrace the next great challenge in game development.',
+        'about.p1':'I am a game developer, level and systems designer, and storyteller with years of experience building games and systems—and a gamer who has enjoyed hundreds of titles.',
+        'about.p2':'I strive to give people experiences that stay with them and move them; creating those experiences is both my strength and my focus. Keigo Higashino\'s novels showed me early how narrative can be delivered with clarity; science fiction—especially Liu Cixin\'s Three-Body Problem—expanded and solidified my imagination.',
+        'about.p3':'To raise the quality of level creation—including in games—I have leveraged modern PCG to deliver procedural level modules, built smooth networked play for a 2D MMORPG on a dedicated-server architecture, and ventured beyond classic game logic into deep learning classifiers to explore what data and AI can unlock.',
+        'about.p4':'My work is not limited to commercial engines like Unreal Engine or Unity. I have shipped lively games using only Java and C# libraries, and I am confident I can take on and succeed in any environment.',
+        'about.p5':'I have collaborated with many people, learned constantly, and kept reaching. I will keep embracing change and seeking new experiences ahead.',
         'about.cta':'Download Resume'
       }
     };
