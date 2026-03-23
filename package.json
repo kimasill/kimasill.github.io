@@ -4,7 +4,8 @@
   "description": "",
   "main": "js/scripts.js",
   "scripts": {
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "serve": "npx --yes serve . -l 3000"
   },
   "keywords": [
     "portfolio",

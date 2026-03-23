@@ -4,11 +4,12 @@
 :root{
 	--bg:#ffffff;
 	--surface:#ffffff;
-	--text:#2d2f2a;        /* deep olive-charcoal */
-	--muted:#6a6e63;       /* muted olive gray */
+	/* Light mode: align with project pages (e.g. dawnstar) */
+	--text:#1a1d21;
+	--muted:#4a4d48;
 	--primary:#9aa06a;     /* khaki accent */
 	--primary-600:#8b915f;
-	--alt:#f3f4f0;         /* soft off-white with green tint */
+	--alt:#f3f4f0;         /* soft off-white with green tint (blockquotes, subtle bands) */
 }
 body[data-theme="dark"]{
 	--bg:#0e1110;          /* near-black with green tint */
@@ -22,9 +23,13 @@ body[data-theme="dark"]{
 
 /* Base overrides */
 body{background:var(--bg);color:var(--text)}
+/* index: 세부 페이지(.proj-detail-page)와 동일 기준 — body 기본 16px이면 같은 em이라도 픽셀이 더 커 보였음 */
+body.page-home{font-size:15px;line-height:1.65}
 header a{color:var(--primary) !important}
 header a:hover{color:var(--primary-600) !important}
 .background-alt{background:var(--alt) !important}
+/* Index Featured Work: same white band as dawnstar .proj-intro / .proj-block-alt */
+body:not([data-theme="dark"]) #work.background-alt{background:#fff !important}
 #about h2,#experience h2,#education h2,#projects h2,#skills h2,#contact h2,.heading{color:var(--text) !important}
 #about p,.vtimeline-content p,.education-block p,.project-info p,.optional-section-block p{color:var(--muted) !important}
 #contact{background:var(--primary) !important}
@@ -36,12 +41,8 @@ header a:hover{color:var(--primary-600) !important}
 .theme-dark#lead #lead-content{position:relative;z-index:2}
 .theme-dark#lead #lead-overlay{position:absolute;z-index:1}
 .theme-dark#lead #lead-down{position:absolute;z-index:2}
-.filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 25px 0}
-.filter-bar .filter-btn{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:20px;padding:6px 12px;font-size:.95em;transition:.2s}
-.filter-bar .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
-.filter-bar .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 /* Dean Tate style: title above image, description below, 2 cols */
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 32px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:144px 32px}
 .work-card{position:relative;background:transparent;border:none;overflow:visible;transition:opacity .2s}
 .work-card:hover{opacity:.95}
 .work-title{margin:0 0 42px 0;font-size:1.5em;font-weight:300}
@@ -49,8 +50,9 @@ header a:hover{color:var(--primary-600) !important}
 .work-title a:hover{color:var(--primary)}
 .work-card .work-media{display:block;overflow:hidden;aspect-ratio:16/9;background:#1a1d21;margin-bottom:42px}
 .work-card .work-meta{padding:0;margin:0;max-width:42em}
-.work-card .work-meta p{margin:0 0 10px 0;font-size:.95em;line-height:1.75;color:var(--muted)}
-.work-card .work-meta p.work-detail{margin:0 0 8px 0;font-size:.88em;line-height:1.6;color:var(--muted)}
+.work-card .work-meta p{margin:0 0 18px 0;font-size:.95em;line-height:1.95;color:var(--muted)}
+.work-card .work-meta p.work-detail{margin:0 0 18px 0;font-size:.88em;line-height:1.8;color:#5a5d58}
+body[data-theme="dark"] .work-card .work-meta p.work-detail{color:var(--muted)}
 .work-actions{display:flex;gap:12px;margin-top:12px}
 @media only screen and (max-width: 768px){.work-grid{grid-template-columns:1fr}}
 .btn-link{color:var(--primary-600);text-decoration:underline}
@@ -64,6 +66,8 @@ header a:hover{color:var(--primary-600) !important}
 .header-controls{position:absolute;left:15px;top:10px;display:flex;gap:8px}
 #lang-toggle{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:6px;padding:4px 8px}
 #theme-toggle{border:1px solid #b9bfc4;background:#fff;color:#374054;border-radius:6px;padding:4px 8px}
+body:not([data-theme="dark"]) header:not(.proj-header) #lang-toggle,
+body:not([data-theme="dark"]) header:not(.proj-header) #theme-toggle{border-color:#bbb;color:#4a4d48}
 
 /* Project detail page: Dean Tate style header (title + nav, no Back) - 섹션과 정렬 */
 .proj-detail-page header,.proj-header{position:relative;text-align:left;padding-top:24px;padding-bottom:20px;padding-left:max(24px,calc((100% - 1280px) / 2 + 24px));padding-right:max(24px,calc((100% - 1280px) / 2 + 24px));background:var(--bg);border-bottom:1px solid rgba(0,0,0,.08)}
@@ -77,6 +81,130 @@ body[data-theme="dark"] .proj-header{border-bottom-color:rgba(255,255,255,.08)}
 .proj-header-nav a.active{color:var(--text);font-weight:700;background:transparent}
 .proj-header .header-controls{position:static;left:auto;top:auto}
 .proj-header #lang-toggle,.proj-header #theme-toggle{border:none;background:transparent;border-radius:0;padding:6px 10px;cursor:pointer}
+/* index: 프로젝트 헤더 좌우 패딩을 본문(.page-home .container) 1120px와 맞춤 */
+body.page-home .proj-header{padding-left:max(24px,calc((100% - 1220px) / 2 + 24px));padding-right:max(24px,calc((100% - 1220px) / 2 + 24px))}
+body.page-home .proj-header-top{justify-content:flex-start}
+/* 프로젝트 네비 직후 About 상단 여백 → 그 다음 Featured Work */
+body.page-home #about{padding-top:4cm;padding-bottom:4.5rem}
+@media (max-width:768px){
+	body.page-home #about{padding-top:2.5rem;padding-bottom:3rem}
+}
+/* index: styles.css #about 의 border-bottom(전체 너비 선)이 Featured Work 위에 겹쳐 보이므로 제거 — 구분은 hr.proj-divider-short만 사용 */
+body.page-home #about{border-bottom:none !important}
+body.page-home #work{padding-top:1.5rem}
+@media (max-width:768px){
+	body.page-home #work{padding-top:1.25rem}
+}
+body.page-home #about .heading{margin-bottom:2rem}
+@media (max-width:768px){
+	body.page-home #about .heading{margin-bottom:1.5rem}
+}
+body.page-home #work .heading{margin-bottom:4rem}
+@media (max-width:768px){
+	body.page-home #work .heading{margin-bottom:2.5rem}
+}
+/* index: 세부 프로젝트 페이지와 동일 타이포 (.proj-section-title / .proj-block-title / .proj-block-desc) */
+body.page-home #work .heading,
+body.page-home #about .heading{
+	font-size:2em !important;
+	font-weight:200 !important;
+	color:#1a1d21 !important;
+	letter-spacing:normal;
+}
+/* styles.css .heading:after(50px 밑줄) 제거 — About/FEATURED WORK 위 hr만 남김 */
+body.page-home #work h2.heading::after,
+body.page-home #work .heading::after,
+body.page-home #about h2.heading::after,
+body.page-home #about .heading::after{
+	content:none !important;
+	display:none !important;
+	width:0 !important;
+	height:0 !important;
+	background:transparent !important;
+}
+body.page-home .work-title{
+	font-size:1.5em;
+	font-weight:200;
+	letter-spacing:normal;
+}
+body.page-home .work-title a{color:#1a1d21}
+body.page-home .work-card .work-meta p{
+	font-size:1em !important;
+	font-weight:300 !important;
+	line-height:1.7 !important;
+	color:#4a4d48 !important;
+	margin:0 0 12px 0 !important;
+}
+body.page-home .work-card .work-meta p.work-detail{
+	font-size:1em !important;
+	font-weight:300 !important;
+	line-height:1.7 !important;
+	color:#5a5d58 !important;
+	margin:0 0 12px 0 !important;
+}
+body.page-home #about p{
+	font-size:1em !important;
+	font-weight:300 !important;
+	line-height:1.7 !important;
+	color:#4a4d48 !important;
+	margin:0 0 12px 0 !important;
+}
+body[data-theme="dark"].page-home #work .heading,
+body[data-theme="dark"].page-home #about .heading{color:var(--text) !important}
+body[data-theme="dark"].page-home .work-title a{color:var(--text) !important}
+body[data-theme="dark"].page-home .work-card .work-meta p,
+body[data-theme="dark"].page-home .work-card .work-meta p.work-detail,
+body[data-theme="dark"].page-home #about p{color:var(--muted) !important}
+/* index About: 이미지 왼쪽 + 텍스트 (헤더 네비 바로 아래) */
+body.page-home .about-home-row{align-items:flex-start}
+body.page-home .about-home-photo img{display:block;width:100%;max-width:100%;height:auto;object-fit:cover;border-radius:4px;background:#1a1d21}
+@media (max-width:991px){
+	body.page-home .about-home-photo{margin-bottom:1.25rem}
+}
+body.page-home .about-home-cta{margin-top:16px}
+body.page-home .about-home-resume{
+	font-weight:500;
+	display:inline-block;
+	padding:0;
+	background:transparent !important;
+	border:none !important;
+	border-radius:0 !important;
+	box-shadow:none !important;
+}
+body.page-home .about-home-social{
+	display:flex;
+	flex-wrap:wrap;
+	gap:18px 22px;
+	align-items:center;
+	margin-top:1rem;
+}
+body.page-home .about-social-link{
+	color:#1a1d21;
+	font-size:1.35em;
+	line-height:1;
+	text-decoration:none;
+	opacity:0.88;
+	transition:opacity .2s,color .2s;
+}
+body.page-home .about-social-link:hover{
+	opacity:1;
+	color:var(--primary-600);
+	text-decoration:none;
+}
+body.page-home .about-social-tistory .about-social-tistory-mark{
+	display:inline-block;
+	font-weight:800;
+	font-size:0.95em;
+	letter-spacing:0.02em;
+}
+body[data-theme="dark"].page-home .about-social-link{color:var(--text)}
+body[data-theme="dark"].page-home .about-social-link:hover{color:var(--primary-600)}
+/* Footer: About과 동일한 소셜 링크, 우측 정렬 */
+body.page-home footer .footer-home-social{
+	justify-content:flex-end;
+	margin-top:8px;
+}
+body.page-home footer .footer-home-social .about-social-link{display:inline-flex;align-items:center;justify-content:center}
 .proj-detail-page .btn-solid{border-radius:0;border:none;font-weight:500}
 
 /* Reveal animation */
@@ -236,7 +364,7 @@ body[data-theme="dark"] .pickpacker-section-figure-2 img{border-color:rgba(255,2
 .proj-pickpacker-process-tease-lead{margin:0 0 14px 0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300}
 .proj-pickpacker-process-tease-lead a{color:#4a90d9;text-decoration:underline;font-weight:500}
 .proj-pickpacker-process-tease-lead a:hover{color:#357abd}
-.proj-pickpacker-process-tease-sub{margin:0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300}
+.proj-pickpacker-process-tease-sub{margin:0;line-height:1.75;color:#4a4d48;font-size:1em;font-weight:300;text-align:center}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease{background:var(--surface)}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title{color:#6eb3f7}
 body[data-theme="dark"] .proj-detail-page .proj-pickpacker-process-tease-title-link{color:inherit}
@@ -581,5 +709,113 @@ body[data-theme="dark"] .pickpacker-render-metrics-table td{color:#c8cfc0}
 @media (min-width:768px){.container{width:100%;max-width:1280px}}
 @media (min-width:992px){.container{width:100%;max-width:1280px}}
 @media (min-width:1200px){.container{width:100%;max-width:1280px}}
-/* Work ?? ???: ??? ???? (1440px), width ????????? ??? ???? ??? */
-#work .container{width:100%;max-width:1280px;}
+/* index.html(.page-home): 콘텐츠 폭을 1280px보다 살짝 좁게 (#work .container 단독 규칙은 ID 우선순위로 이 설정을 막아 제거함) */
+@media (min-width:768px){
+	.page-home .container{max-width:1220px}
+}
+
+/* Home: Contact — 상단 여백 + 카드형 폼 */
+body.page-home #contact{
+	padding-top:4.5rem;
+	padding-bottom:4rem;
+	padding-left:15px;
+	padding-right:15px;
+	text-align:left;
+}
+body.page-home #contact .contact-inner{
+	max-width:560px;
+	margin:0 auto;
+}
+body.page-home #contact .contact-heading{
+	margin:0 0 10px 0;
+	color:#fff;
+	font-weight:200;
+	letter-spacing:0.06em;
+	text-transform:uppercase;
+	font-size:clamp(1.35rem,3vw,1.75rem);
+}
+body.page-home #contact .contact-lead{
+	margin:0 0 1.75rem 0;
+	color:rgba(255,255,255,.88);
+	font-weight:300;
+	font-size:0.95em;
+	line-height:1.55;
+	max-width:36em;
+}
+body.page-home #contact #contact-form{
+	max-width:none;
+	margin:0;
+	padding:1.75rem 1.5rem 1.6rem;
+	background:rgba(255,255,255,.1);
+	border:1px solid rgba(255,255,255,.18);
+	border-radius:14px;
+	backdrop-filter:blur(10px);
+	-webkit-backdrop-filter:blur(10px);
+	box-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+body.page-home #contact #contact-form .contact-label{
+	display:block;
+	margin:0 0 6px 0;
+	font-size:0.78rem;
+	font-weight:500;
+	letter-spacing:0.04em;
+	text-transform:uppercase;
+	color:rgba(255,255,255,.75);
+}
+body.page-home #contact #contact-form .contact-label + input{margin-top:0}
+body.page-home #contact #contact-form input,
+body.page-home #contact #contact-form textarea{
+	display:block;
+	width:100%;
+	padding:12px 14px;
+	border-radius:8px;
+	border:1px solid rgba(0,0,0,.1);
+	margin-bottom:14px;
+	background:rgba(255,255,255,.96);
+	color:#1a1d21;
+	font-size:0.95em;
+	transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+body.page-home #contact #contact-form input::placeholder,
+body.page-home #contact #contact-form textarea::placeholder{
+	color:#6a6e63;
+	opacity:1;
+}
+body.page-home #contact #contact-form textarea{
+	height:auto;
+	min-height:140px;
+	resize:vertical;
+	margin-bottom:18px;
+}
+body.page-home #contact #contact-form input:focus,
+body.page-home #contact #contact-form textarea:focus{
+	outline:none;
+	border-color:var(--primary-600,#8a9060);
+	box-shadow:0 0 0 3px rgba(154,160,106,.28);
+	background:#fff;
+}
+body.page-home #contact #contact-form button.contact-submit{
+	display:block;
+	width:100%;
+	margin-top:4px;
+	padding:12px 18px;
+	border-radius:8px;
+	border:none;
+	background:#fff;
+	color:var(--primary);
+	font-weight:600;
+	font-size:0.95em;
+	letter-spacing:0.04em;
+	cursor:pointer;
+	box-shadow:0 2px 8px rgba(0,0,0,.1);
+	transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+}
+body.page-home #contact #contact-form button.contact-submit:hover{
+	transform:translateY(-1px);
+	box-shadow:0 8px 24px rgba(0,0,0,.15);
+	background:#f8f9f6;
+}
+body.page-home #contact #contact-form button.contact-submit:focus-visible{
+	outline:2px solid #fff;
+	outline-offset:3px;
+}
