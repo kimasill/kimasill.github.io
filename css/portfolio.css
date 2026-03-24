@@ -166,6 +166,30 @@ body[data-theme="dark"].page-home .work-title a{color:var(--text) !important}
 body[data-theme="dark"].page-home .work-card .work-meta p,
 body[data-theme="dark"].page-home .work-card .work-meta p.work-detail,
 body[data-theme="dark"].page-home #about p{color:var(--muted) !important}
+/* Featured Work: 링크는 이미지 바로 아래, 메타는 라벨·값 구분 */
+body.page-home .work-card .work-media{margin-bottom:18px}
+body.page-home .work-links{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin:0 0 26px 0;max-width:42em}
+body.page-home .work-links .work-actions{margin:0;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+body.page-home .work-card .work-links .btn-link,
+body.page-home .work-card .work-links .btn-link:visited{color:#4a90d9}
+body.page-home .work-card .work-links .btn-link:hover{color:#3a7abf}
+body.page-home .work-card .work-meta p.work-desc,
+body.page-home .work-card .work-meta p.work-detail{line-height:1.88 !important;margin:0 0 18px 0 !important}
+body.page-home .work-card .work-meta .work-detail-label,
+body.page-home .work-links .work-detail-label{
+	font-size:1.07em;
+	font-weight:300;
+	color:#2d3028;
+	letter-spacing:-0.02em;
+}
+body.page-home .work-card .work-meta .work-detail-label{font-style:italic}
+body.page-home .work-links .work-detail-label{flex:0 0 auto;font-style:normal}
+body.page-home .work-card .work-meta p.work-desc,
+body.page-home .work-card .work-meta p.work-detail{font-style:normal}
+body.page-home .work-card .work-meta .work-detail-value{font-style:normal}
+body.page-home .work-card .work-meta .work-detail-sep{margin-inline-end:0.2em;font-style:italic}
+body[data-theme="dark"].page-home .work-card .work-meta .work-detail-label,
+body[data-theme="dark"].page-home .work-links .work-detail-label{color:var(--text) !important}
 /* index About: 이미지 왼쪽 + 텍스트 (헤더 네비 바로 아래) */
 body.page-home .about-home-row{align-items:flex-start}
 body.page-home .about-home-photo img{display:block;width:100%;max-width:100%;height:auto;object-fit:cover;border-radius:4px;background:#1a1d21}
@@ -732,7 +756,7 @@ body[data-theme="dark"] .pickpacker-render-metrics-table td{color:#c8cfc0}
 @media (min-width:1200px){.container{width:100%;max-width:1280px}}
 /* index.html(.page-home): 콘텐츠 폭을 1280px보다 살짝 좁게 (#work .container 단독 규칙은 ID 우선순위로 이 설정을 막아 제거함) */
 @media (min-width:768px){
-	.page-home .container{max-width:1280px}
+	.page-home .container{max-width:1225px}
 }
 
 /* Home: Contact — 상단 여백 + 카드형 폼 */
