@@ -225,6 +225,7 @@ body.page-home footer .footer-home-social .about-social-link{display:inline-flex
 /* Work media (video) - fill container, no empty space */
 .work-media{display:block}
 .work-video{display:block;width:100%;height:100%;object-fit:cover;background:#1a1d21}
+.work-thumb{display:block;width:100%;height:100%;object-fit:cover;background:#1a1d21}
 
 /* Hero video */
 .hero-video-wrapper{position:absolute;inset:0;overflow:hidden;z-index:0}
@@ -255,6 +256,8 @@ body.page-home footer .footer-home-social .about-social-link{display:inline-flex
 .proj-hr-half{border:none;height:1px;background:rgba(0,0,0,.15);width:50%;margin:20px auto;padding:0}
 .proj-hr-full{border:none;height:1px;background:rgba(0,0,0,.12);width:100%;margin:20px 0;padding:0}
 .proj-divider-short{border:none;height:1px;background:#bbb;width:100%;max-width:1280px;margin:16px auto;padding:0;display:block;box-sizing:border-box}
+/* index: About ↔ Featured Work 구분선 — 본문 .container(1220px) 폭에 맞춤 */
+body.page-home .proj-divider-short{max-width:1250px}
 body[data-theme="dark"] .proj-detail-page .proj-divider-short{background:#bbb}
 body[data-theme="dark"] .proj-divider-short{background:rgba(255,255,255,.25)}
 body[data-theme="dark"] .proj-hr-half,.proj-hr-full{background:rgba(255,255,255,.2)}
@@ -729,7 +732,7 @@ body[data-theme="dark"] .pickpacker-render-metrics-table td{color:#c8cfc0}
 @media (min-width:1200px){.container{width:100%;max-width:1280px}}
 /* index.html(.page-home): 콘텐츠 폭을 1280px보다 살짝 좁게 (#work .container 단독 규칙은 ID 우선순위로 이 설정을 막아 제거함) */
 @media (min-width:768px){
-	.page-home .container{max-width:1220px}
+	.page-home .container{max-width:1280px}
 }
 
 /* Home: Contact — 상단 여백 + 카드형 폼 */
