@@ -244,7 +244,7 @@
                 구조입니다.</p>
               <div class="proj-overview-media-row proj-overview-media-row-4" style="margin-top:20px">
                 <img src="../images/dawnstar/고대유적.png" alt="고대 유적" />
-                <img src="../images/dawnstar/묘지기던전.PNG" alt="묘지기" />
+                <img src="../images/dawnstar/묘지기던전.png" alt="묘지기" />
                 <img src="../images/dawnstar/연구소.PNG" alt="연구소" />
                 <img src="../images/dawnstar/새벽마을월드.jpg" alt="새벽마을 월드" />
               </div>
@@ -303,7 +303,8 @@
             <div class="proj-core-intent-content">
               <p>Dawnstar는 로그인과 실제 게임 플레이를 같은 흐름으로 처리하지 않고, 역할을 나누는 구조로 시작했습니다. 로그인과 계정 처리는
                 <code>AccountServer</code>에서, 실제 실시간 플레이는 <code>Server</code>에서 담당하며, 두 서버는 <code>CommonDB</code>를 통해
-                토큰과 서버 상태를 공유합니다.</p>
+                토큰과 서버 상태를 공유합니다.
+              </p>
               <div class="proj-arch-media" style="margin-top:24px">
                 <img src="../images/dawnstar/네트워크 아키텍처.png" alt="Dawnstar 네트워크 아키텍처" />
               </div>
@@ -362,7 +363,8 @@ public void ExecuteAll() {
               <p>그래서 중간 단계에서는 <code>PacketGenerator</code>를 이용해 반복되는 등록 코드와 패킷 매니저 생성을 자동화했고, 최종적으로는
                 <code>Protocol.proto</code> 기반의 Protobuf 패킷 구조로 정리했습니다. 현재 Dawnstar의 패킷 처리는 헤더는 직접 관리하고, 본문은 Protobuf로
                 직렬화하는 하이브리드 방식에 가깝습니다. 처음부터 이상적인 구조를 새로 만드는 것보다, 기존 파이프라인을 유지하면서 실제로 가장 문제가 되는 반복 작업과 오류 가능성을 줄이는 쪽이 더
-                현실적이었기 때문입니다.</p>
+                현실적이었기 때문입니다.
+              </p>
               <pre class="proj-code-snippet"><code class="language-csharp">ushort size = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
 ushort id = BitConverter.ToUInt16(buffer.Array, buffer.Offset + 2);
 // Payload만 Protobuf로 역직렬화
@@ -382,7 +384,8 @@ pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);</code></pre>
 File.WriteAllText("ServerPacketManager.cs", serverManagerText);</code></pre>
               <p class="proj-code-caption">PacketGenerator는 Protocol.proto를 기반으로 패킷 핸들러 등록 코드를 자동 생성합니다.</p>
               <p><strong>Phase 3:</strong> <code>Protocol.proto</code> 단일 소스 정의 → <code>protoc</code> 컴파일 →
-                <code>PacketGenerator</code>가 MsgId를 파싱하여 핸들러 매핑. 직렬화는 Protobuf에 위임하고, 기존 파이프라인은 핸들러 매핑 역할만 유지했습니다.</p>
+                <code>PacketGenerator</code>가 MsgId를 파싱하여 핸들러 매핑. 직렬화는 Protobuf에 위임하고, 기존 파이프라인은 핸들러 매핑 역할만 유지했습니다.
+              </p>
               <details class="proj-details-collapse">
                 <summary>플로우 차트 보기</summary>
                 <div class="mermaid" style="margin-top:16px">
@@ -465,7 +468,8 @@ File.WriteAllText("ServerPacketManager.cs", serverManagerText);</code></pre>
             <div class="proj-core-intent-content">
               <p>멀티플레이 환경에서는 모든 객체를 모든 플레이어에게 계속 전송하는 방식이 가장 단순하지만, 실제 플레이에서는 불필요한 동기화가 금방 많아집니다. Dawnstar는 이를 줄이기 위해
                 <code>Zone</code>과 <code>Interest Management</code>를 이용해 플레이어 주변의 객체만 선택적으로 동기화하도록 구성했습니다. 이 방식은 기술적으로
-                MMO 구조를 흉내 내기 위해서가 아니라, 필드와 던전, 파티 플레이처럼 성격이 다른 공간을 실제 플레이 흐름에 맞게 운영하기 위해 필요했습니다.</p>
+                MMO 구조를 흉내 내기 위해서가 아니라, 필드와 던전, 파티 플레이처럼 성격이 다른 공간을 실제 플레이 흐름에 맞게 운영하기 위해 필요했습니다.
+              </p>
               <pre class="proj-code-snippet"><code class="language-csharp">HashSet&lt;GameObject&gt; current = GatherObjects();
 List&lt;GameObject&gt; added = current.Except(PreviousObjects).ToList();
 List&lt;GameObject&gt; removed = PreviousObjects.Except(current).ToList();
