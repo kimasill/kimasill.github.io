@@ -14,6 +14,12 @@
 		},
 		{
 			"path": "../../MultiAgent"
+		},
+		{
+			"path": "G:/내 드라이브/프로젝트/국산차량분류기/carClassification"
+		},
+		{
+			"path": "../../PaperClip"
 		}
 	],
 	"settings": {}

@@ -1,20 +1,6 @@
 # Game Programming Portfolio
 
-이 폴더는 프로젝트 전체 원본을 그대로 담는 저장소가 아니라, 면접/검토용으로 핵심 시스템만 빠르게 이해할 수 있도록 정리한 패키지입니다.
-
-## AutoGen 멀티 에이전트 (`autogen_portfolio/`)
-
-원고 규칙·경로 일관성 검토를 AutoGen(AgentChat)으로 돌리려면 `autogen_portfolio/README.md`를 참고해 가상환경에 의존성을 설치한 뒤 `portfolio_agents.py`를 실행합니다. `OPENAI_API_KEY`가 필요합니다.
-
-## 요약 PDF (`SUNG_HYEON_KIM_Portfolio.pdf`)
-
-`SUNG_HYEON_KIM_Portfolio.md`를 원고로 하여 PDF를 다시 만들 때는 이 폴더에서 다음을 실행합니다.
-
-```bash
-python build_portfolio_pdf.py
-```
-
-필요 패키지: `markdown`, `xhtml2pdf`, `Pillow` (`pip install -r requirements-portfolio-pdf.txt`). 스크립트가 웹 이미지를 받아 최대 너비 640px로 줄인 뒤 PDF에 넣어 파일 크기와 레이아웃을 맞춥니다.
+이 폴더는 프로젝트 전체 원본을 그대로 담는 저장소가 아니라, 핵심 시스템만 빠르게 이해할 수 있도록 정리한 패키지입니다.
 
 ## 구성
 
@@ -33,7 +19,7 @@ python build_portfolio_pdf.py
 - `GameTycoon/Source/README.md`
   - `GameTycoon` 대표 코드 파일 안내
 
-## 빠르게 보고 싶은 포인트
+## 빠르게 보는 포인트
 
 ### Dawnstar
 

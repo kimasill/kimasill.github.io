@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI ORCHESTRATION PIPELINE — Obsidian 플러그인 | Kimasill</title>
+  <meta name="description" content="paperclip.obsidian-brain: 지식 저장에서 RAG 시맨틱 검색으로의 전환, Vault·워커·JSON 인덱스, Xenova 임베딩" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="proj-detail-page">
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">SUNG HYEON KIM - PORTFOLIO</a>
+    <div class="header-controls">
+      <button id="lang-toggle">KR</button>
+      <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
+  </div>
+  <nav class="proj-header-nav">
+    <a href="dawnstar.html">Dawnstar</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="startup.html">Startup</a>
+    <a href="tab-game.html">Tab Game</a>
+    <a href="paperclip.html" class="active proj-header-nav-orch">AI ORCHESTRATION PIPELINE</a>
+    <a href="../index.html">Home</a>
+  </nav>
+</header>
+
+<main class="project-page proj-with-section-lines paperclip-doc">
+  <!-- Mini Hero -->
+  <section class="paperclip-mini-hero">
+    <div class="proj-container-wide">
+      <div class="paperclip-mini-hero-icon"><i class="fa fa-book" aria-hidden="true"></i></div>
+      <div class="paperclip-mini-hero-text">
+        <h1>Obsidian 플러그인 — 지식 저장에서 RAG로</h1>
+        <p class="paperclip-mini-hero-desc"><code class="paperclip-code" style="color:#d4dcc8">paperclip.obsidian-brain</code>은 Obsidian 볼트 위 마크다운 지식 베이스를 에이전트에 연결합니다. 지식의 재사용성을 위해 도입했지만, 볼트가 커지며 토큰 폭증이 문제가 되어 <strong>RAG 시맨틱 검색</strong>을 추가한 과정입니다.</p>
+        <a href="paperclip.html" class="paperclip-mini-hero-back btn-link">← AI ORCHESTRATION PIPELINE 개요</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="proj-container-wide paperclip-local-nav-wrap">
+    <nav class="paperclip-local-nav" aria-label="AI ORCHESTRATION PIPELINE 섹션">
+      <a href="paperclip.html">개요</a>
+      <a href="paperclip-server-webhook.html">서버 · 웹훅</a>
+      <a href="paperclip-gitlab.html">GitLab 플러그인</a>
+      <a href="paperclip-obsidian.html" class="is-active">Obsidian 플러그인</a>
+      <a href="paperclip-token.html">토큰 최적화</a>
+    </nav>
+  </div>
+
+  <!-- 왜 RAG를 추가했는가 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">왜 RAG를 추가했는가</h2>
+      <p class="paperclip-muted" style="max-width:52em">Obsidian 볼트를 지식 베이스로 쓰는 것 자체는 효과적이었습니다. 에이전트가 과거 작업 기록, 스킬, 회의 노트 등을 재사용할 수 있어 중복 작업이 줄었습니다. 문제는 <strong>볼트가 커질수록 나타났습니다</strong>.</p>
+
+      <ol class="paperclip-journey">
+        <li class="paperclip-journey-step">
+          <strong>초기: 지식 저장·재사용</strong>
+          에이전트가 학습한 내용을 마크다운 노트로 저장하고, 이후 작업에서 <code class="paperclip-code">list</code> → <code class="paperclip-code">read</code>로 가져와 재활용. 지식의 축적과 재사용은 잘 동작.
+        </li>
+        <li class="paperclip-journey-step">
+          <strong>문제 발견: 토큰 폭증</strong>
+          볼트가 수백 개 노트로 커지자, 에이전트가 "어떤 노트가 필요한지" 판단하는 데 토큰을 낭비. 틀리면 불필요한 전체 노트가 입력에 포함되어 비용이 급증.
+        </li>
+        <li class="paperclip-journey-step">
+          <strong>해결: 시맨틱 검색(RAG) 도입</strong>
+          Xenova 임베딩으로 청크 벡터를 만들고, 질의 기반 코사인 유사도로 <strong>관련 상위 K개 청크만</strong> 반환. 에이전트가 노트를 고르는 대신 검색 시스템이 필터링.
+        </li>
+      </ol>
+
+      <div class="paperclip-evolution">
+        <p class="paperclip-evolution-title"><i class="fa fa-exchange" aria-hidden="true"></i> 지식 접근 방식 변화</p>
+        <div class="paperclip-ba">
+          <div class="paperclip-ba-col paperclip-ba-before">
+            <span class="paperclip-ba-label">전체 읽기 방식</span>
+            <ul>
+              <li><code class="paperclip-code">list</code>로 목록 확인 후 <code class="paperclip-code">read</code>로 개별 노트 전체 읽기</li>
+              <li>에이전트가 어떤 노트를 읽을지 판단 → 토큰 소모</li>
+              <li>볼트 크기 ∝ 입력 토큰 (통제 불가)</li>
+            </ul>
+          </div>
+          <div class="paperclip-ba-arrow" aria-hidden="true"><i class="fa fa-long-arrow-right"></i></div>
+          <div class="paperclip-ba-col paperclip-ba-after">
+            <span class="paperclip-ba-label">RAG 시맨틱 검색</span>
+            <ul>
+              <li><code class="paperclip-code">semantic_search(query)</code>로 관련 청크만 반환</li>
+              <li>검색 시스템이 필터링 → 에이전트 판단 불필요</li>
+              <li>Top-K로 입력 크기 제한 (통제 가능)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="paperclip-decision">
+        <span class="paperclip-decision-label">설계 선택: 벡터 DB 없이 JSON</span>
+        <p>Chroma, Pinecone 같은 외부 벡터 DB를 쓸 수 있었지만, 이 규모에서는 과잉입니다. <code class="paperclip-code">.semantic-index/chunks.json</code> 하나로 회사당 인덱스를 관리하면 의존성 제로·배포 단순·디버깅 직관적입니다. 볼트가 수만 노트로 커지면 그때 DB를 도입해도 늦지 않습니다.</p>
+      </div>
+
+      <h3 class="proj-block-title" style="margin-top:2em">UI 스크린샷</h3>
+      <p class="paperclip-muted" style="max-width:52em">인스턴스 설정과 도구·워크플로 화면입니다.</p>
+      <div class="paperclip-figure-grid">
+        <figure class="paperclip-figure">
+          <img src="../images/paperclip/ObsidianConfiguration.png" alt="Obsidian Brain 플러그인 인스턴스 설정" width="1280" height="720" loading="lazy" decoding="async" />
+          <figcaption>Obsidian Brain — 볼트 경로, 시맨틱 검색, 청크·임베딩 모델 등 인스턴스 설정</figcaption>
+        </figure>
+        <figure class="paperclip-figure">
+          <img src="../images/paperclip/Obsidian.png" alt="Obsidian Brain 도구·에이전트 연동 화면" width="1280" height="720" loading="lazy" decoding="async" />
+          <figcaption>도구 노출·에이전트 측 워크플로 — list/read/semantic_search 등 사용 맥락</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 레이어 구조 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">논리 구성 (레이어)</h2>
+      <p class="paperclip-muted">보드 UI·API·워커·파일시스템·임베딩 파이프라인의 관계입니다.</p>
+      <div class="paperclip-mermaid-wrap" role="img" aria-label="Obsidian Brain 레이어 흐름도">
+        <div id="obsidian-mermaid-flow" class="mermaid"></div>
+      </div>
+      <script type="text/plain" id="obsidian-mermaid-flow-source">
+flowchart TB
+  subgraph ui [Board UI]
+    PS["Plugin Settings\ninstanceConfigSchema"]
+    AC["Agent Configure\nworkflow / auto-knowledge"]
+  end
+  subgraph api [Paperclip API]
+    PT["GET/POST /api/plugins/tools"]
+    PE["POST /api/plugins/tools/execute"]
+  end
+  subgraph host [Server host]
+    W["Obsidian Brain worker\nplugin-obsidian-brain"]
+    FS[("Vault filesystem\nvaultRoot / PaperclipBrain")]
+    IDX[("Semantic index JSON\n.semantic-index/chunks.json")]
+    ML["@xenova/transformers\nfeature-extraction"]
+  end
+  subgraph obsidian_app [Optional]
+    OAPP["Obsidian 앱\n동일 볼트 열람"]
+  end
+  PS --> PT
+  AC --> PT
+  PT --> W
+  PE --> W
+  W --> FS
+  W --> IDX
+  W --> ML
+  FS --- OAPP
+      </script>
+
+      <div class="table-responsive">
+        <table class="table paperclip-table paperclip-table--stack paperclip-table--stack-blocks">
+          <thead><tr><th scope="col">레이어</th><th scope="col">역할</th></tr></thead>
+          <tbody>
+            <tr><td>에이전트 설정</td><td>워크플로·AUTO-KNOWLEDGE 지시문을 하트비트 컨텍스트에 합성</td></tr>
+            <tr><td>플러그인 설정</td><td><code class="paperclip-code">vaultRoot</code>, <code class="paperclip-code">semanticSearchEnabled</code>, <code class="paperclip-code">maxChunkChars</code>, <code class="paperclip-code">embeddingModelId</code></td></tr>
+            <tr><td>HTTP 도구 API</td><td><code class="paperclip-code">read</code> / <code class="paperclip-code">write</code> / <code class="paperclip-code">list</code> / <code class="paperclip-code">semantic_search</code> / <code class="paperclip-code">reindex_semantic</code></td></tr>
+            <tr><td>워커</td><td>파일 I/O, 인덱스 읽기·쓰기, 임베딩 파이프라인</td></tr>
+            <tr><td>Obsidian 앱</td><td>같은 폴더를 볼트로 열면 사람이 노트 편집 가능 (Paperclip RAG는 앱 없이도 동작)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAG 파이프라인 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">RAG 파이프라인</h2>
+      <p class="paperclip-muted">인덱스 구축 → 검색 → 쓰기 후 증분 재인덱스까지 한 시퀀스입니다.</p>
+      <div class="paperclip-mermaid-wrap paperclip-mermaid-wrap--sequence paperclip-mermaid-wrap--obsidian-seq" role="img" aria-label="RAG 시퀀스 다이어그램">
+        <div id="obsidian-mermaid-seq" class="mermaid"></div>
+      </div>
+      <script type="text/plain" id="obsidian-mermaid-seq-source">
+sequenceDiagram
+  participant A as Agent / adapter
+  participant API as Paperclip API
+  participant W as Obsidian worker
+  participant FS as Markdown files
+  participant IDX as chunks.json
+  participant X as Xenova embeddings
+
+  Note over A,X: 인덱스 구축 / 갱신
+  A->>API: reindex_semantic(scope)
+  API->>W: execute tool
+  W->>FS: walk .md under scope
+  W->>W: chunkMarkdown (문단, maxChunkChars)
+  loop each chunk
+    W->>X: embed(chunk text)
+    X-->>W: float[] vector
+  end
+  W->>IDX: save merged index
+
+  Note over A,X: 검색
+  A->>API: semantic_search(query, scope)
+  API->>W: execute tool
+  W->>IDX: load index
+  W->>X: embed(query)
+  X-->>W: query vector
+  W->>W: cosine similarity vs filtered chunks
+  W-->>A: top-K chunks + scores + paths
+
+  Note over A,X: 노트 쓰기 후 증분 재인덱스
+  A->>API: obsidian_brain.write(...)
+  W->>FS: write file
+  W->>W: reindexSingleAgentFile
+      </script>
+
+      <h3 class="proj-block-title" style="margin-top:1.5em">청킹</h3>
+      <p class="paperclip-muted" style="max-width:52em">마크다운을 빈 줄 기준 문단으로 분리한 뒤 <code class="paperclip-code">maxChunkChars</code> 이하로 병합·분할합니다.</p>
+
+      <h3 class="proj-block-title" style="margin-top:1em">임베딩</h3>
+      <p class="paperclip-muted" style="max-width:52em"><code class="paperclip-code">@xenova/transformers</code>의 <code class="paperclip-code">pipeline("feature-extraction")</code>을 사용합니다. 기본 모델 <code class="paperclip-code">Xenova/all-MiniLM-L6-v2</code>, <code class="paperclip-code">pooling: "mean"</code>, <code class="paperclip-code">normalize: true</code> → 고정 길이 벡터.</p>
+
+      <h3 class="proj-block-title" style="margin-top:1em">검색</h3>
+      <p class="paperclip-muted" style="max-width:52em">질의 문자열을 임베딩한 뒤 인덱스 청크와 코사인 유사도 비교. 스코프(<code class="paperclip-code">agent</code>/<code class="paperclip-code">common</code>/<code class="paperclip-code">both</code>)에 맞는 청크만 후보. 상위 <code class="paperclip-code">topK</code>(기본 5, 최대 15) 반환.</p>
+    </div>
+  </section>
+
+  <!-- 디스크 레이아웃 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">디스크 레이아웃</h2>
+      <pre class="paperclip-pre" aria-label="볼트 디렉터리 트리">{vaultRoot}/
+  {brainSubdir}/                    # 기본값 PaperclipBrain
+    {companyId}/
+      agents/{agentId}/             # 에이전트별 노트
+      common/                       # 공유 영역
+      .semantic-index/
+        chunks.json                 # RAG 인덱스 (청크 + 임베딩 벡터)</pre>
+      <ul class="paperclip-list">
+        <li><strong>인덱스 파일:</strong> <code class="paperclip-code">version</code>, <code class="paperclip-code">modelId</code>, <code class="paperclip-code">updatedAt</code>, 청크마다 <code class="paperclip-code">relFromCompany</code>, <code class="paperclip-code">text</code>, <code class="paperclip-code">embedding</code>.</li>
+        <li>인덱스는 <strong>회사 단위</strong> 하나. 스코프는 <strong>검색 시</strong> 경로 접두로 필터.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 앱 검색 vs RAG -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">Obsidian 앱 검색 vs Paperclip RAG</h2>
+      <p class="paperclip-muted">같은 <code class="paperclip-code">.md</code>를 읽을 수 있어도, 인덱스는 동기화되지 않습니다.</p>
+      <div class="table-responsive">
+        <table class="table paperclip-table paperclip-table--stack paperclip-table--stack-blocks">
+          <thead><tr><th scope="col">구분</th><th scope="col">Obsidian 앱 검색</th><th scope="col">Paperclip RAG</th></tr></thead>
+          <tbody>
+            <tr><td>인덱스</td><td>앱·플러그인별 (Omnisearch 등)</td><td>서버의 <code class="paperclip-code">chunks.json</code> + Xenova 임베딩</td></tr>
+            <tr><td>데이터 소스</td><td>볼트 내 전체 파일</td><td><code class="paperclip-code">PaperclipBrain/{companyId}/...</code> 트리</td></tr>
+            <tr><td>실행 위치</td><td>클라이언트 PC (앱)</td><td>Paperclip 서버 (워커 호스트)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 관련 코드 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">관련 코드 (진입점)</h2>
+      <div class="table-responsive">
+        <table class="table paperclip-table paperclip-table--stack">
+          <thead><tr><th scope="col">영역</th><th scope="col">경로</th></tr></thead>
+          <tbody>
+            <tr><td>인덱스·검색·재인덱스</td><td><code class="paperclip-code">packages/plugins/plugin-obsidian-brain/src/semantic-search.ts</code></td></tr>
+            <tr><td>도구 등록</td><td><code class="paperclip-code">packages/plugins/plugin-obsidian-brain/src/worker.ts</code></td></tr>
+            <tr><td>볼트 경로 해석</td><td><code class="paperclip-code">packages/plugins/plugin-obsidian-brain/src/brain-paths.ts</code></td></tr>
+            <tr><td>매니페스트 스키마</td><td><code class="paperclip-code">packages/plugins/plugin-obsidian-brain/src/manifest.ts</code></td></tr>
+            <tr><td>하트비트 프롬프트</td><td><code class="paperclip-code">server/src/services/obsidian-brain-workflow-prompt.ts</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="paperclip-ref-inline" aria-label="레퍼런스">
+        <strong>레퍼런스:</strong>
+        Obsidian — <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">obsidian.md</a>,
+        <a href="https://help.obsidian.md/" target="_blank" rel="noopener noreferrer">Help</a> ·
+        임베딩 — <a href="https://huggingface.co/Xenova/all-MiniLM-L6-v2" target="_blank" rel="noopener noreferrer">Xenova/all-MiniLM-L6-v2</a>,
+        <a href="https://github.com/xenova/transformers.js" target="_blank" rel="noopener noreferrer">transformers.js</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 운영 시 알아둘 점 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">운영 시 고려사항</h2>
+      <ul class="paperclip-list">
+        <li><strong>인덱스 파일:</strong> <code class="paperclip-code">chunks.json</code>은 회사 단위로 커질 수 있어 백업·동기화 정책에 포함하는 것이 좋습니다.</li>
+        <li><strong>모델·성능:</strong> Transformers.js 최초 로드·캐시 지연이 있고, CPU에서 대량 재인덱싱은 부하가 큽니다.</li>
+        <li><strong>임베딩 모델 변경 시:</strong> 벡터 공간이 달라지므로 전체 재인덱싱이 필요합니다.</li>
+        <li><strong>앱 vs 서버 RAG:</strong> 사람이 앱에서 수정한 노트와 서버 인덱스는 자동 동기화되지 않습니다. <code class="paperclip-code">reindex_semantic</code>으로 갱신.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="paperclip-gitlab.html" class="btn-link">← GitLab 플러그인</a>
+    &nbsp;·&nbsp;
+    <a href="paperclip-token.html" class="btn-link">다음: 토큰 최적화 →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2026 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="../js/portfolio.js"></script>
+<script>
+(function(){
+  function runObsidianMermaid(){
+    if(!window.mermaid) return;
+    var pairs = [
+      { out: 'obsidian-mermaid-flow', src: 'obsidian-mermaid-flow-source' },
+      { out: 'obsidian-mermaid-seq', src: 'obsidian-mermaid-seq-source' }
+    ];
+    var nodes = [];
+    for (var i = 0; i < pairs.length; i++) {
+      var srcEl = document.getElementById(pairs[i].src);
+      var outEl = document.getElementById(pairs[i].out);
+      if (!srcEl || !outEl) continue;
+      var code = (srcEl.textContent || '').trim();
+      if (!code) continue;
+      outEl.removeAttribute('data-processed');
+      outEl.textContent = code;
+      nodes.push(outEl);
+    }
+    if (!nodes.length) return;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+      sequence: { useMaxWidth: true, mirrorActors: false, messageMargin: 28, boxMargin: 8 }
+    });
+    try {
+      var ret = mermaid.run({ nodes: nodes });
+      if(ret && typeof ret.then === 'function') {
+        ret.catch(function(err){ console.error('obsidian mermaid', err); });
+      }
+    } catch (err) { console.error('obsidian mermaid', err); }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runObsidianMermaid);
+  else runObsidianMermaid();
+})();
+</script>
+</body>
+</html>

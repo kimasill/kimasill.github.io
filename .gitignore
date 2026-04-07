@@ -1,1 +1,7 @@
 node_modules/
+
+/Portfolio
+
+# Claude Code — 로컬 전용(팀 커밋 제외)
+CLAUDE.local.md
+.claude/settings.local.json

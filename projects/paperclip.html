@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI ORCHESTRATION PIPELINE | 에이전트 오케스트레이션 | Kimasill</title>
+  <meta name="description" content="로컬 AI 오케스트레이션 파이프라인을 GitLab·Obsidian 등과 안전 연동. Tunnel·웹훅 영속화·재시도, 플러그인, 토큰 다이제스트 상한." />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="proj-detail-page">
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">SUNG HYEON KIM - PORTFOLIO</a>
+    <div class="header-controls">
+      <button id="lang-toggle">KR</button>
+      <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
+  </div>
+  <nav class="proj-header-nav">
+    <a href="dawnstar.html">Dawnstar</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="startup.html">Startup</a>
+    <a href="tab-game.html">Tab Game</a>
+    <a href="paperclip.html" class="active proj-header-nav-orch">AI ORCHESTRATION PIPELINE</a>
+    <a href="../index.html">Home</a>
+  </nav>
+</header>
+
+<main class="project-page proj-with-section-lines paperclip-doc">
+  <section class="proj-hero proj-hero-dark">
+    <div class="proj-hero-inner">
+      <h1>AI ORCHESTRATION <span class="proj-hero-sub">PIPELINE</span></h1>
+      <div class="proj-hero-split">
+        <div class="proj-hero-media paperclip-hero-thumb">
+          <img src="../images/paperclip/paperclip-thumb.svg" alt="" width="640" height="360" />
+        </div>
+        <div class="proj-hero-meta">
+          <p class="proj-meta-line"><em>역할:</em> 서버·웹훅 경로, GitLab/Obsidian 플러그인, 토큰 가드</p>
+          <p class="proj-meta-line"><em>스택:</em> TypeScript · Node.js · Express · PostgreSQL · Drizzle · 플러그인 워커</p>
+          <p class="proj-meta-line"><em>인프라:</em> Cloudflare Tunnel · <code class="paperclip-code">PAPERCLIP_PUBLIC_BASE_URL</code></p>
+          <p class="proj-meta-line"><em>기반:</em> <a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer" class="btn-link">Paperclip</a> 오픈소스 컨트롤 플레인</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="proj-container-wide paperclip-local-nav-wrap">
+    <nav class="paperclip-local-nav" aria-label="AI ORCHESTRATION PIPELINE 섹션">
+      <a href="paperclip.html" class="is-active">개요</a>
+      <a href="paperclip-server-webhook.html">서버 · 웹훅</a>
+      <a href="paperclip-gitlab.html">GitLab 플러그인</a>
+      <a href="paperclip-obsidian.html">Obsidian 플러그인</a>
+      <a href="paperclip-token.html">토큰 최적화</a>
+    </nav>
+  </div>
+
+  <!-- 프로젝트 요약 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">프로젝트 개요</h2>
+      <p class="paperclip-lead">오픈소스 AI 오케스트레이션 플랫폼 <strong>Paperclip</strong>을 기반으로, 로컬 환경의 에이전트 컨트롤 플레인이 외부 서비스(GitLab, Obsidian)와 <strong>안전하게 연동</strong>되어 실제 개발 사이클을 자동으로 돌 수 있는 파이프라인을 구축했습니다.</p>
+      <p class="paperclip-muted" style="max-width:52em">기본 구성은 로컬 전용이라 공인 진입점·신뢰 가능한 웹훅 수신 경로·토큰 비용 통제가 빠져 있었습니다. 이 프로젝트는 그 간극을 메우기 위해 <strong>인프라 아키텍처 전환, 비동기 자동화 파이프라인 설계, RAG 기반 지식 검색, 토큰 최적화</strong>를 수행한 기록입니다.</p>
+
+      <aside class="paperclip-ref-card" aria-label="Paperclip 업스트림 참고">
+        <div class="paperclip-ref-card-inner">
+          <p class="paperclip-ref-card-kicker">업스트림 · 레퍼런스</p>
+          <p class="paperclip-ref-card-title"><a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer">Paperclip</a> <span class="paperclip-ref-card-sub">오픈소스 AI 에이전트 회사용 컨트롤 플레인</span></p>
+          <p class="paperclip-ref-card-desc">아래 구현·문서는 이 저장소를 기반으로 한 <strong>개조·확장</strong>을 정리한 것입니다.</p>
+          <div class="paperclip-ref-card-links">
+            <a class="paperclip-ref-pill" href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+            <a class="paperclip-ref-pill" href="https://paperclip.ing/docs" target="_blank" rel="noopener noreferrer">공식 Docs</a>
+          </div>
+        </div>
+      </aside>
+
+      <h3 class="proj-block-title" style="margin-top:2.25em">운영 화면</h3>
+      <p class="paperclip-muted" style="max-width:52em">로컬에서 돌아가는 컨트롤 플레인 UI와 플러그인 설정 화면 일부입니다.</p>
+      <div class="paperclip-figure-grid">
+        <figure class="paperclip-figure">
+          <img src="../images/paperclip/Configuration.png" alt="Paperclip 플러그인·설정 화면" width="1280" height="720" loading="lazy" decoding="async" />
+          <figcaption>플러그인·에이전트 설정 — Git Provider, Obsidian Brain 등 연동 구성</figcaption>
+        </figure>
+        <figure class="paperclip-figure">
+          <img src="../images/paperclip/paperclip-screenshot-2026-04-05.png" alt="Paperclip 보드·이슈 화면" width="1280" height="720" loading="lazy" decoding="async" />
+          <figcaption>컨트롤 플레인 보드 — 이슈·에이전트 운영 화면</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 핵심 의사결정: 3가지 진화 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">핵심 의사결정 — 3번의 아키텍처 전환</h2>
+      <p class="paperclip-muted" style="max-width:52em">이 프로젝트는 단순 구현이 아니라, 운영하면서 <strong>구조적 문제를 발견하고 근본 원인을 해결한 과정</strong>이 핵심입니다. 아래 3가지 전환이 파이프라인의 현재 형태를 결정했습니다.</p>
+
+      <!-- 전환 1: AWS → Local + Tunnel -->
+      <div class="paperclip-evolution">
+        <p class="paperclip-evolution-title"><i class="fa fa-exchange" aria-hidden="true"></i> 전환 1. 클라우드 서버 → 로컬 + Cloudflare Tunnel</p>
+        <div class="paperclip-ba">
+          <div class="paperclip-ba-col paperclip-ba-before">
+            <span class="paperclip-ba-label">Before</span>
+            <p>서버를 <strong>AWS EC2</strong>에 올려서 웹훅 수신</p>
+            <ul>
+              <li>로컬 코드베이스에 에이전트가 접근 불가</li>
+              <li>코드 변경 시 매번 배포 필요</li>
+              <li>에이전트의 핵심 가치(로컬 파일 직접 조작)가 사라짐</li>
+            </ul>
+          </div>
+          <div class="paperclip-ba-arrow" aria-hidden="true"><i class="fa fa-long-arrow-right"></i></div>
+          <div class="paperclip-ba-col paperclip-ba-after">
+            <span class="paperclip-ba-label">After</span>
+            <p><strong>로컬 서버</strong> + Cloudflare Tunnel로 공인 HTTPS 노출</p>
+            <ul>
+              <li>에이전트가 로컬 코드를 직접 읽고 쓸 수 있음</li>
+              <li>도메인 고정 + 즉시 반영</li>
+              <li>웹훅 배달 영속화로 신뢰성 확보</li>
+            </ul>
+          </div>
+        </div>
+        <div class="paperclip-decision">
+          <span class="paperclip-decision-label">왜 이 결정을 했는가</span>
+          <p>AI 에이전트의 핵심 역할은 <strong>로컬 코드베이스를 직접 수정</strong>하는 것입니다. 클라우드에 서버를 올리면 외부 연동은 쉬워지지만, 에이전트가 코드를 만지려면 원격 접근이 필요해져 복잡도와 지연이 급증합니다. 대신 로컬에서 돌리되 <strong>Cloudflare Tunnel</strong>로 공인 진입점만 확보하면, 에이전트의 강점을 살리면서 외부 웹훅도 받을 수 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- 전환 2: Agent prompt → Async automation -->
+      <div class="paperclip-evolution">
+        <p class="paperclip-evolution-title"><i class="fa fa-exchange" aria-hidden="true"></i> 전환 2. 에이전트 프롬프트 방식 → 서버 비동기 자동화</p>
+        <div class="paperclip-ba">
+          <div class="paperclip-ba-col paperclip-ba-before">
+            <span class="paperclip-ba-label">Before</span>
+            <p>에이전트가 LLM 턴 안에서 <code class="paperclip-code">gitlab.create_issue</code> 등 <strong>도구를 직접 호출</strong></p>
+            <ul>
+              <li>매 호출마다 토큰 소모</li>
+              <li>에이전트가 "잊으면" 동기화 누락</li>
+              <li>프롬프트에 GitLab 절차를 상세히 기술해야 함</li>
+            </ul>
+          </div>
+          <div class="paperclip-ba-arrow" aria-hidden="true"><i class="fa fa-long-arrow-right"></i></div>
+          <div class="paperclip-ba-col paperclip-ba-after">
+            <span class="paperclip-ba-label">After</span>
+            <p>이슈 생성·상태 변경 시 <strong>서버가 자동으로</strong> GitLab API 호출</p>
+            <ul>
+              <li>에이전트 입력 관점 토큰 제로</li>
+              <li>이벤트 기반, 누락 불가</li>
+              <li>fire-and-forget, 실패해도 본 흐름 무영향</li>
+            </ul>
+          </div>
+        </div>
+        <div class="paperclip-decision">
+          <span class="paperclip-decision-label">왜 이 결정을 했는가</span>
+          <p>에이전트에게 "이슈 만들면 GitLab에도 올려"라고 시키면, 매번 LLM 턴을 소모하면서도 때로 빼먹습니다. 이 동기화는 사실 <strong>결정적(deterministic) 작업</strong>이므로 LLM에 맡길 이유가 없습니다. 서버 이벤트 훅으로 옮기면 토큰도 쓰지 않고 100% 실행됩니다.</p>
+        </div>
+      </div>
+
+      <!-- 전환 3: Knowledge store → RAG -->
+      <div class="paperclip-evolution">
+        <p class="paperclip-evolution-title"><i class="fa fa-exchange" aria-hidden="true"></i> 전환 3. 전체 읽기 → RAG 시맨틱 검색</p>
+        <div class="paperclip-ba">
+          <div class="paperclip-ba-col paperclip-ba-before">
+            <span class="paperclip-ba-label">Before</span>
+            <p>Obsidian에 지식을 저장하되, 에이전트가 <strong>필요한 노트를 통째로 읽음</strong></p>
+            <ul>
+              <li>Vault가 커지면 입력 토큰 폭증</li>
+              <li>어떤 노트를 읽을지 에이전트가 판단 → 비효율</li>
+              <li>지식 재사용성은 높지만 비용 통제 불가</li>
+            </ul>
+          </div>
+          <div class="paperclip-ba-arrow" aria-hidden="true"><i class="fa fa-long-arrow-right"></i></div>
+          <div class="paperclip-ba-col paperclip-ba-after">
+            <span class="paperclip-ba-label">After</span>
+            <p><strong>Xenova 임베딩 + 코사인 유사도</strong> 기반 시맨틱 검색(RAG)</p>
+            <ul>
+              <li>질의에 관련된 상위 K개 청크만 반환</li>
+              <li>JSON 파일 기반 경량 인덱스(외부 DB 불필요)</li>
+              <li>쓰기 후 증분 재인덱싱으로 항상 최신</li>
+            </ul>
+          </div>
+        </div>
+        <div class="paperclip-decision">
+          <span class="paperclip-decision-label">왜 이 결정을 했는가</span>
+          <p>Obsidian 볼트의 지식 저장 자체는 효과적이었지만, 볼트가 커질수록 에이전트가 "어떤 노트가 지금 작업에 도움이 되는지" 판단하는 데 토큰을 쓰고, 틀리면 불필요한 컨텍스트가 전부 입력에 들어갑니다. <strong>시맨틱 검색</strong>으로 질의 기반 필터링을 하면 이 문제가 구조적으로 해결됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 오케스트레이션 아키텍처 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">오케스트레이션 아키텍처</h2>
+      <p class="paperclip-muted">위 전환들을 거친 현재 아키텍처입니다. 기획 에이전트가 이슈를 만들면 서버가 GitLab에 자동 동기화하고, 개발 에이전트는 Obsidian RAG로 필요한 지식만 가져와 작업합니다.</p>
+      <div class="paperclip-mermaid-wrap paperclip-mermaid-wrap--sequence" role="img" aria-label="AI 오케스트레이션 파이프라인 시퀀스 다이어그램">
+        <div id="paperclip-mermaid-out" class="mermaid"></div>
+      </div>
+      <script type="text/plain" id="paperclip-mermaid-source">
+sequenceDiagram
+  participant User
+  participant UI as Plugin_UI
+  participant PA as Planning_Agent
+  participant NA as Notion_API
+  participant GA as GitLab_API
+  participant LA as Linear_API
+  participant DA as Developer_Agent
+  participant OB as Obsidian
+
+  User->>UI: Input prompt / Enable pipeline
+  UI->>PA: Start planning with settings
+
+  Note over User: Phase 1: Planning & Approval
+  PA->>NA: POST /v1/pages (Create PRD database entry)
+  PA->>GA: create_issue (Request PRD Approval)
+  GA->>User: Notify pending approval
+  User->>GA: Approve PRD (Status change)
+  GA->>PA: Approval confirmed callback/poll
+
+  Note over User: Phase 2: Ticketing & Dispatch
+  PA->>LA: issueCreate mutation (Attach Notion URL)
+  LA-->>PA: Return identifier (e.g., ENG-123)
+  LA->>DA: Webhook POST (Dispatch task with identifier)
+
+  Note over User: Phase 3: Development & Sync
+  DA->>OB: Read context & skills (.md files)
+  DA->>GA: git checkout -b {identifier}-{title}
+  DA->>GA: push branch & create_merge_request (Fixes {identifier})
+  GA->>LA: Native Webhook (Update Linear status to In Review)
+  LA->>NA: Native Sync (Update Notion Synced DB)
+
+  Note over User: Phase 4: Final Review & Knowledge Save
+  GA->>User: Notify MR review request
+  User->>GA: Approve & Merge MR
+  GA->>LA: Native Webhook (Update Linear status to Done)
+  DA->>OB: Write new knowledge/skills (.md files)
+      </script>
+    </div>
+  </section>
+
+  <!-- 문서 구성 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">구현 상세 문서</h2>
+      <p class="paperclip-muted">각 주제별 구현·설계 판단을 정리한 서브페이지입니다.</p>
+      <ul class="paperclip-toc">
+        <li><a href="paperclip-server-webhook.html" class="proj-detail-accent-link">1. 서버 개조 — AWS → 로컬 + Cloudflare Tunnel</a><br /><span class="paperclip-toc-desc">클라우드에서 로컬로 전환한 이유, 공인 진입점, 배달 영속화·백오프 재시도, 진단 API, 502 구분</span></li>
+        <li><a href="paperclip-gitlab.html" class="proj-detail-accent-link">2. GitLab 플러그인 — 에이전트 프롬프트 → 비동기 자동화</a><br /><span class="paperclip-toc-desc">에이전트 도구 호출에서 서버 이벤트 훅으로의 전환, REST 도구, MR 승인 브리지</span></li>
+        <li><a href="paperclip-obsidian.html" class="proj-detail-accent-link">3. Obsidian 플러그인 — 지식 저장 → RAG 시맨틱 검색</a><br /><span class="paperclip-toc-desc">Xenova 임베딩, chunks.json 인덱스, 볼트 레이아웃, 토큰 절감 효과</span></li>
+        <li><a href="paperclip-token.html" class="proj-detail-accent-link">4. 토큰 최적화 — 전체 전략 종합</a><br /><span class="paperclip-toc-desc">하트비트 다이제스트 상한, 행동 가이드 설계, 시크릿 참조 패턴, 정량적 효과</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 기술 스택 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">기술 스택</h2>
+      <div class="table-responsive">
+        <table class="table paperclip-table paperclip-table--stack paperclip-table--clean paperclip-table--stack-blocks">
+          <thead><tr><th scope="col">계층</th><th scope="col">주요 스택</th><th scope="col">역할 · 구현 범위</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="paperclip-stack-layer">런타임</th>
+              <td class="paperclip-stack-tech">TypeScript · Node.js · Express</td>
+              <td>컨트롤 플레인 API, 에이전트 실행·오케스트레이션</td>
+            </tr>
+            <tr>
+              <th scope="row" class="paperclip-stack-layer">데이터</th>
+              <td class="paperclip-stack-tech">PostgreSQL · Drizzle</td>
+              <td>스키마·마이그레이션. 웹훅 배달 영속화 <code class="paperclip-code">plugin_webhook_deliveries</code>로 재시도·상태 추적</td>
+            </tr>
+            <tr>
+              <th scope="row" class="paperclip-stack-layer">공개·인프라</th>
+              <td class="paperclip-stack-tech">Cloudflare Tunnel (<code class="paperclip-code">cloudflared</code>)</td>
+              <td>로컬 서버를 공인 HTTPS로 노출. <code class="paperclip-code">PAPERCLIP_PUBLIC_BASE_URL</code>로 웹훅·콜백 URL 고정</td>
+            </tr>
+            <tr>
+              <th scope="row" class="paperclip-stack-layer">연동</th>
+              <td class="paperclip-stack-tech">GitLab · Obsidian Vault</td>
+              <td>REST·MR 웹훅으로 이슈·파이프라인. Vault FS로 지식 베이스·경량 RAG(시맨틱 인덱스)</td>
+            </tr>
+            <tr>
+              <th scope="row" class="paperclip-stack-layer">플러그인</th>
+              <td class="paperclip-stack-tech">매니페스트 · 워커 · 도구</td>
+              <td><code class="paperclip-code">webhooks</code> · <code class="paperclip-code">secrets.read-ref</code> · <code class="paperclip-code">handleWebhook</code> 등으로 외부 이벤트·시크릿·도메인 로직을 경계 단위로 분리</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 트러블슈팅 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">트러블슈팅</h2>
+      <p class="paperclip-muted">운영 중 가장 크게 걸렸던 지점과 해결 방향입니다.</p>
+      <ul class="paperclip-trouble-list">
+        <li class="paperclip-trouble-item">
+          <p class="paperclip-trouble-prob"><strong>문제 1.</strong> 로컬 서버가 외부 웹훅을 받을 때 터널·네트워크 단절 등으로 요청이 유실될 수 있다.</p>
+          <p class="paperclip-trouble-sol"><strong>해결.</strong> PostgreSQL에 웹훅 배달 이력 테이블(<code class="paperclip-code">plugin_webhook_deliveries</code>)을 두고, 백오프 기반 재시도·상태 추적으로 수신 경로를 보강했습니다. 30초→2분→10분→1시간, 최대 5회까지 자동 재시도합니다.</p>
+        </li>
+        <li class="paperclip-trouble-item">
+          <p class="paperclip-trouble-prob"><strong>문제 2.</strong> 에이전트가 Obsidian Vault 전체를 참조하거나 하트비트 주기가 길어질 때 입력 토큰이 폭증한다.</p>
+          <p class="paperclip-trouble-sol"><strong>해결.</strong> 하트비트 이슈 다이제스트 상한(본문 12,000자·코멘트 8,000자)으로 매 틱 텍스트량을 제한하고, Obsidian RAG로 필요한 청크만 가져오는 구조로 전환했습니다.</p>
+        </li>
+        <li class="paperclip-trouble-item">
+          <p class="paperclip-trouble-prob"><strong>문제 3.</strong> Cloudflare 엣지 502와 애플리케이션 JSON 에러 응답이 같은 증상으로 보여 원인 진단이 어렵다.</p>
+          <p class="paperclip-trouble-sol"><strong>해결.</strong> <code class="paperclip-code">text/plain</code> + <code class="paperclip-code">error code: 502</code>면 인프라, JSON 응답이면 애플리케이션으로 분리하는 체크리스트를 만들어 진단 시간을 줄였습니다.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 결과 및 성과 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">결과 및 임팩트</h2>
+      <div class="paperclip-metrics">
+        <div class="paperclip-metric">
+          <span class="paperclip-metric-value">0</span>
+          <span class="paperclip-metric-desc">GitLab 동기화에 쓰이는<br>에이전트 토큰</span>
+        </div>
+        <div class="paperclip-metric">
+          <span class="paperclip-metric-value">Top-K</span>
+          <span class="paperclip-metric-desc">전체 읽기 대신<br>시맨틱 검색으로 청크 제한</span>
+        </div>
+        <div class="paperclip-metric">
+          <span class="paperclip-metric-value">12K / 8K</span>
+          <span class="paperclip-metric-desc">이슈 본문 / 코멘트<br>다이제스트 상한 (자)</span>
+        </div>
+        <div class="paperclip-metric">
+          <span class="paperclip-metric-value">5회</span>
+          <span class="paperclip-metric-desc">웹훅 배달 실패 시<br>백오프 자동 재시도</span>
+        </div>
+      </div>
+      <ul class="paperclip-impact-list">
+        <li><strong>로컬 우선 + 안정적 외부 연동</strong>에이전트가 로컬 코드를 직접 다루면서도, Cloudflare Tunnel과 배달 영속화로 외부 웹훅 유실 가능성을 사실상 제거했습니다.</li>
+        <li><strong>결정적 작업의 자동화</strong>GitLab 이슈 동기화처럼 반복·결정적인 작업을 서버 이벤트 훅으로 옮겨, 에이전트가 "잊어서" 동기화되지 않는 문제를 구조적으로 해결했습니다.</li>
+        <li><strong>토큰 비용 예측 가능</strong>다이제스트 상한 + RAG + 시크릿 참조로, 볼트나 이슈가 아무리 커져도 에이전트 입력 크기를 예측 가능한 범위 안에 유지합니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 레퍼런스 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">연동 레퍼런스</h2>
+      <p class="paperclip-muted">이 파이프라인에서 API·문서·임베딩 모델로 직접 참고한 공식 자료입니다.</p>
+      <div class="paperclip-ref-embed-grid">
+        <article class="paperclip-ref-embed-card">
+          <h3 class="paperclip-ref-embed-card-title"><i class="fa fa-gitlab" aria-hidden="true"></i> GitLab</h3>
+          <p class="paperclip-ref-embed-card-use"><strong>사용:</strong> REST API, MR·프로젝트 웹훅, 이슈·파이프라인 연동</p>
+          <div class="paperclip-ref-embed-card-links">
+            <a href="https://docs.gitlab.com/ee/api/rest/" target="_blank" rel="noopener noreferrer">REST API</a>
+            <a href="https://docs.gitlab.com/ee/user/project/integrations/webhooks.html" target="_blank" rel="noopener noreferrer">웹훅</a>
+          </div>
+        </article>
+        <article class="paperclip-ref-embed-card">
+          <h3 class="paperclip-ref-embed-card-title"><i class="fa fa-book" aria-hidden="true"></i> Obsidian</h3>
+          <p class="paperclip-ref-embed-card-use"><strong>사용:</strong> 로컬 볼트 위 마크다운 지식 베이스, 서버 RAG는 앱 인덱스와 별개</p>
+          <div class="paperclip-ref-embed-card-links">
+            <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">obsidian.md</a>
+            <a href="https://help.obsidian.md/" target="_blank" rel="noopener noreferrer">Help</a>
+          </div>
+        </article>
+        <article class="paperclip-ref-embed-card">
+          <h3 class="paperclip-ref-embed-card-title"><i class="fa fa-line-chart" aria-hidden="true"></i> Xenova / all-MiniLM-L6-v2</h3>
+          <p class="paperclip-ref-embed-card-use"><strong>사용:</strong> <code class="paperclip-code">@xenova/transformers</code> 시맨틱 검색·재인덱싱 시 문장 벡터 생성</p>
+          <div class="paperclip-ref-embed-card-links">
+            <a href="https://huggingface.co/Xenova/all-MiniLM-L6-v2" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+            <a href="https://github.com/xenova/transformers.js" target="_blank" rel="noopener noreferrer">transformers.js</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="../index.html#work" class="btn-link">← Work 목록으로</a>
+    <a href="paperclip-server-webhook.html" class="btn-link">서버 · 웹훅 →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2026 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="../js/portfolio.js"></script>
+<script>
+(function(){
+  function runPaperclipMermaid(){
+    if(!window.mermaid) return;
+    var srcEl = document.getElementById('paperclip-mermaid-source');
+    var outEl = document.getElementById('paperclip-mermaid-out');
+    if(!srcEl || !outEl) return;
+    var code = (srcEl.textContent || '').trim();
+    if(!code) return;
+    outEl.removeAttribute('data-processed');
+    outEl.textContent = code;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+      sequence: { useMaxWidth: true, mirrorActors: false, messageMargin: 28, boxMargin: 8 }
+    });
+    try {
+      var ret = mermaid.run({ nodes: [outEl] });
+      if(ret && typeof ret.then === 'function') {
+        ret.catch(function(err){
+          console.error('paperclip mermaid', err);
+          outEl.textContent = '다이어그램을 그리지 못했습니다. 콘솔 오류를 확인해 주세요.';
+        });
+      }
+    } catch(err) {
+      console.error('paperclip mermaid', err);
+      outEl.textContent = '다이어그램을 그리지 못했습니다. 콘솔 오류를 확인해 주세요.';
+    }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runPaperclipMermaid);
+  else runPaperclipMermaid();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI ORCHESTRATION PIPELINE — 서버 · 웹훅 | Kimasill</title>
+  <meta name="description" content="AWS에서 로컬+Cloudflare Tunnel로 전환, PAPERCLIP_PUBLIC_BASE_URL, 웹훅 배달·재시도·진단 API" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="proj-detail-page">
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">SUNG HYEON KIM - PORTFOLIO</a>
+    <div class="header-controls">
+      <button id="lang-toggle">KR</button>
+      <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
+  </div>
+  <nav class="proj-header-nav">
+    <a href="dawnstar.html">Dawnstar</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="startup.html">Startup</a>
+    <a href="tab-game.html">Tab Game</a>
+    <a href="paperclip.html" class="active proj-header-nav-orch">AI ORCHESTRATION PIPELINE</a>
+    <a href="../index.html">Home</a>
+  </nav>
+</header>
+
+<main class="project-page proj-with-section-lines paperclip-doc">
+  <!-- Mini Hero -->
+  <section class="paperclip-mini-hero">
+    <div class="proj-container-wide">
+      <div class="paperclip-mini-hero-icon"><i class="fa fa-server" aria-hidden="true"></i></div>
+      <div class="paperclip-mini-hero-text">
+        <h1>서버 개조 — AWS → 로컬 + Cloudflare Tunnel</h1>
+        <p class="paperclip-mini-hero-desc">클라우드 서버에서 웹훅을 받던 구조를 버리고, 로컬 서버에 Cloudflare Tunnel을 붙여 에이전트의 핵심 가치(코드베이스 직접 접근)를 살린 과정입니다.</p>
+        <a href="paperclip.html" class="paperclip-mini-hero-back btn-link">← AI ORCHESTRATION PIPELINE 개요</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="proj-container-wide paperclip-local-nav-wrap">
+    <nav class="paperclip-local-nav" aria-label="AI ORCHESTRATION PIPELINE 섹션">
+      <a href="paperclip.html">개요</a>
+      <a href="paperclip-server-webhook.html" class="is-active">서버 · 웹훅</a>
+      <a href="paperclip-gitlab.html">GitLab 플러그인</a>
+      <a href="paperclip-obsidian.html">Obsidian 플러그인</a>
+      <a href="paperclip-token.html">토큰 최적화</a>
+    </nav>
+  </div>
+
+  <!-- 왜 전환했는가 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">왜 클라우드에서 로컬로 옮겼는가</h2>
+      <p class="paperclip-muted" style="max-width:52em">처음에는 외부 서비스(GitLab 등)가 웹훅을 보낼 수 있도록 서버를 <strong>AWS EC2</strong>에 올렸습니다. 하지만 이 구조에서는 에이전트가 로컬 코드베이스에 접근할 수 없어, 코드를 직접 읽고 수정하는 AI 에이전트의 핵심 가치가 사라졌습니다.</p>
+
+      <div class="paperclip-evolution">
+        <p class="paperclip-evolution-title"><i class="fa fa-exchange" aria-hidden="true"></i> 인프라 전환</p>
+        <div class="paperclip-ba">
+          <div class="paperclip-ba-col paperclip-ba-before">
+            <span class="paperclip-ba-label">AWS EC2 배포</span>
+            <ul>
+              <li>외부 웹훅 수신은 간단</li>
+              <li>에이전트가 로컬 파일 접근 불가</li>
+              <li>코드 변경마다 재배포 필요</li>
+              <li>에이전트 ↔ 원격 저장소 간 동기화 복잡도</li>
+            </ul>
+          </div>
+          <div class="paperclip-ba-arrow" aria-hidden="true"><i class="fa fa-long-arrow-right"></i></div>
+          <div class="paperclip-ba-col paperclip-ba-after">
+            <span class="paperclip-ba-label">로컬 + Cloudflare Tunnel</span>
+            <ul>
+              <li>에이전트가 프로젝트 파일을 직접 다룸</li>
+              <li>고정 도메인으로 외부 웹훅 수신</li>
+              <li>코드 변경 즉시 반영</li>
+              <li>배달 영속화로 네트워크 단절 대응</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="paperclip-insight">
+        <strong>핵심 인사이트:</strong> "외부 연동을 위해 서버를 클라우드에 올리면, 에이전트가 로컬에서 작업하는 이점이 전부 사라진다." — 진입점만 공인으로 노출하되, 실제 프로세스는 로컬에서 도는 것이 정답이었습니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 구현 상세 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">구현 상세</h2>
+
+      <h3 class="proj-block-title">1. 공인 진입점 (Cloudflare Tunnel)</h3>
+      <p class="paperclip-muted" style="max-width:52em"><code class="paperclip-code">cloudflared</code>로 로컬 API 포트를 고정 호스트네임에 매핑하고, GitLab 웹훅 URL에 <strong>전체 경로</strong>(<code class="paperclip-code">/api/plugins/&lt;id&gt;/webhooks/gitlab</code>)까지 포함해 등록합니다. Quick 터널(임시)과 Zero Trust 고정 도메인을 구분해 운영 환경에 맞게 선택할 수 있도록 문서화했습니다.</p>
+
+      <h3 class="proj-block-title">2. 퍼블릭 베이스 URL</h3>
+      <p class="paperclip-muted" style="max-width:52em">API 프로세스에 <code class="paperclip-code">PAPERCLIP_PUBLIC_BASE_URL</code>을 <strong>scheme + host만</strong> 두어, 보드·플러그인 상세에 노출되는 웹훅 베이스가 터널/프록시와 일치하도록 맞췄습니다. DNS 이름 혼동으로 502가 나는 케이스를 체크리스트로 정리했습니다.</p>
+      <figure class="paperclip-figure">
+        <img src="../images/paperclip/Configuration2.png" alt="PAPERCLIP_PUBLIC_BASE_URL 등 서버·환경 설정 예시" width="1280" height="720" loading="lazy" decoding="async" />
+        <figcaption>환경 변수·퍼블릭 베이스 URL — 웹훅·콜백이 외부에 노출되는 호스트와 일치시키는 설정 예시</figcaption>
+      </figure>
+
+      <h3 class="proj-block-title">3. 웹훅 수신·배달 영속화</h3>
+      <p class="paperclip-muted" style="max-width:52em">로컬 서버의 최대 약점인 "네트워크 불안정"을 다음과 같이 보완했습니다.</p>
+      <ul class="paperclip-list">
+        <li><strong>인바운드:</strong> <code class="paperclip-code">POST /api/plugins/:pluginId/webhooks/:endpointKey</code> — 플러그인 매니페스트의 <code class="paperclip-code">endpointKey</code>와 정합</li>
+        <li><strong>배달 영속화:</strong> <code class="paperclip-code">plugin_webhook_deliveries</code> 테이블에 페이로드·헤더·상태·<code class="paperclip-code">retryCount</code>/<code class="paperclip-code">nextRetryAt</code> 저장</li>
+        <li><strong>백오프 재시도:</strong> 30초 → 2분 → 10분 → 1시간, 상한 5회. 워커 일시 오류를 흡수</li>
+        <li><strong>진단 API:</strong> 배달 이력 조회, 테스트 전송, 수동 재시도, 브라우저 GET으로 URL 확인</li>
+        <li><strong>본문 파싱:</strong> Slack <code class="paperclip-code">urlencoded</code>와 JSON 모두에서 raw body를 남겨 서명 검증 가능</li>
+      </ul>
+
+      <h3 class="proj-block-title">4. 502 트러블슈팅 구분</h3>
+      <p class="paperclip-muted" style="max-width:52em">Cloudflare <strong>엣지 502</strong>(<code class="paperclip-code">text/plain</code> + <code class="paperclip-code">error code: 502</code>)와, 요청이 API까지 도달한 뒤의 <strong>JSON 에러 응답</strong>을 분리해 인프라 vs 애플리케이션 원인을 빠르게 진단할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 데이터 흐름 -->
+  <section class="proj-overview proj-block-alt">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">데이터 흐름</h2>
+      <p class="paperclip-muted">GitLab 웹훅이 Tunnel을 거쳐 로컬 서버에 도달하고, 실패 시 재시도되는 전체 경로입니다.</p>
+      <div class="paperclip-mermaid-wrap" role="img" aria-label="웹훅 수신 데이터 흐름">
+        <div id="webhook-flow-mermaid" class="mermaid"></div>
+      </div>
+      <script type="text/plain" id="webhook-flow-source">
+flowchart LR
+  GL["GitLab<br/>MR 웹훅"] -->|HTTPS| CF["Cloudflare<br/>Tunnel"]
+  CF -->|localhost| API["Express API<br/>POST .../webhooks/gitlab"]
+  API --> DB[("plugin_webhook<br/>_deliveries")]
+  DB --> W["플러그인 워커<br/>(git-provider)"]
+  DB -->|실패 시| RS["Retry Scheduler<br/>30s→2m→10m→1h"]
+  RS --> W
+      </script>
+    </div>
+  </section>
+
+  <!-- 이 전환이 남긴 것 -->
+  <section class="proj-intro">
+    <div class="proj-container-wide">
+      <h2 class="proj-section-title">이 전환이 남긴 것</h2>
+      <ul class="paperclip-impact-list">
+        <li><strong>에이전트의 핵심 가치 보존</strong>로컬 파일을 직접 읽고 쓰는 에이전트의 강점을 유지하면서도, 외부 서비스와의 안전한 연동을 확보했습니다.</li>
+        <li><strong>네트워크 단절에 대한 구조적 대비</strong>배달 영속화와 백오프 재시도로, 한 번 끊겼다고 이벤트가 사라지지 않는 신뢰 가능한 수신 경로를 만들었습니다.</li>
+        <li><strong>운영 편의</strong>코드 변경이 재배포 없이 즉시 반영되고, 진단 API로 웹훅 배달 상태를 실시간 확인할 수 있습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="proj-footer-cta">
+    <a href="paperclip.html" class="btn-link">← 개요</a>
+    &nbsp;·&nbsp;
+    <a href="paperclip-gitlab.html" class="btn-link">다음: GitLab 플러그인 →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2026 KIMASILL</p></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="../js/portfolio.js"></script>
+<script>
+(function(){
+  function runWebhookMermaid(){
+    if(!window.mermaid) return;
+    var srcEl = document.getElementById('webhook-flow-source');
+    var outEl = document.getElementById('webhook-flow-mermaid');
+    if(!srcEl || !outEl) return;
+    var code = (srcEl.textContent || '').trim();
+    if(!code) return;
+    outEl.removeAttribute('data-processed');
+    outEl.textContent = code;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+    });
+    try {
+      var ret = mermaid.run({ nodes: [outEl] });
+      if(ret && typeof ret.then === 'function') {
+        ret.catch(function(err){ console.error('webhook mermaid', err); });
+      }
+    } catch(err) { console.error('webhook mermaid', err); }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runWebhookMermaid);
+  else runWebhookMermaid();
+})();
+</script>
+</body>
+</html>
