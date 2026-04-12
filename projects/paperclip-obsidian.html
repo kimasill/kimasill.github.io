@@ -244,6 +244,94 @@ sequenceDiagram
     </div>
   </section>
 
+  <!-- RAG 전후 동작 비교 및 로컬 벤치 -->
+  <section class="proj-overview proj-block-alt paperclip-rag-profile" id="rag-profile">
+    <div class="proj-container-wide">
+      <div class="paperclip-rag-profile__inner">
+        <header class="paperclip-rag-profile__head">
+          <p class="paperclip-rag-profile__kicker">paperclip.obsidian-brain</p>
+          <h2 class="proj-section-title paperclip-rag-profile__title">RAG 도입 전후 <span class="paperclip-rag-profile__title-sub">(동작 관점)</span></h2>
+          <p class="paperclip-muted paperclip-rag-profile__lead">에이전트가 지식을 가져오는 방식과 서버 측 부담이 어떻게 달라지는지 한눈에 비교합니다.</p>
+        </header>
+
+        <div class="paperclip-rag-profile__table-wrap table-responsive">
+          <table class="table paperclip-table paperclip-table--stack paperclip-table--stack-blocks paperclip-rag-profile__compare">
+            <thead>
+              <tr>
+                <th scope="col">구분</th>
+                <th scope="col"><span class="paperclip-rag-profile__coltag paperclip-rag-profile__coltag--before">RAG 이전</span></th>
+                <th scope="col"><span class="paperclip-rag-profile__coltag paperclip-rag-profile__coltag--after">Xenova RAG 이후</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">검색</th>
+                <td>경로를 알고 <code class="paperclip-code">read</code>로 통째로 읽거나, 목록을 만든 뒤 순차 탐색</td>
+                <td><code class="paperclip-code">semantic_search</code>로 질의를 임베딩한 뒤 청크 랭킹</td>
+              </tr>
+              <tr>
+                <th scope="row">서버 부담</th>
+                <td>디스크 I/O와 에이전트가 큰 컨텍스트로 LLM을 호출하는 비용</td>
+                <td>모델 로드·임베딩 CPU 부하와 <code class="paperclip-code">chunks.json</code> 읽기·쓰기</td>
+              </tr>
+              <tr>
+                <th scope="row">인덱스</th>
+                <td>없음</td>
+                <td><code class="paperclip-code">PaperclipBrain/{companyId}/.semantic-index/chunks.json</code></td>
+              </tr>
+              <tr>
+                <th scope="row">구현</th>
+                <td>—</td>
+                <td><code class="paperclip-code">pipeline("feature-extraction", modelId)</code> + mean pool + normalize (<code class="paperclip-code">semantic-search.ts</code>)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="paperclip-rag-profile__metrics" aria-labelledby="rag-metrics-heading">
+          <div class="paperclip-rag-profile__metrics-head">
+            <h3 class="proj-block-title paperclip-rag-profile__metrics-title" id="rag-metrics-heading">로컬 프로파일 수치</h3>
+            <span class="paperclip-rag-profile__pill">참고 · 동일 스택 로컬 벤치</span>
+          </div>
+          <p class="paperclip-muted paperclip-rag-profile__metrics-lead">워커와 동일 스택으로 로컬에서 돌린 벤치 스크립트 결과입니다. 머신·Node 버전에 따라 달라질 수 있습니다.</p>
+          <ul class="paperclip-rag-profile__metric-cards">
+            <li>
+              <span class="paperclip-rag-profile__metric-label">청킹만</span>
+              <span class="paperclip-rag-profile__metric-value">~0.16&nbsp;ms</span>
+              <span class="paperclip-rag-profile__metric-hint"><code class="paperclip-code">chunkMarkdown</code> · 약 1.6KB · 5청크</span>
+            </li>
+            <li>
+              <span class="paperclip-rag-profile__metric-label">코사인 유사도</span>
+              <span class="paperclip-rag-profile__metric-value">~3.7&nbsp;ms</span>
+              <span class="paperclip-rag-profile__metric-hint">500청크 × 384차원</span>
+            </li>
+            <li>
+              <span class="paperclip-rag-profile__metric-label">Xenova 첫 로드</span>
+              <span class="paperclip-rag-profile__metric-value">~4.46&nbsp;s</span>
+              <span class="paperclip-rag-profile__metric-hint">프로세스 첫 로드는 캐시 여부와 무관하게 초 단위 지연 가능</span>
+            </li>
+            <li>
+              <span class="paperclip-rag-profile__metric-label">쿼리 임베딩</span>
+              <span class="paperclip-rag-profile__metric-value">8–22&nbsp;ms</span>
+              <span class="paperclip-rag-profile__metric-hint">워밍 이후 · 짧은 문장</span>
+            </li>
+            <li>
+              <span class="paperclip-rag-profile__metric-label">긴 쿼리 임베딩</span>
+              <span class="paperclip-rag-profile__metric-value">~109&nbsp;ms</span>
+              <span class="paperclip-rag-profile__metric-hint">약 1625자</span>
+            </li>
+            <li>
+              <span class="paperclip-rag-profile__metric-label">연속 5청크 임베딩</span>
+              <span class="paperclip-rag-profile__metric-value">~495&nbsp;ms</span>
+              <span class="paperclip-rag-profile__metric-hint">합계 · 재인덱스에 가까움 · 평균 약 99&nbsp;ms/청크</span>
+            </li>
+          </ul>
+          <p class="paperclip-rag-profile__footnote"><strong>로그 예:</strong> <code class="paperclip-code">packages/plugins/plugin-obsidian-brain/scripts/xenova-rag-profile-2026-04-11T11-50-06-780Z.log</code> <span class="paperclip-rag-profile__footnote-muted">(Paperclip 플러그인 트리)</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 앱 검색 vs RAG -->
   <section class="proj-overview proj-block-alt">
     <div class="proj-container-wide">
