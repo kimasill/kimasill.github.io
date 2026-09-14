@@ -5,3 +5,6 @@ node_modules/
 # Claude Code — 로컬 전용(팀 커밋 제외)
 CLAUDE.local.md
 .claude/settings.local.json
+
+# CLEARIX source and private evidence must never be published.
+_private/

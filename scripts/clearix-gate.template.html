@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>CLEARIX | 고탁도 합성 학습데이터 엔진 | Kimasill</title>
+  <meta name="description" content="CLEARIX — K-water 고탁도 합성 학습데이터 생성·검증 엔진. 열람에는 비밀번호가 필요합니다." />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/portfolio.css">
+  <style>
+    .clearix-gate{padding:64px 24px 96px;background:var(--bg)}
+    .clearix-gate-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;align-items:center}
+    .clearix-gate-media img{width:100%;height:auto;display:block;border-radius:6px;border:1px solid rgba(122,128,110,.28)}
+    .clearix-gate-card{max-width:30em}
+    .clearix-gate-kicker{margin:0 0 8px;font-size:0.78em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-600)}
+    .clearix-gate-card h1{font-size:1.7em;font-weight:300;margin:0 0 14px;color:var(--text)}
+    .clearix-gate-card p{color:var(--muted);line-height:1.7;margin:0 0 18px;font-size:0.97em}
+    .clearix-gate-form{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
+    .clearix-gate-form input{flex:1 1 200px;min-width:0;padding:12px 14px;font-size:1em;border:1px solid rgba(122,128,110,.45);border-radius:6px;background:var(--surface);color:var(--text)}
+    .clearix-gate-form input:focus{outline:2px solid var(--primary);outline-offset:1px}
+    .clearix-gate-form button{padding:12px 22px;font-size:0.98em;font-weight:600;border:none;border-radius:6px;background:var(--primary);color:#fff;cursor:pointer}
+    .clearix-gate-form button:hover{background:var(--primary-600)}
+    .clearix-gate-form button[disabled]{opacity:.6;cursor:progress}
+    .clearix-gate-msg{min-height:1.4em;font-size:0.92em;color:#c0392b;margin:0 0 14px}
+    .clearix-gate-note{font-size:0.88em;color:var(--muted)}
+    .clearix-gate-note a{color:var(--primary-600)}
+    @media (max-width:900px){.clearix-gate{padding:40px 16px 64px}.clearix-gate-inner{grid-template-columns:1fr;gap:28px}}
+  </style>
+</head>
+<body class="proj-detail-page">
+<header class="proj-header">
+  <div class="proj-header-top">
+    <a href="../index.html" class="proj-header-brand">SUNG HYEON KIM - PORTFOLIO</a>
+    <div class="header-controls">
+      <button id="lang-toggle">KR</button>
+      <button id="theme-toggle"><i class="fa fa-moon-o"></i></button>
+    </div>
+  </div>
+  <nav class="proj-header-nav">
+    <a href="clearix.html" class="active">CLEARIX</a>
+    <a href="pcg-dungeon.html">PCG Dungeon</a>
+    <a href="car-classification.html">kCars</a>
+    <a href="dawnstar.html">Dawnstar</a>
+    <a href="pickpacker.html">Pickpacker</a>
+    <a href="devcomtycoon.html">DevCom Tycoon</a>
+    <a href="startup.html">Startup</a>
+    <a href="tab-game.html">Tab Game</a>
+    <a href="paperclip.html" class="proj-header-nav-orch">AI ORCHESTRATION PIPELINE</a>
+    <a href="../index.html">Home</a>
+  </nav>
+</header>
+
+<main class="project-page">
+  <section class="clearix-gate">
+    <div class="clearix-gate-inner">
+      <div class="clearix-gate-media">
+        <img src="../images/clearix/clearix-cover.svg" alt="CLEARIX — K-water 고탁도 합성 학습데이터 생성·검증 엔진" width="1280" height="720" />
+      </div>
+      <div class="clearix-gate-card">
+        <p class="clearix-gate-kicker">CLEARIX · PROJECT CASE STUDY</p>
+        <h1>AI 학습데이터 엔진,<br>설계부터 검증까지</h1>
+        <p>실데이터 기반 알고리즘 개선과 Python 백엔드 구현 과정을 정리했습니다. 프로젝트 보안을 위해 비밀번호 입력 후 열람할 수 있습니다.</p>
+        <form class="clearix-gate-form" id="clearix-gate-form" autocomplete="off">
+          <label for="clearix-pw" class="sr-only" style="position:absolute;left:-9999px">비밀번호</label>
+          <input id="clearix-pw" type="password" placeholder="비밀번호" autocomplete="current-password" required />
+          <button type="submit" id="clearix-unlock">열기</button>
+        </form>
+        <p class="clearix-gate-msg" id="clearix-gate-msg" aria-live="polite"></p>
+        <p class="clearix-gate-note">열람 권한이 필요하시면 <a href="mailto:kibbel1998@gmail.com">kibbel1998@gmail.com</a>으로 요청해 주세요. 본문과 검증 이미지는 암호화해 제공되며, 비밀번호를 입력한 브라우저에서 열립니다.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container"><p style="margin:0">© 2026 KIMASILL</p></div>
+</footer>
+<script type="text/plain" id="clearix-payload">__CIPHER__</script>
+<script>
+(function(){
+  var SALT = '__SALT__', IV = '__IV__', ITER = __ITER__;
+  var enc = new TextEncoder();
+  function b64(s){ var bin = atob(s); var out = new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i); return out; }
+  function payload(){ return b64(document.getElementById('clearix-payload').textContent.replace(/\s+/g, '')); }
+  function deriveKey(pw){
+    return crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']).then(function(km){
+      return crypto.subtle.deriveKey({name:'PBKDF2', salt: b64(SALT), iterations: ITER, hash:'SHA-256'}, km, {name:'AES-GCM', length:256}, true, ['decrypt']);
+    });
+  }
+  function open(key){
+    return crypto.subtle.decrypt({name:'AES-GCM', iv: b64(IV)}, key, payload()).then(function(plain){
+      var html = new TextDecoder().decode(plain);
+      return crypto.subtle.exportKey('raw', key).then(function(raw){
+        try { var u = new Uint8Array(raw), s = ''; for(var i=0;i<u.length;i++) s += String.fromCharCode(u[i]); sessionStorage.setItem('clearix.k', btoa(s)); } catch(e){}
+        document.open(); document.write(html); document.close();
+      });
+    });
+  }
+  var form = document.getElementById('clearix-gate-form'), msg = document.getElementById('clearix-gate-msg'), btn = document.getElementById('clearix-unlock'), pwEl = document.getElementById('clearix-pw');
+  if(!window.crypto || !crypto.subtle){ msg.textContent = '이 브라우저에서는 복호화를 지원하지 않습니다. 최신 브라우저로 열어 주세요.'; btn.disabled = true; return; }
+  try {
+    var cached = sessionStorage.getItem('clearix.k');
+    if(cached){
+      crypto.subtle.importKey('raw', b64(cached), {name:'AES-GCM'}, true, ['decrypt']).then(open).catch(function(){ try{ sessionStorage.removeItem('clearix.k'); }catch(e){} });
+    }
+  } catch(e){}
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var pw = pwEl.value;
+    if(!pw) return;
+    msg.textContent = ''; btn.disabled = true; btn.textContent = '확인 중…';
+    deriveKey(pw).then(open).catch(function(){
+      msg.textContent = '비밀번호가 올바르지 않습니다.'; btn.disabled = false; btn.textContent = '열기'; pwEl.select();
+    });
+  });
+})();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/portfolio.js"></script>
+</body>
+</html>
