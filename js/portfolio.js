@@ -21,7 +21,6 @@
         'work.title':'FEATURED WORK','filter.all':'All','filter.tools':'Tools','common.details':'포트폴리오 페이지','common.process':'개발 프로세스 페이지',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'ABOUT',
-        'about.p1':'게임·서버·데이터 엔진 개발 경험을 바탕으로 풀스택·AI 서비스 개발에 집중하는 개발자입니다. 한국수자원공사와 협업한 CLEARIX에서 Python·FastAPI 기반 데이터 생성 알고리즘·검증 파이프라인과 작업 관리·복구 구조를 구현했습니다. PCG 모듈, 실시간 네트워크, 딥러닝 분류 모델 개발 경험을 바탕으로 복잡한 요구사항을 구체적인 기능과 시스템으로 풀어냅니다.',
         'about.cta':'이력서 다운로드'
       },
       en: {
@@ -30,14 +29,21 @@
         'work.title':'FEATURED WORK','filter.all':'All','filter.tools':'Tools','common.details':'Portfolio page','common.process':'Development process',
         'proj.roguelike.title':'Roguelike Shooter','proj.roguelike.meta':'Unity · C# · Procedural Level · Wave AI',
         'about.title':'ABOUT',
-        'about.p1':'A developer focused on full-stack and AI services, building on experience in game, server, and data-engine development. On CLEARIX, a collaboration with K-water, I implemented Python/FastAPI-based data generation algorithms, a validation pipeline, and a job management and recovery architecture. With hands-on experience in PCG modules, real-time networking, and deep learning classifiers, I turn complex requirements into concrete features and systems.',
+        'about.p1':'Building on my experience in game and server development, I am expanding into full-stack and AI-powered services. My strength is understanding the user experience and designing the data processing and system architecture that support it. In CLEARIX, a collaboration with K-water, I implemented an engine that generates synthetic data from water-treatment time series and validates its quality. Using Python and FastAPI, I built the pipeline from input validation through generation, quality checks, and output. I implemented job state management, cancellation, and recovery after interruption, checked input file integrity, and designed the system to save only results that pass validation. I also documented API specifications and data formats for the UI team. Previously, I built a PCG-based level generation module and networking for a dedicated-server 2D MMORPG, and developed a deep learning classifier. Alongside commercial engines, I have built games using Java and C# libraries, designing and completing the required features and architecture myself. I turn complex requirements into implementable features and design systems with data flow and failure cases in mind. I value applying new technologies to real problems and creating structures and documentation that teammates can understand and extend.',
         'about.cta':'Download Resume'
       }
     };
+    // Preserve the authored Korean introduction, including its line breaks.
+    var aboutIntro = $('[data-i18n="about.p1"]').first();
+    var aboutIntroHtml = aboutIntro.length ? aboutIntro.html() : null;
     function applyI18n(lang){
       $('[data-i18n]').each(function(){
         // attr: 점(.)이 들어간 키(common.process)는 jQuery .data()로 조회 시 깨질 수 있음
         var key = $(this).attr('data-i18n');
+        if(key === 'about.p1' && lang === 'ko' && aboutIntroHtml !== null){
+          $(this).html(aboutIntroHtml);
+          return;
+        }
         if(dict[lang] && key && dict[lang][key]){
           $(this).text(dict[lang][key]);
         }
