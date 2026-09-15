@@ -17,3 +17,10 @@ GitHub Pages로 배포되는 정적 포트폴리오 사이트입니다.
 ## 개인 설정(커밋하지 않음)
 
 - 루트의 `CLAUDE.local.md`에 본인만의 지시를 두면 `CLAUDE.md`와 함께 로드됩니다(저장소에는 올리지 마세요).
+
+## CLEARIX 페이지 (비밀번호 보호)
+
+- `projects/clearix.html`은 빌드 산출물(AES-256-GCM 암호문, 이미지 인라인). 직접 편집하지 말 것.
+- 원본: `_private/clearix/clearix.html` + `_private/clearix/images/` (gitignore, 저장소에 없음 — 별도 백업 필요).
+- 빌드: `node scripts/build-clearix-gate.mjs --password <pw>` (`src="../images/clearix/이름"` 참조를 자동 인라인).
+- `_private/clearix/README.md`에 자료 목록과 교체용 이미지 안내가 있음.
