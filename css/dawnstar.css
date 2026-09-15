@@ -1,0 +1,92 @@
+/* DawnStar case study: scoped to this page. */
+.ds-page{--ds-accent:#8b603b;--ds-line:#dedbd5;--ds-panel:#f5f3ef;word-break:keep-all;overflow-wrap:break-word}
+.ds-page[data-theme="dark"]{--ds-accent:#d5ad7a;--ds-line:#394044;--ds-panel:#202629}
+.ds-page *{box-sizing:border-box}
+.ds-wrap{max-width:1160px;margin:auto;padding:0 32px}
+.ds-page p,.ds-page li{line-height:1.85;color:var(--muted)}
+.ds-page p{margin:0 0 20px}
+.ds-page h1,.ds-page h2,.ds-page h3{color:var(--text);word-break:keep-all}
+.ds-page a{color:var(--ds-accent)}
+.ds-page a:focus-visible,.ds-page summary:focus-visible,.ds-page button:focus-visible{outline:3px solid var(--ds-accent);outline-offset:5px}
+.ds-page .proj-header a{color:var(--text)}
+.ds-page .ds-eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:var(--ds-accent);margin-bottom:18px}
+.ds-hero{padding:64px 0 0;background:linear-gradient(155deg,#151c25,#242226);color:#f3eee6}
+.ds-hero-top{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+.ds-hero h1{font-size:68px;letter-spacing:-3px;line-height:1.05;color:#fff;margin:0 0 24px;font-weight:700}
+.ds-hero h1 small{display:block;font-size:15px;letter-spacing:4px;color:#c9b79f;margin-top:14px;font-weight:400}
+.ds-hero .ds-eyebrow{color:#d5ad7a}
+.ds-hero .ds-headline{font-size:27px;line-height:1.55;letter-spacing:-.8px;color:#fff;margin-bottom:18px}
+.ds-hero .ds-deck{color:#c0c8ce;font-size:15px;max-width:38em}
+.ds-hero-art{margin:0}
+.ds-hero-art img{display:block;width:100%;height:auto;border-radius:4px}
+.ds-actions{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin:28px 0}
+.ds-actions a{font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:5px}
+.ds-hero .ds-actions a{color:#e7c99e}
+.ds-meta{display:grid;grid-template-columns:1fr 1.25fr 1.1fr;gap:30px;margin:40px 0 0;padding:26px 0 30px;border-top:1px solid #ffffff26}
+.ds-meta dt{font-size:11px;letter-spacing:1.6px;color:#d5ad7a;margin-bottom:8px}
+.ds-meta dd{font-size:13px;line-height:1.8;color:#d8dce0;margin:0}
+.ds-nav{display:flex;flex-wrap:wrap;gap:12px 28px;padding:24px 0;border-bottom:1px solid var(--ds-line)}
+.ds-nav a{font-size:13px;font-weight:600;text-decoration:none}
+.ds-section{padding:64px 0;border-bottom:1px solid var(--ds-line);scroll-margin-top:150px}
+.ds-section h2{font-size:30px;letter-spacing:-1px;line-height:1.5;margin:0 0 24px;font-weight:650}
+.ds-section h3{font-size:19px;line-height:1.6;margin:0 0 12px;font-weight:650}
+.ds-section>.ds-lead{max-width:780px;font-size:16px}
+.ds-split{display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:start;margin-top:30px}
+.ds-split p{font-size:14px}
+.ds-video{position:relative;aspect-ratio:16/9;background:#10171d;border-radius:4px;overflow:hidden}
+.ds-video iframe{display:block;width:100%;height:100%;border:0}
+.ds-page figure{margin:0;min-width:0}
+.ds-page figcaption{font-size:12px;line-height:1.75;color:var(--muted);margin-top:10px}
+.ds-page figcaption strong{color:var(--text)}
+.ds-page figure>img,.ds-page figure>video{display:block;width:100%;height:auto;border-radius:4px;background:#11191e}
+.ds-page figure>video{aspect-ratio:16/9;object-fit:contain}
+.ds-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:30px}
+.ds-three article{padding-top:21px;border-top:2px solid var(--ds-line)}
+.ds-three h3{font-size:17px}
+.ds-three p{font-size:14px;margin-bottom:0}
+.ds-architecture{display:grid;grid-template-columns:1fr auto 1.2fr auto 1fr;gap:18px;align-items:center;padding:30px;margin:28px 0;background:var(--ds-panel);border:1px solid var(--ds-line);border-radius:5px}
+.ds-architecture strong{color:var(--text);font-size:16px}
+.ds-architecture p{font-size:12px;margin:8px 0 0}
+.ds-arrow{font-size:24px;color:var(--ds-accent)}
+.ds-case{padding:32px 0 12px;border-top:1px solid var(--ds-line);margin-top:30px}
+.ds-case-top{display:grid;grid-template-columns:58px 1fr;gap:16px}
+.ds-case-number{font-size:28px;font-weight:300;line-height:1.4;color:var(--ds-accent)}
+.ds-case .ds-split{margin-top:22px;grid-template-columns:1fr 1fr}
+.ds-case p{font-size:14px}
+.ds-source{font-size:12px!important;line-height:1.8!important;margin:20px 0 0!important}
+.ds-source a{text-decoration:underline;text-underline-offset:3px}
+.ds-flow{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:22px;margin:20px 0;background:var(--ds-panel);border-radius:4px}
+.ds-flow li{font-size:13px}
+.ds-flow b{display:block;color:var(--text);font-size:14px;margin-bottom:5px}
+.ds-details{border-top:1px solid var(--ds-line);margin-top:28px;padding:18px 0 0}
+.ds-details summary{font-size:16px;line-height:1.65;font-weight:650;color:var(--ds-accent);cursor:pointer;padding:6px 0}
+.ds-details>div{padding-top:22px}
+.ds-details ul{padding-left:20px}
+.ds-gallery{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:26px 0}
+.ds-gallery .ds-wide{grid-column:1/-1}
+.ds-note{padding:20px 24px;border-left:3px solid var(--ds-accent);background:var(--ds-panel);font-size:13px!important;margin-top:26px!important}
+.ds-note strong{color:var(--text)}
+.ds-table-wrap{overflow-x:auto}
+.ds-table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.8}
+.ds-table th,.ds-table td{text-align:left;vertical-align:top;padding:14px 12px;border-bottom:1px solid var(--ds-line);color:var(--muted)}
+.ds-table th{color:var(--text);font-weight:650}
+.ds-table th:first-child{width:23%}
+.ds-close{padding:42px 0 60px}
+.ds-close .ds-actions{justify-content:space-between;margin:0}
+.ds-lang{align-self:center;font-size:12px}
+@media(max-width:760px){
+  .ds-wrap{padding:0 22px}
+  .ds-hero{padding-top:38px}
+  .ds-hero-top,.ds-split,.ds-case .ds-split{grid-template-columns:1fr;gap:24px}
+  .ds-hero h1{font-size:48px;letter-spacing:-2px}
+  .ds-hero .ds-headline{font-size:23px}
+  .ds-meta{grid-template-columns:1fr;gap:19px;margin-top:28px}
+  .ds-section{padding:44px 0;scroll-margin-top:150px}
+  .ds-section h2{font-size:25px}
+  .ds-three,.ds-gallery,.ds-flow{grid-template-columns:1fr}
+  .ds-architecture{grid-template-columns:1fr;padding:24px;gap:15px}
+  .ds-arrow{font-size:18px;transform:rotate(90deg);justify-self:start}
+  .ds-case-top{grid-template-columns:38px 1fr;gap:12px}
+  .ds-case-number{font-size:25px}
+  .ds-table th,.ds-table td{padding:12px 6px;font-size:12px}
+}
